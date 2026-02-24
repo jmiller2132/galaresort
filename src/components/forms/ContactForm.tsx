@@ -136,10 +136,10 @@ export default function ContactForm({ defaultCabin, defaultType, maxGuests, onSu
             Something went wrong. Please try again, or reach out to us directly
             at{" "}
             <a
-              href="mailto:info@galaresort.com"
+              href="mailto:galaresortllc@gmail.com"
               className="font-semibold underline"
             >
-              info@galaresort.com
+              galaresortllc@gmail.com
             </a>
             .
           </p>

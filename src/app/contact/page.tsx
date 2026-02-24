@@ -20,12 +20,14 @@ const contactDetails = [
   {
     icon: Phone,
     label: "Phone",
-    value: "Call for details",
+    value: "(920) 446-2423",
+    href: "tel:+19204462423",
   },
   {
     icon: Mail,
     label: "Email",
-    value: "info@galaresort.com",
+    value: "galaresortllc@gmail.com",
+    href: "mailto:galaresortllc@gmail.com",
   },
   {
     icon: Clock,
@@ -80,9 +82,15 @@ export default function ContactPage() {
                           <p className="text-sm font-semibold text-charcoal">
                             {item.label}
                           </p>
-                          <p className="text-sm text-river-gray whitespace-pre-line mt-0.5">
-                            {item.value}
-                          </p>
+                          {"href" in item ? (
+                            <a href={item.href} className="text-sm text-river-gray hover:text-river-blue mt-0.5 block">
+                              {item.value}
+                            </a>
+                          ) : (
+                            <p className="text-sm text-river-gray whitespace-pre-line mt-0.5">
+                              {item.value}
+                            </p>
+                          )}
                         </div>
                       </div>
                     ))}

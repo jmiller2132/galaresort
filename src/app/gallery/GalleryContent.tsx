@@ -79,14 +79,9 @@ export default function GalleryContent() {
             <p className="text-river-gray">
               Professional photography coming soon. Follow us on{" "}
               <a
-                href="#"
-                className="text-river-blue font-semibold hover:underline"
-              >
-                Instagram
-              </a>{" "}
-              and{" "}
-              <a
-                href="#"
+                href="https://www.facebook.com/galaresort/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-river-blue font-semibold hover:underline"
               >
                 Facebook

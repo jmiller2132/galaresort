@@ -55,7 +55,7 @@ export default function RootLayout({
       "Riverfront cabins, seasonal campsites, camping, and a bar & lounge with live music on the Wolf River in Fremont, Wisconsin.",
     url: "https://galaresort.com",
     telephone: "+15551234567",
-    email: "info@galaresort.com",
+    email: "galaresortllc@gmail.com",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Fremont",

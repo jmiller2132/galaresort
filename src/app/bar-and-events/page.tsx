@@ -142,7 +142,7 @@ export default function BarAndEventsPage() {
                 <p className="text-white/80 text-lg leading-relaxed">
                   Live music and events are lining up for the season — check
                   back soon or follow us on{" "}
-                  <a href="#" className="text-wood-light font-semibold hover:underline">
+                  <a href="https://www.facebook.com/galaresort/" target="_blank" rel="noopener noreferrer" className="text-wood-light font-semibold hover:underline">
                     Facebook
                   </a>{" "}
                   for updates.
@@ -199,7 +199,7 @@ export default function BarAndEventsPage() {
                 <p className="text-river-gray text-lg leading-relaxed">
                   Live music and events are lining up for the season — check
                   back soon or follow us on{" "}
-                  <a href="#" className="text-river-blue font-semibold hover:underline">
+                  <a href="https://www.facebook.com/galaresort/" target="_blank" rel="noopener noreferrer" className="text-river-blue font-semibold hover:underline">
                     Facebook
                   </a>{" "}
                   for updates.
@@ -211,7 +211,7 @@ export default function BarAndEventsPage() {
           <AnimateIn className="mt-12 text-center">
             <p className="text-river-gray">
               Want to know about upcoming events?{" "}
-              <a href="#" className="text-river-blue font-semibold hover:underline">
+              <a href="https://www.facebook.com/galaresort/" target="_blank" rel="noopener noreferrer" className="text-river-blue font-semibold hover:underline">
                 Follow us on Facebook
               </a>{" "}
               for the latest updates.

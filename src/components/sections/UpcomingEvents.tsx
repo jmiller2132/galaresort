@@ -61,7 +61,7 @@ export default function UpcomingEvents() {
               <p className="text-white/80 text-lg leading-relaxed">
                 Live music and events are lining up for the season — check back
                 soon or follow us on{" "}
-                <a href="#" className="text-wood-light font-semibold hover:underline">
+                <a href="https://www.facebook.com/galaresort/" target="_blank" rel="noopener noreferrer" className="text-wood-light font-semibold hover:underline">
                   Facebook
                 </a>{" "}
                 for updates.
