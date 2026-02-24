@@ -42,6 +42,7 @@ export interface GalaEvent {
   slug: string;
   title: string;
   date: string;
+  dateLabel?: string;
   category: "live-music" | "seasonal" | "community" | "special";
   description: string;
   featured: boolean;
@@ -182,7 +183,7 @@ export const cabins: Cabin[] = [
   },
   {
     slug: "northern-pike",
-    name: "The Northern Pike",
+    name: "Northern Pike – Four Season Cabin",
     seasonType: "year-round",
     maxGuests: 6,
     rateNightly: 150,
@@ -190,7 +191,7 @@ export const cabins: Cabin[] = [
     minNights: 2,
     dogFriendly: true,
     description:
-      "Our only four-season cabin, The Northern Pike is built for year-round comfort on the Wolf River. Insulated and heated, it's perfect for those who want to experience the river in every season — from summer days on the dock to quiet winter mornings with snow on the water. Sleeps six, with all the comforts of home.",
+      "Our only four-season cabin, the Northern Pike is built for year-round comfort on the Wolf River. Insulated and heated, it's perfect for those who want to experience the river in every season — from summer days on the dock to quiet winter mornings with snow on the water. Sleeps six, with all the comforts of home.",
     shortDescription:
       "Our only four-season cabin — insulated, heated, and built for year-round life on the Wolf River.",
     amenities: [
@@ -202,9 +203,9 @@ export const cabins: Cabin[] = [
       "Grill Area",
     ],
     images: [
-      { src: "https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?w=1200&q=80", alt: "The Northern Pike four-season cabin exterior", width: 1200, height: 800 },
-      { src: "https://images.unsplash.com/photo-1587061949409-02df41d5e562?w=1200&q=80", alt: "The Northern Pike cabin interior", width: 1200, height: 800 },
-      { src: "https://images.unsplash.com/photo-1510798831971-661eb04b3739?w=1200&q=80", alt: "The Northern Pike cabin river view", width: 1200, height: 800 },
+      { src: "https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?w=1200&q=80", alt: "Northern Pike four-season cabin exterior", width: 1200, height: 800 },
+      { src: "https://images.unsplash.com/photo-1587061949409-02df41d5e562?w=1200&q=80", alt: "Northern Pike cabin interior", width: 1200, height: 800 },
+      { src: "https://images.unsplash.com/photo-1510798831971-661eb04b3739?w=1200&q=80", alt: "Northern Pike cabin river view", width: 1200, height: 800 },
     ],
   },
 ];
@@ -257,23 +258,19 @@ export const seasonalSites: SeasonalSite[] = [
 // ─── Camping ────────────────────────────────────────────────────────────────
 
 export const campingConfig: CampingConfig = {
-  rateNightly: 45,
-  rateWeekly: 275,
+  rateNightly: 55,
+  rateWeekly: 330,
   maxLength: "One camping unit per site",
-  hookups: "Water & electric (30/50 AMP)",
+  hookups: "Water & electric",
   description:
-    "Spacious, semi-shaded campsites on the Wolf River with water and electric hookups, fire rings, and picnic tables at every site. Whether you're set up in an RV or pitching a tent, you've got 30 or 50 AMP service, clean showers, and access to everything at The Gala — the bar, live music, boat launch, and more. Group sites are available too, so bring the crew.",
+    "Spacious, semi-shaded campsites on the Wolf River with water and electric hookups, fire rings, and picnic tables at every site. Whether you're set up in an RV or pitching a tent, you've got everything you need — plus access to the bar, live music, boat launch, and more. Pull up, plug in, and enjoy the river.",
   features: [
     "Water & electric hookups",
-    "30 & 50 AMP service",
     "Semi-shaded sites",
     "Fire rings & picnic tables",
-    "Clean showers",
-    "Dump station available",
-    "Group site available",
     "Boat launch access",
     "Bar & restaurant access",
-    "Pet friendly (dogs only, limit 2)",
+    "Ask about pets (dogs only, limit 2)",
   ],
   image: {
     src: "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=1200&q=80",
@@ -288,8 +285,9 @@ export const campingConfig: CampingConfig = {
 export const events: GalaEvent[] = [
   {
     slug: "river-road-band-march",
-    title: "Live Music: River Road Band",
+    title: "Live Music – Artist TBA",
     date: "2026-03-14",
+    dateLabel: "Details Coming Soon",
     description:
       "Kick off the season with live country and rock on the outdoor patio. Cold drinks, good vibes, Wolf River views.",
     image: {
@@ -303,8 +301,9 @@ export const events: GalaEvent[] = [
   },
   {
     slug: "memorial-day-weekend",
-    title: "Memorial Day Weekend",
+    title: "Memorial Day Weekend – Details Coming Soon",
     date: "2026-05-23",
+    dateLabel: "Details Coming Soon",
     description:
       "The unofficial start of summer on the Wolf River. Live music both nights, food specials, and good times with the Gala community.",
     image: {
@@ -318,8 +317,9 @@ export const events: GalaEvent[] = [
   },
   {
     slug: "4th-of-july",
-    title: "4th of July Celebration",
+    title: "4th of July Celebration – Details Coming Soon",
     date: "2026-07-04",
+    dateLabel: "Details Coming Soon",
     description:
       "Celebrate Independence Day riverfront-style. Live entertainment, cookout specials, and fireworks over the Wolf River.",
     image: {
@@ -333,8 +333,9 @@ export const events: GalaEvent[] = [
   },
   {
     slug: "live-music-saturday-june",
-    title: "Live Music Saturday",
+    title: "Live Music – Date To Be Announced",
     date: "2026-06-20",
+    dateLabel: "Date To Be Announced",
     description:
       "Another great Saturday on the patio with live music, drinks, and the river breeze. Check back for artist lineup.",
     image: {
@@ -361,7 +362,7 @@ export const galleryImages: GalleryImage[] = [
   { src: "https://images.unsplash.com/photo-1587061949409-02df41d5e562?w=1200&q=80", alt: "Cabin at sunset on the waterfront", width: 1200, height: 800, category: "cabins" },
   { src: "/images/wolf-river-new-london.png", alt: "Wolf River near New London, Wisconsin", width: 1200, height: 800, category: "waterfront" },
   { src: "https://images.unsplash.com/photo-1595521624992-48a59aef95e3?w=1200&q=80", alt: "Waterfront deck overlooking the river", width: 1200, height: 800, category: "waterfront" },
-  { src: "https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?w=1200&q=80", alt: "The Northern Pike four-season cabin", width: 1200, height: 800, category: "cabins" },
+  { src: "https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?w=1200&q=80", alt: "Northern Pike – Four Season Cabin", width: 1200, height: 800, category: "cabins" },
   { src: "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=1200&q=80", alt: "Outdoor evening gathering at The Gala", width: 1200, height: 800, category: "bar" },
 ];
 

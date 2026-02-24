@@ -285,7 +285,7 @@ export default function ContactForm({ defaultCabin, defaultType, maxGuests, onSu
                 {selectedCabin && !selectedCabin.dogFriendly ? (
                   <>
                     <input type="hidden" {...register("pets")} value="no" />
-                    <p className="py-3 text-sm text-river-gray">Dogs are not allowed in the {selectedCabin.name} cabin.</p>
+                    <p className="py-3 text-sm text-river-gray">Pets not available for this cabin.</p>
                   </>
                 ) : (
                   <>
@@ -294,7 +294,7 @@ export default function ContactForm({ defaultCabin, defaultType, maxGuests, onSu
                       <option value="1-dog">Yes — 1 dog</option>
                       <option value="2-dogs">Yes — 2 dogs</option>
                     </select>
-                    <p className="mt-1 text-xs text-river-gray">Dogs only, limit 2 per site.</p>
+                    <p className="mt-1 text-xs text-river-gray">Ask about pets (dogs only, limit 2).</p>
                   </>
                 )}
               </div>

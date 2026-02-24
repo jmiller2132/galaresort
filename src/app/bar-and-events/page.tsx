@@ -12,8 +12,8 @@ export const metadata: Metadata = {
     "Riverfront bar with live music, cold drinks, and fresh food. Check our events calendar for what's happening at The Gala.",
 };
 
-function formatDate(dateStr: string) {
-  return new Date(dateStr).toLocaleDateString("en-US", {
+function formatEventDate(event: { date: string; dateLabel?: string }) {
+  return event.dateLabel ?? new Date(event.date).toLocaleDateString("en-US", {
     weekday: "long",
     month: "long",
     day: "numeric",
@@ -123,7 +123,7 @@ export default function BarAndEventsPage() {
                     <div className="p-6">
                       <div className="flex items-center gap-2 text-wood-light text-sm mb-2">
                         <Calendar size={14} />
-                        {formatDate(event.date)}
+                        {formatEventDate(event)}
                       </div>
                       <h3 className="font-[family-name:var(--font-display)] text-xl font-bold text-white">
                         {event.title}
@@ -168,7 +168,7 @@ export default function BarAndEventsPage() {
                   <div className="flex flex-col md:flex-row gap-6 bg-cream rounded-lg p-6 border border-sand/50">
                     <div className="md:w-48 flex-shrink-0">
                       <p className="text-sm font-semibold text-river-blue">
-                        {formatDate(event.date)}
+                        {formatEventDate(event)}
                       </p>
                       <span className="inline-block mt-1 text-xs font-medium uppercase tracking-wider text-river-gray bg-white px-2 py-0.5 rounded">
                         {categoryLabels[event.category] || event.category}

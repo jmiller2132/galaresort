@@ -38,7 +38,7 @@ export default function UpcomingEvents() {
                   <div className="relative p-6">
                     <div className="flex items-center gap-2 text-wood-light text-sm mb-2">
                       <Calendar size={14} />
-                      {new Date(event.date).toLocaleDateString("en-US", {
+                      {event.dateLabel ?? new Date(event.date).toLocaleDateString("en-US", {
                         month: "long",
                         day: "numeric",
                         year: "numeric",

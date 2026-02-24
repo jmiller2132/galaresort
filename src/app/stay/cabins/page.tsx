@@ -31,7 +31,7 @@ export default function CabinsPage() {
                 Our six cabins sit directly on the Wolf River, each with private
                 dock access and river views. Five are three-season cabins named
                 after the fish you&apos;ll find in these waters. The sixth —
-                The Northern Pike — is our only four-season cabin, perfect for
+                Northern Pike – Four Season Cabin — is our only four-season cabin, perfect for
                 year-round stays.
               </p>
               <div className="mt-4 flex flex-wrap gap-4 text-sm text-river-gray">
@@ -77,7 +77,7 @@ export default function CabinsPage() {
                       </span>
                       {cabin.dogFriendly && (
                         <span className="flex items-center gap-1">
-                          <Dog size={13} /> Dogs OK
+                          <Dog size={13} /> Ask about pets
                         </span>
                       )}
                     </div>

@@ -20,8 +20,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const cabin = getCabinBySlug(slug);
   if (!cabin) return {};
   const seasonLabel = cabin.seasonType === "year-round" ? "year-round" : "three-season";
+  const titleSuffix = cabin.name.includes("Cabin") ? "" : " Cabin";
   return {
-    title: `${cabin.name} Cabin`,
+    title: `${cabin.name}${titleSuffix}`,
     description: `${cabin.name} — a ${seasonLabel} waterfront cabin on the Wolf River. Sleeps ${cabin.maxGuests}. Starting at ${formatPrice(cabin.rateNightly)}/night.`,
   };
 }
@@ -65,7 +66,7 @@ export default async function CabinDetailPage({ params }: Props) {
                 </span>
                 {cabin.dogFriendly && (
                   <span className="flex items-center gap-1.5 text-sm text-river-gray">
-                    <Dog size={14} /> Dogs welcome (limit 2)
+                    <Dog size={14} /> Ask about pets (dogs only, limit 2)
                   </span>
                 )}
               </div>
@@ -100,9 +101,8 @@ export default async function CabinDetailPage({ params }: Props) {
               <AnimateIn delay={0.2}>
                 <div className="mt-10 bg-sand/30 rounded-lg p-5 border border-sand/50">
                   <p className="text-river-gray text-sm leading-relaxed">
-                    <strong className="text-charcoal">Dogs are welcome</strong> at
-                    The Gala — limit 2 per cabin. Please keep them leashed and
-                    clean up after them.
+                    <strong className="text-charcoal">Ask about pets</strong> — dogs
+                    only, limit 2 per cabin.
                   </p>
                 </div>
               </AnimateIn>

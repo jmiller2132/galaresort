@@ -9,7 +9,7 @@ import { Check } from "lucide-react";
 export const metadata: Metadata = {
   title: "Camping",
   description:
-    "RV and tent camping on the Wolf River. Water and electric hookups, 30/50 AMP, fire rings, clean showers, and resort amenities. From $45/night.",
+    "RV and tent camping on the Wolf River. Water and electric hookups, fire rings, and resort amenities. From $55/night.",
 };
 
 export default function CampingPage() {

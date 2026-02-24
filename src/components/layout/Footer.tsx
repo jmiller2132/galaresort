@@ -91,7 +91,7 @@ export default function Footer() {
               </a>
             </div>
             <p className="mt-6 text-xs text-white/40">
-              Dogs welcome (limit 2 per site).
+              Ask about pets (dogs only, limit 2).
               <br />
               Availability confirmed after inquiry.
             </p>
