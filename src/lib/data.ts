@@ -73,7 +73,7 @@ export const resortAmenities: Amenity[] = [
   { icon: "Heart", label: "Family Friendly" },
   { icon: "Umbrella", label: "Small Beach" },
   { icon: "Baby", label: "Kids Park" },
-  { icon: "Target", label: "Horseshoes" },
+  { icon: "Magnet", label: "Horseshoes" },
 ];
 
 export interface CampingConfig {
@@ -390,7 +390,7 @@ export const amenities: Amenity[] = [
   { icon: "sun", label: "Outdoor Patio" },
   { icon: "umbrella", label: "Small Beach" },
   { icon: "baby", label: "Kids Park" },
-  { icon: "target", label: "Horseshoes" },
+  { icon: "magnet", label: "Horseshoes" },
 ];
 
 // ─── Data Access Functions (Phase 2: replace bodies with Sanity queries) ────

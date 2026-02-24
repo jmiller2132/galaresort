@@ -6,9 +6,9 @@ import {
   Beer,
   Heart,
   Home,
+  Magnet,
   Music,
   Ship,
-  Target,
   Umbrella,
   Users2,
 } from "lucide-react";
@@ -19,9 +19,9 @@ const iconMap = {
   Beer,
   Heart,
   Home,
+  Magnet,
   Music,
   Ship,
-  Target,
   Umbrella,
   Users2,
 } as const;
