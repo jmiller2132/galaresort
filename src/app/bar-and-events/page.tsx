@@ -46,21 +46,22 @@ export default function BarAndEventsPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <AnimateIn>
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-river-blue mb-3">
-                The Bar & Lounge
+                The Social Hub
               </p>
               <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl font-bold text-charcoal">
-                Right on the Water
+                Riverfront Bar & Patio on the Water
               </h2>
               <p className="mt-6 text-river-gray text-lg leading-relaxed">
-                The Gala bar sits right on the Wolf River with a full outdoor
-                patio overlooking the water. Grab a cold one, catch a game, or
-                settle in for live music on a Saturday night. The bar and main
-                house are currently undergoing a full remodel — inside and
-                out — so expect it to be better than ever.
+                The Gala bar is your riverfront hangout — a full outdoor patio
+                right on the Wolf River, live music on weekends, and seasonal
+                events that bring the community together. Grab a cold drink,
+                catch a game, or settle in for an evening by the water. The bar
+                and main house are undergoing a full remodel, so expect it to be
+                better than ever.
               </p>
               <p className="mt-4 text-river-gray leading-relaxed">
-                Fresh pizza and bar favorites are on the menu, with more options
-                coming as we grow. Open 7 days a week, 11 AM to close.
+                Fresh pizza and bar favorites are on the menu. Open 7 days a
+                week, 11 AM to close.
               </p>
               <div className="mt-6 space-y-3 text-river-gray">
                 <div className="flex items-center gap-2">

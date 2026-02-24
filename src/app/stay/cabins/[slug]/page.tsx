@@ -67,7 +67,7 @@ export default async function CabinDetailPage({ params }: Props) {
                 </span>
                 {cabin.dogFriendly && (
                   <span className="flex items-center gap-1.5 text-sm text-river-gray">
-                    <Dog size={14} /> Ask about pets (dogs only, limit 2)
+                    <Dog size={14} /> 2 dogs allowed per cabin
                   </span>
                 )}
               </div>
@@ -102,8 +102,7 @@ export default async function CabinDetailPage({ params }: Props) {
               <AnimateIn delay={0.2}>
                 <div className="mt-10 bg-sand/30 rounded-lg p-5 border border-sand/50">
                   <p className="text-river-gray text-sm leading-relaxed">
-                    <strong className="text-charcoal">Ask about pets</strong> — dogs
-                    only, limit 2 per cabin.
+                    <strong className="text-charcoal">2 dogs allowed</strong> per cabin.
                   </p>
                 </div>
               </AnimateIn>

@@ -87,7 +87,7 @@ export default function Footer() {
               </a>
             </div>
             <p className="mt-6 text-xs text-white/40">
-              Ask about pets (dogs only, limit 2).
+              2 dogs allowed per cabin.
               <br />
               Availability confirmed after inquiry.
             </p>

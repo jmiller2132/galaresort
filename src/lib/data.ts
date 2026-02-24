@@ -62,6 +62,20 @@ export interface Amenity {
   label: string;
 }
 
+// Resort amenities for Home page strip (icon = lucide-react icon name)
+export const resortAmenities: Amenity[] = [
+  { icon: "Home", label: "Waterfront Cabins" },
+  { icon: "Beer", label: "Riverfront Bar & Patio" },
+  { icon: "Ship", label: "Private Docks" },
+  { icon: "Anchor", label: "Private Boat Launch" },
+  { icon: "Music", label: "Live Music" },
+  { icon: "Users2", label: "Seasonal Community" },
+  { icon: "Heart", label: "Family Friendly" },
+  { icon: "Umbrella", label: "Small Beach" },
+  { icon: "Baby", label: "Kids Park" },
+  { icon: "Target", label: "Horseshoes" },
+];
+
 export interface CampingConfig {
   rateNightly: number;
   rateWeekly: number;
@@ -89,7 +103,7 @@ export const cabins: Cabin[] = [
     rateNightly: 150,
     rateWeekly: 900,
     minNights: 2,
-    dogFriendly: false,
+    dogFriendly: true,
     description:
       "The Catfish cabin sits right on the banks of the Wolf River, with patio doors that open to the water and a private log porch built for slow mornings and long evenings. It's a comfortable, rustic setup with a loft sleeping area, and it comes with its own pier — so you're steps from the river whether you're fishing, launching a kayak, or just watching it roll by.\n\nInside, everything you need is already here: bed linens, cooking utensils, a microwave, TV, and central air and heat to keep things comfortable all season. Just bring your towels and settle in.",
     shortDescription:
@@ -109,7 +123,7 @@ export const cabins: Cabin[] = [
     rateNightly: 150,
     rateWeekly: 995,
     minNights: 2,
-    dogFriendly: false,
+    dogFriendly: true,
     description:
       "The Muskie is one of the bigger cabins at The Gala, with a private master bedroom, a bunk bedroom, a loft, and an open living and dining area that gives your whole group room to spread out. It's a park model setup that feels like a real home base on the river — not cramped, not fussy, just comfortable.\n\nEverything's furnished and ready to go: bed linens, cooking utensils, microwave, TV, and central air and heat. Bring your towels, grab a spot on the water, and enjoy slow mornings and long evenings with the Wolf River right outside your door.",
     shortDescription:
@@ -129,7 +143,7 @@ export const cabins: Cabin[] = [
     rateNightly: 150,
     rateWeekly: 995,
     minNights: 2,
-    dogFriendly: false,
+    dogFriendly: true,
     description:
       "The Walleye is a two-bedroom park model with a full kitchen and full bath, so it feels less like a cabin rental and more like your own place on the river. Patio doors open things up and let the outside in, and there's a living room and dining area with plenty of space to cook, eat, and hang out without being on top of each other.\n\nIt comes fully furnished with bed linens, cooking utensils, microwave, TV, and central air and heat. Just bring your towels and you're set. Whether you're here for a long weekend or a full week on the Wolf River, the Walleye makes it easy to settle in and stay a while.",
     shortDescription:
@@ -149,7 +163,7 @@ export const cabins: Cabin[] = [
     rateNightly: 150,
     rateWeekly: 900,
     minNights: 2,
-    dogFriendly: false,
+    dogFriendly: true,
     description:
       "The Perch cabin is tucked right on the banks of the Wolf River, with patio doors overlooking the water and a private log porch that's made for doing not much at all. There's a cozy loft upstairs, and the cabin comes with its own pier — so the river is basically your front yard.\n\nIt's fully furnished with bed linens, cooking utensils, a microwave, TV, and central air and heat. Bring your towels and you're good. The Perch is one of those spots where you can keep it simple — morning coffee on the porch, an afternoon on the pier, and nothing on the schedule but the river.",
     shortDescription:
@@ -169,7 +183,7 @@ export const cabins: Cabin[] = [
     rateNightly: 150,
     rateWeekly: 995,
     minNights: 2,
-    dogFriendly: false,
+    dogFriendly: true,
     description:
       "The White Bass is a cottage-style cabin set near the shore of the Wolf River, with a warm knotty pine interior that gives it a character all its own. With three rooms and space for up to six, there's enough room to spread out without losing that cozy, lived-in feel — and your own pier puts you right at the water's edge.\n\nEverything's furnished and ready: bed linens, cooking utensils, a microwave, TV, and central air and heat. Just bring your towels. The White Bass has a little more of that classic cottage charm — the kind of place where you kick off your shoes, open the door, and let the river set the pace.",
     shortDescription:
@@ -270,7 +284,7 @@ export const campingConfig: CampingConfig = {
     "Fire rings & picnic tables",
     "Boat launch access",
     "Bar & restaurant access",
-    "Ask about pets (dogs only, limit 2)",
+    "2 dogs allowed per site",
   ],
   image: {
     src: "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=1200&q=80",

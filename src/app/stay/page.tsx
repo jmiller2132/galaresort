@@ -48,6 +48,15 @@ export default function StayPage() {
 
       <section className="py-20 lg:py-28 bg-cream">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="mb-12 max-w-3xl">
+            <p className="text-river-gray text-lg leading-relaxed">
+              Whether you&apos;re in a cabin, a seasonal site, or a campsite,
+              you&apos;re never far from the water. Private docks, a boat
+              launch, the riverfront bar and patio, live music, and
+              family-friendly grounds are all part of the experience. Find your
+              spot and settle in.
+            </p>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {stayOptions.map((option, i) => (
               <AnimateIn key={option.title} delay={i * 0.15}>
