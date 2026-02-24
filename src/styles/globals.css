@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+@theme {
+  --color-river-blue: #1B3A5C;
+  --color-river-blue-light: #2A5A8C;
+  --color-river-blue-dark: #0F2640;
+  --color-sky-blue: #4A90C4;
+  --color-river-gray: #6B7B8D;
+  --color-river-gray-light: #9AABB8;
+  --color-slate: #3D4F5F;
+  --color-wood: #8B6914;
+  --color-wood-light: #C49A2A;
+  --color-wood-warm: #A47D3B;
+  --color-bark: #5C4A2A;
+  --color-sand: #D4C9B0;
+  --color-cream: #F5F2EB;
+  --color-white: #FFFFFF;
+  --color-charcoal: #2A2A2A;
+  --color-forest: #3A6B4A;
+  --color-forest-light: #5A9B6A;
+
+  --font-display: "Outfit", system-ui, sans-serif;
+  --font-sans: "DM Sans", "Inter", system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-charcoal);
+  background-color: var(--color-cream);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+}
+
+/* Reduced motion: disable animations and smooth scroll */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+/* Card hover lift — desktop only, respects reduced motion */
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .card-lift {
+    transition: transform 300ms ease-out;
+  }
+  .card-lift:hover {
+    transform: translateY(-4px);
+  }
+}
