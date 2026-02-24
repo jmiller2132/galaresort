@@ -54,7 +54,7 @@ export default function CabinGallery({ images, name }: CabinGalleryProps) {
         open={open}
         close={() => setOpen(false)}
         index={index}
-        slides={images.map((img) => ({ src: img.src }))}
+        slides={images.map((img) => ({ src: img.src, title: `${name} — ${img.alt}` }))}
       />
     </>
   );
