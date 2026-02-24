@@ -5,6 +5,7 @@ import { getCabins, getCabinBySlug, formatPrice } from "@/lib/data";
 import CabinGallery from "@/components/rooms/CabinGallery";
 import InquiryDrawer from "@/components/forms/InquiryDrawer";
 import AnimateIn from "@/components/ui/AnimateIn";
+import StickySidebar from "@/components/ui/StickySidebar";
 import { Users, Check, Dog, Calendar, ChevronLeft } from "lucide-react";
 
 interface Props {
@@ -111,7 +112,7 @@ export default async function CabinDetailPage({ params }: Props) {
 
           <div className="lg:col-span-1">
             <AnimateIn delay={0.2}>
-              <div className="bg-white rounded-lg p-8 shadow-sm border border-sand/50 sticky top-28">
+              <StickySidebar className="bg-white rounded-lg p-8 border border-sand/50 sticky top-28">
                 <div className="space-y-3 mb-6">
                   <div className="flex items-center justify-between">
                     <span className="text-river-gray text-sm">Per night</span>
@@ -134,7 +135,7 @@ export default async function CabinDetailPage({ params }: Props) {
                   All rates + tax. Availability confirmed after inquiry.
                 </p>
                 <InquiryDrawer type="cabin" cabinSlug={cabin.slug} cabinName={cabin.name} maxGuests={cabin.maxGuests} />
-              </div>
+              </StickySidebar>
             </AnimateIn>
           </div>
         </div>

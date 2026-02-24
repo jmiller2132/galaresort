@@ -36,7 +36,7 @@ export default function CTABanner() {
         <AnimateIn delay={0.3}>
           <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
             <Button href="/contact" variant="secondary" size="lg">
-              Check Availability
+              Check Cabin & Camping Availability
             </Button>
             <Button
               href="/stay"

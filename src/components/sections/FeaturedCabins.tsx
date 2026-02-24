@@ -48,7 +48,7 @@ export default function FeaturedCabins() {
 
         <AnimateIn className="mt-12 text-center">
           <Button href="/stay/cabins" variant="outline">
-            View All Cabins
+            See All Six Cabins
           </Button>
         </AnimateIn>
       </div>

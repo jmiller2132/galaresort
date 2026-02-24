@@ -35,7 +35,7 @@ export default function Button({
   type = "button",
   disabled = false,
 }: ButtonProps) {
-  const classes = `inline-flex items-center justify-center font-semibold tracking-wide uppercase rounded-md transition-all duration-200 ease-out active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-river-blue focus-visible:ring-offset-2 focus-visible:ring-offset-cream ${variants[variant]} ${sizes[size]} ${disabled ? "opacity-50 cursor-not-allowed pointer-events-none" : ""} ${className}`;
+  const classes = `inline-flex items-center justify-center font-semibold tracking-wide uppercase rounded-md transition-all duration-200 ease-out hover:scale-[1.02] active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-river-blue focus-visible:ring-offset-2 focus-visible:ring-offset-cream ${variants[variant]} ${sizes[size]} ${disabled ? "opacity-50 cursor-not-allowed pointer-events-none" : ""} ${className}`;
 
   if (href) {
     return (

@@ -140,12 +140,12 @@ export default function BarAndEventsPage() {
             <AnimateIn className="mt-12">
               <div className="mx-auto max-w-xl rounded-lg bg-white/5 border border-white/10 p-8 text-center">
                 <p className="text-white/80 text-lg leading-relaxed">
-                  Live music and events are lining up for the season — check
-                  back soon or follow us on{" "}
+                  We&apos;re lining up live music and featured events for the
+                  season — follow us on{" "}
                   <a href="https://www.facebook.com/galaresort/" target="_blank" rel="noopener noreferrer" className="text-wood-light font-semibold hover:underline">
                     Facebook
                   </a>{" "}
-                  for updates.
+                  to be the first to know.
                 </p>
               </div>
             </AnimateIn>
@@ -197,12 +197,11 @@ export default function BarAndEventsPage() {
             <AnimateIn className="mt-12">
               <div className="mx-auto max-w-xl rounded-lg bg-cream p-8 text-center border border-sand/50">
                 <p className="text-river-gray text-lg leading-relaxed">
-                  Live music and events are lining up for the season — check
-                  back soon or follow us on{" "}
+                  The calendar is filling up. Follow us on{" "}
                   <a href="https://www.facebook.com/galaresort/" target="_blank" rel="noopener noreferrer" className="text-river-blue font-semibold hover:underline">
                     Facebook
                   </a>{" "}
-                  for updates.
+                  for the latest dates and updates.
                 </p>
               </div>
             </AnimateIn>

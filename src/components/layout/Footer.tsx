@@ -44,7 +44,7 @@ export default function Footer() {
                 <li key={link.href + link.label}>
                   <Link
                     href={link.href}
-                    className="text-sm transition-colors hover:text-wood-light"
+                    className="text-sm transition-all duration-200 hover:text-wood-light hover:translate-x-0.5 inline-block"
                   >
                     {link.label}
                   </Link>
@@ -62,7 +62,7 @@ export default function Footer() {
                 <li key={link.href + link.label}>
                   <Link
                     href={link.href}
-                    className="text-sm transition-colors hover:text-wood-light"
+                    className="text-sm transition-all duration-200 hover:text-wood-light hover:translate-x-0.5 inline-block"
                   >
                     {link.label}
                   </Link>

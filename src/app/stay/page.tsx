@@ -51,8 +51,8 @@ export default function StayPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {stayOptions.map((option, i) => (
               <AnimateIn key={option.title} delay={i * 0.15}>
-                <Link href={option.href} className="group block h-full">
-                  <div className="bg-white rounded-lg overflow-hidden shadow-sm border border-sand/50 h-full flex flex-col">
+                <Link href={option.href} className="group block h-full card-lift">
+                  <div className="bg-white rounded-lg overflow-hidden shadow-sm border border-sand/50 h-full flex flex-col transition-shadow duration-300 group-hover:shadow-lg">
                     <div className="relative aspect-[4/3] overflow-hidden">
                       <Image
                         src={option.image}
