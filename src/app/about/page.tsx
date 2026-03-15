@@ -39,7 +39,7 @@ const values = [
   {
     icon: Eye,
     title: "Long-Term Vision",
-    description: "We're building a high-quality riverfront community that guests, cabin renters, and seasonal campers are proud to be part of.",
+    description: "We're building a high-quality riverfront community that guests, cabin renters, and seasonal residents are proud to be part of.",
   },
 ];
 
@@ -72,9 +72,8 @@ export default function AboutPage() {
               </p>
               <p className="mt-4 text-river-gray leading-relaxed">
                 We&apos;re not just maintaining what was here — we&apos;re
-                rebuilding it. Brand-new docks and wharfs, hundreds of feet of
-                new seawall, a fully remodeled bar with a tiki bar and
-                two-tier patio, updated cabins, and better roads throughout.
+                rebuilding it. Every part of the property is getting real
+                investment, and what you see today is just the beginning.
                 This is phase one, and there&apos;s a lot more coming.
               </p>
               <div className="mt-8">

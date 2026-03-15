@@ -19,7 +19,13 @@ const contactDetails = [
   },
   {
     icon: Phone,
-    label: "Phone",
+    label: "RV Park",
+    value: "(920) 446-3222",
+    href: "tel:+19204463222",
+  },
+  {
+    icon: Phone,
+    label: "Bar",
     value: "(920) 446-2423",
     href: "tel:+19204462423",
   },

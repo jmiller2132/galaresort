@@ -67,7 +67,7 @@ export const resortAmenities: Amenity[] = [
   { icon: "Home", label: "Waterfront Cabins" },
   { icon: "Beer", label: "Tiki Bar" },
   { icon: "Sun", label: "Two-Tier Patio" },
-  { icon: "Ship", label: "New Docks & Wharfs" },
+  { icon: "Ship", label: "Docks & Wharfs" },
   { icon: "Anchor", label: "Boat Launch" },
   { icon: "Music", label: "Live Music" },
   { icon: "Users2", label: "Seasonal Community" },
@@ -296,72 +296,7 @@ export const campingConfig: CampingConfig = {
 
 // ─── Events ─────────────────────────────────────────────────────────────────
 
-export const events: GalaEvent[] = [
-  {
-    slug: "river-road-band-march",
-    title: "Live Music – Artist TBA",
-    date: "2026-03-14",
-    dateLabel: "Details Coming Soon",
-    description:
-      "Kick off the season with live country and rock on the outdoor patio. Cold drinks, good vibes, Wolf River views.",
-    image: {
-      src: "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=1200&q=80",
-      alt: "Outdoor live music performance at dusk",
-      width: 1200,
-      height: 800,
-    },
-    featured: true,
-    category: "live-music",
-  },
-  {
-    slug: "memorial-day-weekend",
-    title: "Memorial Day Weekend – Details Coming Soon",
-    date: "2026-05-23",
-    dateLabel: "Details Coming Soon",
-    description:
-      "The unofficial start of summer on the Wolf River. Live music both nights, food specials, and good times with the Gala community.",
-    image: {
-      src: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1200&q=80",
-      alt: "Golden summer landscape along the river",
-      width: 1200,
-      height: 800,
-    },
-    featured: true,
-    category: "seasonal",
-  },
-  {
-    slug: "4th-of-july",
-    title: "4th of July Celebration – Details Coming Soon",
-    date: "2026-07-04",
-    dateLabel: "Details Coming Soon",
-    description:
-      "Celebrate Independence Day riverfront-style. Live entertainment, cookout specials, and fireworks over the Wolf River.",
-    image: {
-      src: "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?w=1200&q=80",
-      alt: "Fourth of July fireworks over the Wolf River",
-      width: 1200,
-      height: 800,
-    },
-    featured: true,
-    category: "seasonal",
-  },
-  {
-    slug: "live-music-saturday-june",
-    title: "Live Music – Date To Be Announced",
-    date: "2026-06-20",
-    dateLabel: "Date To Be Announced",
-    description:
-      "Another great Saturday on the patio with live music, drinks, and the river breeze. Check back for artist lineup.",
-    image: {
-      src: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80",
-      alt: "Warm patio evening with ambient lighting",
-      width: 1200,
-      height: 800,
-    },
-    featured: false,
-    category: "live-music",
-  },
-];
+export const events: GalaEvent[] = [];
 
 // ─── Gallery ────────────────────────────────────────────────────────────────
 

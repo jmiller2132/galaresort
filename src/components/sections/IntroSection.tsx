@@ -12,7 +12,7 @@ export default function IntroSection() {
               Welcome to The Gala
             </p>
             <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl font-bold text-charcoal">
-              Your Riverfront Escape Awaits
+              Built Around the Water
             </h2>
             <p className="mt-6 text-river-gray text-lg leading-relaxed">
               Nestled on the banks of the Wolf River in Fremont, Wisconsin,

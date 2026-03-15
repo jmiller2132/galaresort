@@ -36,7 +36,7 @@ export default function BarAndEventsPage() {
     <>
       <PageHero
         title="Bar & Events"
-        subtitle="Cold drinks, live music, and long summer nights on the river"
+        subtitle="Cold drinks, live music, and summer nights on the river"
         image="https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=1920&q=80"
       />
 
@@ -143,11 +143,17 @@ export default function BarAndEventsPage() {
           ) : (
             <AnimateIn className="mt-12">
               <div className="mx-auto max-w-xl rounded-lg bg-white/5 border border-white/10 p-8 text-center">
-                <p className="text-white/80 text-lg leading-relaxed">
-                  We&apos;re lining up live music and featured events for the
-                  season — follow us on{" "}
+                <p className="font-[family-name:var(--font-display)] text-xl font-bold text-white mb-3">
+                  Live Music &amp; Events Coming Soon
+                </p>
+                <p className="text-white/70 leading-relaxed">
+                  Full schedule to be announced. Follow us on{" "}
                   <a href="https://www.facebook.com/galaresort/" target="_blank" rel="noopener noreferrer" className="text-wood-light font-semibold hover:underline">
                     Facebook
+                  </a>{" "}
+                  and{" "}
+                  <a href="#" className="text-wood-light font-semibold hover:underline">
+                    Instagram
                   </a>{" "}
                   to be the first to know.
                 </p>
@@ -201,11 +207,16 @@ export default function BarAndEventsPage() {
             <AnimateIn className="mt-12">
               <div className="mx-auto max-w-xl rounded-lg bg-cream p-8 text-center border border-sand/50">
                 <p className="text-river-gray text-lg leading-relaxed">
-                  The calendar is filling up. Follow us on{" "}
+                  Event dates and details will be posted here as they&apos;re
+                  confirmed. Follow us on{" "}
                   <a href="https://www.facebook.com/galaresort/" target="_blank" rel="noopener noreferrer" className="text-river-blue font-semibold hover:underline">
                     Facebook
                   </a>{" "}
-                  for the latest dates and updates.
+                  and{" "}
+                  <a href="#" className="text-river-blue font-semibold hover:underline">
+                    Instagram
+                  </a>{" "}
+                  for the latest updates.
                 </p>
               </div>
             </AnimateIn>
@@ -213,9 +224,13 @@ export default function BarAndEventsPage() {
 
           <AnimateIn className="mt-12 text-center">
             <p className="text-river-gray">
-              Want to know about upcoming events?{" "}
+              Want to know about upcoming events? Follow us on{" "}
               <a href="https://www.facebook.com/galaresort/" target="_blank" rel="noopener noreferrer" className="text-river-blue font-semibold hover:underline">
-                Follow us on Facebook
+                Facebook
+              </a>{" "}
+              and{" "}
+              <a href="#" className="text-river-blue font-semibold hover:underline">
+                Instagram
               </a>{" "}
               for the latest updates.
             </p>

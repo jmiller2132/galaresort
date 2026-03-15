@@ -86,6 +86,13 @@ export default function GalleryContent() {
               >
                 Facebook
               </a>{" "}
+              and{" "}
+              <a
+                href="#"
+                className="text-river-blue font-semibold hover:underline"
+              >
+                Instagram
+              </a>{" "}
               for the latest photos.
             </p>
           </div>

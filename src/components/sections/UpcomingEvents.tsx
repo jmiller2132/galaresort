@@ -58,11 +58,17 @@ export default function UpcomingEvents() {
         ) : (
           <AnimateIn className="mt-12">
             <div className="mx-auto max-w-xl rounded-lg bg-white/5 border border-white/10 p-8 text-center">
-              <p className="text-white/80 text-lg leading-relaxed">
-                Live music and events are lining up for the season — check back
-                soon or follow us on{" "}
+              <p className="font-[family-name:var(--font-display)] text-xl font-bold text-white mb-3">
+                Live Music &amp; Events Coming Soon
+              </p>
+              <p className="text-white/70 leading-relaxed">
+                Full schedule to be announced. Follow us on{" "}
                 <a href="https://www.facebook.com/galaresort/" target="_blank" rel="noopener noreferrer" className="text-wood-light font-semibold hover:underline">
                   Facebook
+                </a>{" "}
+                and{" "}
+                <a href="#" className="text-wood-light font-semibold hover:underline">
+                  Instagram
                 </a>{" "}
                 for updates.
               </p>
