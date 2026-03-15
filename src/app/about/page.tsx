@@ -12,9 +12,10 @@ export const metadata: Metadata = {
 };
 
 const improvements = [
-  "Brand new docks replacing all cabin-assigned docks",
-  "350 feet of new seawall/wharf this spring, another 350 feet in the fall",
+  "Brand new docks and wharfs replacing all cabin-assigned docks",
+  "350 feet of new seawall this spring, another 350 feet in the fall",
   "Full remodel of the bar & main house — inside and out",
+  "New tiki bar and two-tier outdoor patio on the water",
   "Road improvements throughout the property",
   "Every cabin cleaned, repaired, and updated before going into rotation",
 ];
@@ -62,20 +63,19 @@ export default function AboutPage() {
                 We Believe in This Place
               </h2>
               <p className="mt-6 text-river-gray text-lg leading-relaxed">
-                Gala Resort &amp; RV Park has been a fixture on the Wolf River
-                for years. Under new ownership, we&apos;re committed to
-                investing the time, effort, and resources necessary to elevate
-                The Gala into a high-quality riverfront destination that
-                everyone — guests, cabin renters, seasonal campers, and the
-                Wolf River community — is proud to be a part of.
+                Gala Resort has been part of the Wolf River for years. Under
+                new ownership, we&apos;re committed to investing the time,
+                effort, and resources it takes to turn The Gala into the
+                waterfront destination it should be — a place that guests,
+                cabin renters, seasonal residents, and the Wolf River community
+                are genuinely proud to be part of.
               </p>
               <p className="mt-4 text-river-gray leading-relaxed">
-                We&apos;re not just maintaining what was here. We&apos;re
-                actively improving every part of the property. From brand-new
-                docks and hundreds of feet of new seawall, to a full remodel
-                of the bar and main house, to updated cabins and better roads
-                — this is phase one of a long-term commitment to making The
-                Gala the best it can be.
+                We&apos;re not just maintaining what was here — we&apos;re
+                rebuilding it. Brand-new docks and wharfs, hundreds of feet of
+                new seawall, a fully remodeled bar with a tiki bar and
+                two-tier patio, updated cabins, and better roads throughout.
+                This is phase one, and there&apos;s a lot more coming.
               </p>
               <div className="mt-8">
                 <Button href="/contact" variant="primary">

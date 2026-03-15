@@ -17,14 +17,15 @@ export default function IntroSection() {
             <p className="mt-6 text-river-gray text-lg leading-relaxed">
               Nestled on the banks of the Wolf River in Fremont, Wisconsin,
               Gala Resort is more than a place to stay — it&apos;s a place to
-              experience. Whether you&apos;re renting a waterfront cabin, setting
-              up camp for the weekend, or grabbing a drink at the bar while live
-              music plays, there&apos;s something here for everyone.
+              experience. Spend the morning on your private dock, grab lunch at
+              the tiki bar, catch live music from the two-tier patio, or just
+              sit back and watch the river roll by.
             </p>
             <p className="mt-4 text-river-gray leading-relaxed">
               Under new ownership and actively being improved, The Gala is
-              becoming the go-to riverfront destination on the Wolf River.
-              New docks, upgraded cabins, and a fully remodeled bar are just
+              becoming the go-to waterfront destination on the Wolf River.
+              Hundreds of feet of new wharfs and docks, a fully remodeled bar
+              and main house, and upgraded cabins throughout — this is just
               the beginning. Come see what we&apos;re building.
             </p>
             <div className="mt-8">

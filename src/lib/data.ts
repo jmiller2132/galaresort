@@ -65,12 +65,12 @@ export interface Amenity {
 // Resort amenities for Home page strip (icon = lucide-react icon name)
 export const resortAmenities: Amenity[] = [
   { icon: "Home", label: "Waterfront Cabins" },
-  { icon: "Beer", label: "Riverfront Bar & Patio" },
-  { icon: "Ship", label: "Private Docks" },
-  { icon: "Anchor", label: "Private Boat Launch" },
+  { icon: "Beer", label: "Tiki Bar" },
+  { icon: "Sun", label: "Two-Tier Patio" },
+  { icon: "Ship", label: "New Docks & Wharfs" },
+  { icon: "Anchor", label: "Boat Launch" },
   { icon: "Music", label: "Live Music" },
   { icon: "Users2", label: "Seasonal Community" },
-  { icon: "Heart", label: "Family Friendly" },
   { icon: "Umbrella", label: "Small Beach" },
   { icon: "Baby", label: "Kids Park" },
   { icon: "Magnet", label: "Horseshoes" },

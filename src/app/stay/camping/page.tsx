@@ -28,7 +28,7 @@ export default function CampingPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <AnimateIn>
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-river-blue mb-3">
-                Campground
+                On the Water
               </p>
               <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl font-bold text-charcoal">
                 Camping on the Wolf River
@@ -65,18 +65,10 @@ export default function CampingPage() {
                 <InquiryDrawer type="camping" />
               </div>
 
-              <div className="mt-8 bg-sand/30 rounded-lg p-5 border border-sand/50">
-                <h3 className="font-[family-name:var(--font-display)] text-base font-bold text-charcoal mb-2">
-                  Good to Know
-                </h3>
-                <ul className="space-y-1.5 text-sm text-river-gray">
-                  <li>2-night minimum on weekends, 3 nights on holidays</li>
-                  <li>Rates based on 2 adults and dependent minor children</li>
-                  <li>One vehicle and one camping unit per site</li>
-                  <li>Boats and trailers kept in parking area</li>
-                  <li>Honey wagon service available</li>
-                </ul>
-              </div>
+              <p className="mt-8 text-sm text-river-gray">
+                2-night minimum on weekends, 3 nights on holidays. Have
+                questions? <a href="/contact?type=camping" className="text-river-blue font-medium hover:underline">Reach out</a> — we&apos;re happy to help.
+              </p>
             </AnimateIn>
 
             <AnimateIn delay={0.2}>

@@ -36,7 +36,7 @@ export default function BarAndEventsPage() {
     <>
       <PageHero
         title="Bar & Events"
-        subtitle="Cold drinks, live music, and good times on the river"
+        subtitle="Cold drinks, live music, and long summer nights on the river"
         image="https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=1920&q=80"
       />
 
@@ -49,19 +49,22 @@ export default function BarAndEventsPage() {
                 The Social Hub
               </p>
               <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl font-bold text-charcoal">
-                Riverfront Bar & Patio on the Water
+                Right on the Water
               </h2>
               <p className="mt-6 text-river-gray text-lg leading-relaxed">
-                The Gala bar is your riverfront hangout — a full outdoor patio
-                right on the Wolf River, live music on weekends, and seasonal
-                events that bring the community together. Grab a cold drink,
-                catch a game, or settle in for an evening by the water. The bar
-                and main house are undergoing a full remodel, so expect it to be
-                better than ever.
+                The Gala bar sits right on the Wolf River — a tiki bar, a
+                two-tier outdoor patio, and a fully remodeled main house built
+                for long summer nights. Pull up by boat or walk down from your
+                cabin. Grab a cold drink, catch live music on the weekends, and
+                stick around for the kind of night that doesn&apos;t need a plan.
               </p>
               <p className="mt-4 text-river-gray leading-relaxed">
                 Fresh pizza and bar favorites are on the menu. Open 7 days a
-                week, 11 AM to close.
+                week, 11 AM to close. Call{" "}
+                <a href="tel:+19204462423" className="text-river-blue font-medium hover:underline">
+                  (920) 446-2423
+                </a>{" "}
+                for details.
               </p>
               <div className="mt-6 space-y-3 text-river-gray">
                 <div className="flex items-center gap-2">
@@ -70,7 +73,7 @@ export default function BarAndEventsPage() {
                 </div>
                 <div className="flex items-center gap-2">
                   <Sun size={16} className="text-river-blue" />
-                  Outdoor patio on the water
+                  Tiki bar &amp; two-tier patio on the water
                 </div>
                 <div className="flex items-center gap-2">
                   <UtensilsCrossed size={16} className="text-river-blue" />

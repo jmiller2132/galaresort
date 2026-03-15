@@ -43,8 +43,8 @@ export default function HeroSection() {
           transition={{ duration: 0.8, delay: 0.8 }}
           className="mt-6 text-lg md:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed"
         >
-          Waterfront cabins, riverside camping, live music, and good
-          times on the Wolf River. This is The Gala.
+          Reimagined from the docks up — waterfront cabins, a tiki bar,
+          and live music on the patio, right on the Wolf River.
         </motion.p>
 
         <motion.div
@@ -54,7 +54,7 @@ export default function HeroSection() {
           className="mt-10 flex flex-col sm:flex-row gap-4 justify-center"
         >
           <Button href="/contact" variant="primary" size="lg">
-            Check Cabin & Camping Availability
+            Check Availability
           </Button>
           <Button href="/stay" variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-river-blue-dark">
             Explore Stays
