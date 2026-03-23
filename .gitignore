@@ -17,6 +17,12 @@ build/
 # debug
 npm-debug.log*
 
+# video assets (too large for GitHub without LFS)
+public/videos/
+
+# raw camera files (not used by the site)
+*.ARW
+
 # OS
 .DS_Store
 Thumbs.db

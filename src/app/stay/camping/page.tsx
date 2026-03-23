@@ -20,7 +20,7 @@ export default function CampingPage() {
       <PageHero
         title="Camping"
         subtitle="Pull up, plug in, and enjoy the river"
-        image="https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7?w=1920&q=80"
+        image="/images/exterior/DJI_20260304112737_0081_D.jpg"
       />
 
       <section className="py-20 bg-cream">

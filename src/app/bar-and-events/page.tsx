@@ -37,7 +37,7 @@ export default function BarAndEventsPage() {
       <PageHero
         title="Bar & Events"
         subtitle="Cold drinks, live music, and summer nights on the river"
-        image="https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=1920&q=80"
+        image="/images/bar/Untitled design-15.png"
       />
 
       {/* Bar Section */}
@@ -84,8 +84,8 @@ export default function BarAndEventsPage() {
             <AnimateIn delay={0.2}>
               <div className="relative aspect-[4/3] rounded-lg overflow-hidden">
                 <Image
-                  src="https://images.unsplash.com/photo-1436076863939-06870fe779c2?w=800&q=80"
-                  alt="Cold beers on the bar at The Gala"
+                  src="/images/bar/DSC00435.jpg"
+                  alt="The bar at Gala Resort"
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 50vw"

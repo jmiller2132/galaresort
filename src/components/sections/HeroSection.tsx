@@ -1,12 +1,27 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Button from "@/components/ui/Button";
 
 export default function HeroSection() {
+  const desktopRef = useRef<HTMLVideoElement>(null);
+  const mobileRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const load = (video: HTMLVideoElement | null) => {
+      if (!video) return;
+      video.src = video.dataset.src!;
+      video.load();
+    };
+    load(desktopRef.current);
+    load(mobileRef.current);
+  }, []);
+
   return (
     <section className="relative h-screen min-h-[600px] max-h-[900px] flex items-center justify-center overflow-hidden">
+      {/* Fallback image — visible until video loads or if video fails */}
       <Image
         src="/images/wolf-river-canoe.png"
         alt="Canoeing down the Wolf River surrounded by lush green trees on a sunny day"
@@ -16,6 +31,31 @@ export default function HeroSection() {
         sizes="100vw"
         unoptimized
       />
+
+      {/* Desktop video (768px+) */}
+      <video
+        ref={desktopRef}
+        data-src="/videos/hero-landscape.mp4"
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload="none"
+        className="absolute inset-0 h-full w-full object-cover hidden md:block"
+      />
+
+      {/* Mobile video (<768px) */}
+      <video
+        ref={mobileRef}
+        data-src="/videos/hero-portrait.mp4"
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload="none"
+        className="absolute inset-0 h-full w-full object-cover block md:hidden"
+      />
+
       <div className="absolute inset-0 bg-gradient-to-b from-river-blue-dark/55 via-river-blue-dark/25 to-river-blue-dark/65" />
 
       <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">

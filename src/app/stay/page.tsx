@@ -17,7 +17,7 @@ const stayOptions = [
     price: "From $150/night",
     description:
       "Six waterfront cabins — five three-season and one year-round — each with private dock access on the Wolf River.",
-    image: "https://images.unsplash.com/photo-1587061949409-02df41d5e562?w=800&q=80",
+    image: "/images/exterior/DJI_20260304112142_0068_D-2.jpg",
   },
   {
     title: "Seasonal Sites",
@@ -25,7 +25,7 @@ const stayOptions = [
     price: "From $4,000/season",
     description:
       "Riverfront and channel seasonal sites — every one on the water. Secure your spot for the whole season.",
-    image: "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=800&q=80",
+    image: "/images/exterior/DJI_20260304112606_0075_D.jpg",
   },
   {
     title: "Camping",
@@ -33,7 +33,7 @@ const stayOptions = [
     price: "From $55/night",
     description:
       "Pull up with your RV or camper. Electric and water hookups, river views, and access to everything at The Gala.",
-    image: "https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7?w=800&q=80",
+    image: "/images/exterior/DJI_20260304112805_0083_D.jpg",
   },
 ];
 

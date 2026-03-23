@@ -20,7 +20,7 @@ export default function SeasonalPage() {
       <PageHero
         title="Seasonal Sites"
         subtitle="Every site on the water — your riverfront home for the season"
-        image="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=1920&q=80"
+        image="/images/exterior/DJI_20260304112620_0077_D.jpg"
       />
 
       <section className="py-20 bg-cream">

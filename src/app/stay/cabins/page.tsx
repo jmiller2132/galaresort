@@ -20,7 +20,7 @@ export default function CabinsPage() {
       <PageHero
         title="Waterfront Cabins"
         subtitle="Step out your door to the water — every cabin is on the river"
-        image="https://images.unsplash.com/photo-1587061949409-02df41d5e562?w=1920&q=80"
+        image="/images/exterior/DJI_20260304112142_0068_D-2.jpg"
       />
 
       <section className="py-20 bg-cream">

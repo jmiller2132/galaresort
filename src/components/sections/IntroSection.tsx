@@ -38,8 +38,8 @@ export default function IntroSection() {
           <AnimateIn delay={0.2}>
             <div className="relative aspect-[4/3] rounded-lg overflow-hidden">
               <Image
-                src="/images/wolf-river-new-london.png"
-                alt="Gala Resort on the Wolf River"
+                src="/images/exterior/DJI_20260304113800_0095_D.jpg"
+                alt="Aerial view of Gala Resort on the Wolf River"
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, 50vw"

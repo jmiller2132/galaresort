@@ -49,7 +49,7 @@ export default function AboutPage() {
       <PageHero
         title="Our Story"
         subtitle="New ownership. Same river. Better than ever."
-        image="/images/wolf-river-new-london.png"
+        image="/images/exterior/DJI_20260304111921_0064_D.JPG"
       />
 
       <section className="py-20 lg:py-28 bg-cream">
@@ -86,8 +86,8 @@ export default function AboutPage() {
             <AnimateIn delay={0.2}>
               <div className="relative aspect-[4/5] rounded-lg overflow-hidden">
                 <Image
-                  src="/images/wolf-river-canoe.png"
-                  alt="Canoeing down the Wolf River near Gala Resort"
+                  src="/images/exterior/DJI_20260304113728_0092_D.jpg"
+                  alt="Drone view of Gala Resort property on the Wolf River"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
