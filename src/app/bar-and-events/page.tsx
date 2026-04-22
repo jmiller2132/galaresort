@@ -3,7 +3,9 @@ import Image from "next/image";
 import PageHero from "@/components/ui/PageHero";
 import SectionHeading from "@/components/ui/SectionHeading";
 import AnimateIn from "@/components/ui/AnimateIn";
-import { Music, Sun, UtensilsCrossed, Calendar } from "lucide-react";
+import EventCalendar from "@/components/sections/EventCalendar";
+import { getEvents } from "@/lib/data";
+import { Music, Sun, UtensilsCrossed } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Bar & Events",
@@ -12,6 +14,7 @@ export const metadata: Metadata = {
 };
 
 export default function BarAndEventsPage() {
+  const events = getEvents();
 
   return (
     <>
@@ -156,6 +159,8 @@ export default function BarAndEventsPage() {
           </div>
         </div>
       </section>
+
+      <EventCalendar events={events} />
     </>
   );
 }
