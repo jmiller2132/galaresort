@@ -315,24 +315,7 @@ export const campingConfig: CampingConfig = {
 
 // ─── Events ─────────────────────────────────────────────────────────────────
 
-export const events: GalaEvent[] = [
-  {
-    slug: "opening-day-welcome-back",
-    title: "Opening Day — Welcome Back to The Gala",
-    date: "2026-03-26",
-    category: "community",
-    description: "We're opening our doors to the public for the first time this season. Come see what's new, grab a drink, and welcome the river season in style.",
-    featured: true,
-  },
-  {
-    slug: "seasonal-camper-welcome-party",
-    title: "Seasonal Camper Welcome Party",
-    date: "2026-03-28",
-    category: "community",
-    description: "A private celebration for our seasonal and permanent campers from 3 to 5 PM. We're glad you're back.",
-    featured: true,
-  },
-];
+export const events: GalaEvent[] = [];
 
 // ─── Gallery ────────────────────────────────────────────────────────────────
 
