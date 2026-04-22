@@ -88,7 +88,9 @@ export default function GalleryContent() {
               </a>{" "}
               and{" "}
               <a
-                href="#"
+                href="https://www.instagram.com/galaresort_fremont"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-river-blue font-semibold hover:underline"
               >
                 Instagram

@@ -46,7 +46,7 @@ export default function InquiryDrawer(props: InquiryDrawerProps) {
     ? props.cabinName.startsWith("The ")
       ? `Inquire About ${props.cabinName}`
       : `Inquire About the ${props.cabinName}`
-    : "Reserve a Campsite";
+    : "Reserve Your Campsite";
 
   const drawerTitle = mode === "general" ? "General Inquiry" : primaryLabel;
 

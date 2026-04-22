@@ -23,13 +23,13 @@ export default function HeroSection() {
     <section className="relative h-screen min-h-[600px] max-h-[900px] flex items-center justify-center overflow-hidden">
       {/* Fallback image — visible until video loads or if video fails */}
       <Image
-        src="/images/wolf-river-canoe.png"
-        alt="Canoeing down the Wolf River surrounded by lush green trees on a sunny day"
+        src="/images/exterior/wolf-river-aerial-wide.jpeg"
+        alt="Aerial view of the Wolf River and Gala Resort waterfront in Fremont, Wisconsin"
         fill
         className="object-cover"
         priority
         sizes="100vw"
-        unoptimized
+        quality={90}
       />
 
       {/* Desktop video (768px+) */}
@@ -74,7 +74,7 @@ export default function HeroSection() {
           transition={{ duration: 0.8, delay: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
           className="font-[family-name:var(--font-display)] text-5xl md:text-7xl lg:text-8xl text-white font-bold leading-tight"
         >
-          Life on the River
+          The River, Reimagined
         </motion.h1>
 
         <motion.p

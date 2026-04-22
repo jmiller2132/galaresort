@@ -48,7 +48,7 @@ export default function ContactPage() {
       <PageHero
         title="Get in Touch"
         subtitle="Inquire about cabins, campsites, seasonal sites, or events"
-        image="/images/wolf-river-new-london.png"
+        image="/images/exterior/docks-aerial-bar-river.jpeg"
       />
 
       <section className="py-20 bg-cream">

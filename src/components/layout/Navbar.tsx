@@ -3,11 +3,12 @@
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
-  { href: "/stay", label: "Stay" },
+  { href: "/stay", label: "Stay With Us" },
   { href: "/bar-and-events", label: "Bar & Events" },
   { href: "/gallery", label: "Gallery" },
   { href: "/about", label: "About" },
@@ -51,15 +52,16 @@ export default function Navbar() {
             : "bg-transparent"
         }`}
       >
-        <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
-          <Link href="/" className="relative z-50">
-            <span
-              className={`font-[family-name:var(--font-display)] text-2xl font-bold tracking-wide transition-colors duration-500 ${
-                scrolled ? "text-river-blue" : "text-white"
-              }`}
-            >
-              The Gala
-            </span>
+        <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-2 lg:px-8">
+          <Link href="/" className="relative z-50 flex-shrink-0">
+            <Image
+              src="/images/logo.png"
+              alt="Gala Resort & RV Park"
+              width={280}
+              height={280}
+              className="h-16 w-auto drop-shadow-sm lg:h-[4.5rem]"
+              priority
+            />
           </Link>
 
           <div className="hidden lg:flex lg:items-center lg:gap-8">

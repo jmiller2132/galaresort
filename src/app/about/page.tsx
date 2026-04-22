@@ -49,7 +49,7 @@ export default function AboutPage() {
       <PageHero
         title="Our Story"
         subtitle="New ownership. Same river. Better than ever."
-        image="/images/exterior/DJI_20260304111921_0064_D.JPG"
+        image="/images/exterior/bar-aerial-riverside.jpeg"
       />
 
       <section className="py-20 lg:py-28 bg-cream">
@@ -64,17 +64,19 @@ export default function AboutPage() {
               </h2>
               <p className="mt-6 text-river-gray text-lg leading-relaxed">
                 Gala Resort has been part of the Wolf River for years. Under
-                new ownership, we&apos;re committed to investing the time,
-                effort, and resources it takes to turn The Gala into the
-                waterfront destination it should be — a place that guests,
-                cabin renters, seasonal residents, and the Wolf River community
-                are genuinely proud to be part of.
+                new ownership, we&apos;re putting serious investment into
+                every corner of this property — new docks and wharfs, fully
+                remodeled cabins, a brand-new tiki bar and two-tier patio,
+                and infrastructure improvements you can see and feel. This
+                isn&apos;t a facelift. It&apos;s a ground-up rebuild of what
+                The Gala can be.
               </p>
               <p className="mt-4 text-river-gray leading-relaxed">
-                We&apos;re not just maintaining what was here — we&apos;re
-                rebuilding it. Every part of the property is getting real
-                investment, and what you see today is just the beginning.
-                This is phase one, and there&apos;s a lot more coming.
+                What you see today is phase one, and there&apos;s a lot more
+                coming. We&apos;re building a waterfront destination that
+                guests, cabin renters, seasonal residents, and the broader
+                Wolf River community will be proud to be part of for years
+                to come.
               </p>
               <div className="mt-8">
                 <Button href="/contact" variant="primary">
@@ -86,12 +88,12 @@ export default function AboutPage() {
             <AnimateIn delay={0.2}>
               <div className="relative aspect-[4/5] rounded-lg overflow-hidden">
                 <Image
-                  src="/images/exterior/DJI_20260304113728_0092_D.jpg"
-                  alt="Drone view of Gala Resort property on the Wolf River"
+                  src="/images/exterior/docks-aerial-boat.jpeg"
+                  alt="Gala Resort docks with boat on the Wolf River"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
-                  unoptimized
+                  quality={85}
                 />
               </div>
             </AnimateIn>

@@ -16,7 +16,7 @@ const stayOptions = [
     href: "/stay/cabins",
     price: "From $150/night",
     description:
-      "Six waterfront cabins — five three-season and one year-round — each with private dock access on the Wolf River.",
+      "Six waterfront cabins with private docks — wake up on the river, step outside, and you're already there.",
     image: "/images/exterior/DJI_20260304112142_0068_D-2.jpg",
   },
   {
@@ -24,7 +24,7 @@ const stayOptions = [
     href: "/stay/seasonal",
     price: "From $4,000/season",
     description:
-      "Riverfront and channel seasonal sites — every one on the water. Secure your spot for the whole season.",
+      "Your own spot on the river all season long — dock your boat, settle in, and make it yours from April to October.",
     image: "/images/exterior/DJI_20260304112606_0075_D.jpg",
   },
   {
@@ -32,7 +32,7 @@ const stayOptions = [
     href: "/stay/camping",
     price: "From $55/night",
     description:
-      "Pull up with your RV or camper. Electric and water hookups, river views, and access to everything at The Gala.",
+      "Pull up to the river with your RV or camper. Full hookups, boat launch access, and the bar is a short walk away.",
     image: "/images/exterior/DJI_20260304112805_0083_D.jpg",
   },
 ];
@@ -43,18 +43,19 @@ export default function StayPage() {
       <PageHero
         title="Stay With Us"
         subtitle="Cabins, seasonal sites, and camping on the Wolf River"
-        image="/images/wolf-river-canoe.png"
+        image="/images/exterior/wolf-river-aerial-property.jpeg"
       />
 
       <section className="py-20 lg:py-28 bg-cream">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mb-12 max-w-3xl">
             <p className="text-river-gray text-lg leading-relaxed">
-              Whether you&apos;re in a cabin, a seasonal site, or a campsite,
-              you&apos;re never far from the water. Private docks, a boat
-              launch, the riverfront bar and patio, live music, and
-              family-friendly grounds are all part of the experience. Find your
-              spot and settle in.
+              Every way you stay at The Gala puts you on the Wolf River.
+              Wake up to the water, walk out to your dock, launch your
+              boat, and end the day with cold drinks and live music at the
+              bar. Whether it&apos;s a cabin for the weekend, a seasonal
+              site for the summer, or a campsite for the night — this is
+              waterfront living, and it all starts right here.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

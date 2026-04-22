@@ -67,7 +67,7 @@ export default function UpcomingEvents() {
                   Facebook
                 </a>{" "}
                 and{" "}
-                <a href="#" className="text-wood-light font-semibold hover:underline">
+                <a href="https://www.instagram.com/galaresort_fremont" target="_blank" rel="noopener noreferrer" className="text-wood-light font-semibold hover:underline">
                   Instagram
                 </a>{" "}
                 for updates.

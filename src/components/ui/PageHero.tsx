@@ -19,7 +19,7 @@ export default function PageHero({ title, subtitle, image }: PageHeroProps) {
         className="object-cover"
         priority
         sizes="100vw"
-        unoptimized={image.startsWith("/images/")}
+        quality={90}
       />
       <div className="absolute inset-0 bg-river-blue-dark/50" />
       <div className="relative z-10 text-center px-6">

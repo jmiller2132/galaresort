@@ -296,7 +296,7 @@ export const campingConfig: CampingConfig = {
   maxLength: "One camping unit per site",
   hookups: "Water & electric",
   description:
-    "Spacious, semi-shaded campsites on the Wolf River with water and electric hookups, fire rings, and picnic tables at every site. Whether you're set up in an RV or pitching a tent, you've got everything you need — plus access to the bar, live music, boat launch, and more. Pull up, plug in, and enjoy the river.",
+    "Pull up to the Wolf River and you're right on the water. Full hookups, fire rings, and picnic tables at every site — plus a boat launch so you can get out on the river the same day you arrive. Walk to the bar for cold drinks and live music, or stay at your site and let the river do the talking. This isn't a parking lot with hookups — it's camping on one of the best stretches of water in Wisconsin.",
   features: [
     "Water & electric hookups",
     "Semi-shaded sites",
@@ -315,7 +315,24 @@ export const campingConfig: CampingConfig = {
 
 // ─── Events ─────────────────────────────────────────────────────────────────
 
-export const events: GalaEvent[] = [];
+export const events: GalaEvent[] = [
+  {
+    slug: "opening-day-welcome-back",
+    title: "Opening Day — Welcome Back to The Gala",
+    date: "2026-03-26",
+    category: "community",
+    description: "We're opening our doors to the public for the first time this season. Come see what's new, grab a drink, and welcome the river season in style.",
+    featured: true,
+  },
+  {
+    slug: "seasonal-camper-welcome-party",
+    title: "Seasonal Camper Welcome Party",
+    date: "2026-03-28",
+    category: "community",
+    description: "A private celebration for our seasonal and permanent campers from 3 to 5 PM. We're glad you're back.",
+    featured: true,
+  },
+];
 
 // ─── Gallery ────────────────────────────────────────────────────────────────
 
@@ -332,6 +349,18 @@ export const galleryImages: GalleryImage[] = [
   { src: "/images/bar/Virtual Staging Dining Room.PNG", alt: "Bar dining room at The Gala", width: 1200, height: 800, category: "bar" },
   { src: "/images/bar/Untitled design-13.png", alt: "Riverfront bar at Gala Resort", width: 1200, height: 800, category: "bar" },
   { src: "/images/exterior/DJI_20260304112824_0085_D.jpg", alt: "Gala Resort from the Wolf River", width: 1200, height: 800, category: "waterfront" },
+  { src: "/images/exterior/DJI_20260304112633_0078_D.jpg", alt: "Aerial view of the Gala Resort grounds and cabin rows", width: 1200, height: 800, category: "grounds" },
+  { src: "/images/exterior/DJI_20260304112737_0081_D.jpg", alt: "Gala Resort property layout from above", width: 1200, height: 800, category: "grounds" },
+  { src: "/images/exterior/DJI_20260304113707_0091_D.jpg", alt: "Overview of the resort grounds and seasonal sites", width: 1200, height: 800, category: "grounds" },
+  { src: "/images/exterior/DJI_20260304113800_0095_D.jpg", alt: "Gala Resort roads and property from the air", width: 1200, height: 800, category: "grounds" },
+  { src: "/images/exterior/bar-aerial-patio-river.jpeg", alt: "Aerial view of Gala Resort bar and patio on the Wolf River", width: 1200, height: 800, category: "bar" },
+  { src: "/images/exterior/bar-aerial-patio-closeup.jpeg", alt: "Closeup aerial of the Gala Resort bar patio", width: 1200, height: 800, category: "bar" },
+  { src: "/images/exterior/bar-aerial-riverside.jpeg", alt: "Gala Resort bar from the riverside", width: 1200, height: 800, category: "waterfront" },
+  { src: "/images/exterior/docks-aerial-boat.jpeg", alt: "Gala Resort docks with boat on the Wolf River", width: 1200, height: 800, category: "waterfront" },
+  { src: "/images/exterior/wolf-river-aerial-wide.jpeg", alt: "Wide aerial view of the Wolf River and Gala Resort", width: 1200, height: 800, category: "waterfront" },
+  { src: "/images/exterior/wolf-river-aerial-property.jpeg", alt: "Aerial view of Gala Resort property on the Wolf River", width: 1200, height: 800, category: "waterfront" },
+  { src: "/images/exterior/docks-aerial-bar-river.jpeg", alt: "Gala Resort docks and bar on the Wolf River", width: 1200, height: 800, category: "waterfront" },
+  { src: "/images/exterior/property-aerial-overhead.jpeg", alt: "Overhead aerial of the Gala Resort grounds", width: 1200, height: 800, category: "grounds" },
 ];
 
 // ─── Amenities ──────────────────────────────────────────────────────────────

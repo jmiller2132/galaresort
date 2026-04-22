@@ -28,12 +28,14 @@ export default function SeasonalPage() {
           <AnimateIn>
             <div className="max-w-3xl mb-16">
               <p className="text-river-gray text-lg leading-relaxed">
-                Seasonal sites at The Gala put you right on the Wolf River for
-                the entire season — April 15 through October 15. Whether you
-                choose a premium River Site or a quieter Channel Site,
-                you&apos;ll have waterfront access, dock space, and full access
-                to all resort amenities including the bar, live music, boat
-                launch, and more.
+                This is your spot on the river all summer. Dock your boat,
+                set up your site, and make it home from April 15 through
+                October 15. Every seasonal site at The Gala is on the
+                water — river or channel frontage, your own dock space,
+                and the kind of boating lifestyle you don&apos;t get
+                anywhere else on the Wolf. Walk to the bar, catch live
+                music on the weekends, and be part of a community that
+                comes back year after year.
               </p>
             </div>
           </AnimateIn>
@@ -71,7 +73,7 @@ export default function SeasonalPage() {
                     </ul>
                     <div className="mt-8">
                       <Button href="/contact?type=seasonal" variant="primary" className="w-full">
-                        Inquire About Seasonal Sites
+                        Claim Your Seasonal Spot
                       </Button>
                     </div>
                   </div>

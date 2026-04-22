@@ -6,12 +6,12 @@ export default function CTABanner() {
   return (
     <section className="relative py-20 lg:py-28 overflow-hidden">
       <Image
-        src="/images/wolf-river-canoe.png"
-        alt="Wolf River waterfront"
+        src="/images/exterior/wolf-river-aerial-property.jpeg"
+        alt="Aerial view of Gala Resort on the Wolf River"
         fill
         className="object-cover"
         sizes="100vw"
-        unoptimized
+        quality={90}
       />
       <div className="absolute inset-0 bg-river-blue/80" />
 

@@ -37,7 +37,7 @@ export default function BarAndEventsPage() {
       <PageHero
         title="Bar & Events"
         subtitle="Cold drinks, live music, and summer nights on the river"
-        image="/images/bar/Untitled design-15.png"
+        image="/images/exterior/bar-aerial-patio-river.jpeg"
       />
 
       {/* Bar Section */}
@@ -53,14 +53,16 @@ export default function BarAndEventsPage() {
               </h2>
               <p className="mt-6 text-river-gray text-lg leading-relaxed">
                 The Gala bar sits right on the Wolf River — a tiki bar, a
-                two-tier outdoor patio, and a fully remodeled main house built
-                for long summer nights. Pull up by boat or walk down from your
-                cabin. Grab a cold drink, catch live music on the weekends, and
-                stick around for the kind of night that doesn&apos;t need a plan.
+                two-tier outdoor patio, and a fully remodeled main house that
+                comes alive on summer nights. Boaters pull up to the dock,
+                the patio fills up, drinks are cold, and the music carries
+                across the water. It&apos;s the kind of place where a quick
+                drink turns into dancing, new friends, and one of those
+                nights you talk about all winter.
               </p>
               <p className="mt-4 text-river-gray leading-relaxed">
-                Fresh pizza and bar favorites are on the menu. Open 7 days a
-                week, 11 AM to close. Call{" "}
+                Fresh pizza and bar favorites are on the menu. Open Tuesday
+                through Sunday, 11 AM to close. Closed Mondays. Call{" "}
                 <a href="tel:+19204462423" className="text-river-blue font-medium hover:underline">
                   (920) 446-2423
                 </a>{" "}
@@ -84,11 +86,12 @@ export default function BarAndEventsPage() {
             <AnimateIn delay={0.2}>
               <div className="relative aspect-[4/3] rounded-lg overflow-hidden">
                 <Image
-                  src="/images/bar/DSC00435.jpg"
-                  alt="The bar at Gala Resort"
+                  src="/images/exterior/bar-aerial-patio-closeup.jpeg"
+                  alt="Closeup aerial view of the Gala Resort bar patio"
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 50vw"
+                  quality={85}
                 />
               </div>
             </AnimateIn>
@@ -107,8 +110,8 @@ export default function BarAndEventsPage() {
           {featuredEvents.length > 0 ? (
             <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
               {featuredEvents.map((event, i) => (
-                <AnimateIn key={event.slug} delay={i * 0.1}>
-                  <div className="relative overflow-hidden rounded-lg bg-white/5 border border-white/10">
+                <AnimateIn key={event.slug} delay={i * 0.1} className="h-full">
+                  <div className="relative overflow-hidden rounded-lg bg-white/5 border border-white/10 h-full">
                     {event.image && (
                       <div className="relative aspect-[16/9] overflow-hidden">
                         <Image
@@ -152,7 +155,7 @@ export default function BarAndEventsPage() {
                     Facebook
                   </a>{" "}
                   and{" "}
-                  <a href="#" className="text-wood-light font-semibold hover:underline">
+                  <a href="https://www.instagram.com/galaresort_fremont" target="_blank" rel="noopener noreferrer" className="text-wood-light font-semibold hover:underline">
                     Instagram
                   </a>{" "}
                   to be the first to know.
@@ -169,38 +172,66 @@ export default function BarAndEventsPage() {
           <SectionHeading
             label="Calendar"
             title="All Upcoming Events"
-            description="Check back regularly — we're always adding new events, live music, and seasonal celebrations."
+            description="Live music every Friday, Saturday, and Sunday starting April 27 — bands announced as they are confirmed. Follow us on Facebook and Instagram for updates."
           />
           {allEvents.length > 0 ? (
-            <div className="mt-12 space-y-4">
-              {allEvents.map((event, i) => (
-                <AnimateIn key={event.slug} delay={i * 0.06}>
-                  <div className="flex flex-col md:flex-row gap-6 bg-cream rounded-lg p-6 border border-sand/50">
-                    <div className="md:w-48 flex-shrink-0">
-                      <p className="text-sm font-semibold text-river-blue">
-                        {formatEventDate(event)}
-                      </p>
-                      <span className="inline-block mt-1 text-xs font-medium uppercase tracking-wider text-river-gray bg-white px-2 py-0.5 rounded">
-                        {categoryLabels[event.category] || event.category}
-                      </span>
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="font-[family-name:var(--font-display)] text-lg font-bold text-charcoal">
-                        {event.title}
-                      </h3>
-                      <p className="mt-1 text-river-gray leading-relaxed">
-                        {event.description}
-                      </p>
-                    </div>
-                    {event.featured && (
-                      <div className="flex-shrink-0 self-start">
-                        <span className="bg-wood/10 text-wood text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-md">
-                          Featured
-                        </span>
-                      </div>
-                    )}
+            <div className="mt-12 space-y-12">
+              {Object.entries(
+                allEvents.reduce<Record<string, typeof allEvents>>((groups, event) => {
+                  const d = new Date(event.date + "T12:00:00");
+                  const key = d.toLocaleDateString("en-US", { month: "long", year: "numeric" });
+                  (groups[key] ??= []).push(event);
+                  return groups;
+                }, {})
+              ).map(([month, events]) => (
+                <div key={month}>
+                  <h3 className="font-[family-name:var(--font-display)] text-xl font-bold text-charcoal mb-6 border-b border-sand/50 pb-3">
+                    {month}
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {events.map((event, i) => {
+                      const d = new Date(event.date + "T12:00:00");
+                      const dayNum = d.getDate();
+                      const monthShort = d.toLocaleDateString("en-US", { month: "short" });
+                      const weekday = d.toLocaleDateString("en-US", { weekday: "long" });
+                      return (
+                        <AnimateIn key={event.slug} delay={i * 0.08} className="h-full">
+                          <div className="flex gap-5 bg-cream rounded-lg p-5 border border-sand/50 hover:shadow-md transition-shadow h-full">
+                            <div className="flex-shrink-0 w-16 text-center">
+                              <p className="text-xs font-semibold uppercase tracking-wider text-river-blue">
+                                {monthShort}
+                              </p>
+                              <p className="font-[family-name:var(--font-display)] text-3xl font-bold text-charcoal leading-tight">
+                                {dayNum}
+                              </p>
+                              <p className="text-xs text-river-gray mt-0.5">
+                                {weekday}
+                              </p>
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <div className="flex items-center gap-2 flex-wrap mb-1">
+                                <h4 className="font-[family-name:var(--font-display)] text-lg font-bold text-charcoal">
+                                  {event.title}
+                                </h4>
+                                <span className="inline-block text-[10px] font-semibold uppercase tracking-wider text-river-blue bg-river-blue/10 px-2 py-0.5 rounded-full">
+                                  {categoryLabels[event.category] || event.category}
+                                </span>
+                              </div>
+                              {event.dateLabel && (
+                                <p className="text-sm text-river-blue font-medium mb-1">
+                                  {event.dateLabel}
+                                </p>
+                              )}
+                              <p className="text-sm text-river-gray leading-relaxed">
+                                {event.description}
+                              </p>
+                            </div>
+                          </div>
+                        </AnimateIn>
+                      );
+                    })}
                   </div>
-                </AnimateIn>
+                </div>
               ))}
             </div>
           ) : (
@@ -213,7 +244,7 @@ export default function BarAndEventsPage() {
                     Facebook
                   </a>{" "}
                   and{" "}
-                  <a href="#" className="text-river-blue font-semibold hover:underline">
+                  <a href="https://www.instagram.com/galaresort_fremont" target="_blank" rel="noopener noreferrer" className="text-river-blue font-semibold hover:underline">
                     Instagram
                   </a>{" "}
                   for the latest updates.
@@ -229,7 +260,7 @@ export default function BarAndEventsPage() {
                 Facebook
               </a>{" "}
               and{" "}
-              <a href="#" className="text-river-blue font-semibold hover:underline">
+              <a href="https://www.instagram.com/galaresort_fremont" target="_blank" rel="noopener noreferrer" className="text-river-blue font-semibold hover:underline">
                 Instagram
               </a>{" "}
               for the latest updates.
