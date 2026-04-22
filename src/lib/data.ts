@@ -315,7 +315,75 @@ export const campingConfig: CampingConfig = {
 
 // ─── Events ─────────────────────────────────────────────────────────────────
 
-export const events: GalaEvent[] = [];
+export const events: GalaEvent[] = [
+  {
+    slug: "live-music-memorial-day-weekend",
+    title: "Memorial Day Weekend — Live Music All Weekend",
+    date: "2026-05-23",
+    dateLabel: "Friday–Monday, May 23–26",
+    category: "live-music",
+    description: "Kick off summer with three days of live music on the patio. Cold drinks, good food, and the river right outside your door.",
+    featured: true,
+    image: { src: "/images/exterior/bar-aerial-patio-river.jpeg", alt: "Gala Resort bar and patio on the Wolf River", width: 1200, height: 800 },
+  },
+  {
+    slug: "friday-night-live-may-2",
+    title: "Friday Night Live on the Patio",
+    date: "2026-05-02",
+    category: "live-music",
+    description: "Live band on the patio starting at 7 PM. Grab a seat by the water and enjoy the evening.",
+    featured: false,
+  },
+  {
+    slug: "saturday-night-live-may-3",
+    title: "Saturday Night Live Music",
+    date: "2026-05-03",
+    category: "live-music",
+    description: "Another night of live music on the river. Band announced on social media earlier in the week.",
+    featured: false,
+  },
+  {
+    slug: "sunday-afternoon-live-may-4",
+    title: "Sunday Afternoon Session",
+    date: "2026-05-04",
+    category: "live-music",
+    description: "Laid-back Sunday afternoon live music on the patio. Pull up a chair and wind down the weekend.",
+    featured: false,
+  },
+  {
+    slug: "friday-night-live-may-9",
+    title: "Friday Night Live on the Patio",
+    date: "2026-05-09",
+    category: "live-music",
+    description: "Live music on the water every Friday — bands announced as they're confirmed.",
+    featured: false,
+  },
+  {
+    slug: "saturday-night-live-may-10",
+    title: "Saturday Night Live Music",
+    date: "2026-05-10",
+    category: "live-music",
+    description: "The patio comes alive on Saturday nights. Cold drinks, great music, and good company.",
+    featured: false,
+  },
+  {
+    slug: "4th-of-july-bash",
+    title: "4th of July Bash on the River",
+    date: "2026-07-04",
+    category: "special",
+    description: "All-day celebration with live music, food specials, and fireworks over the Wolf River. The biggest party of the summer.",
+    featured: true,
+    image: { src: "/images/exterior/docks-aerial-bar-river.jpeg", alt: "Gala Resort docks and bar on the Wolf River", width: 1200, height: 800 },
+  },
+  {
+    slug: "june-kickoff-weekend",
+    title: "Summer Kickoff Weekend",
+    date: "2026-06-06",
+    category: "seasonal",
+    description: "Celebrate the start of summer with live music Friday through Sunday, drink specials, and good vibes on the water.",
+    featured: true,
+  },
+];
 
 // ─── Gallery ────────────────────────────────────────────────────────────────
 
