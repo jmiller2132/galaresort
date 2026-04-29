@@ -108,6 +108,7 @@ async function seedEvents() {
         title: event.title,
         slug: { _type: 'slug', current: event.slug },
         date: event.date,
+        ...(event.endDate ? { endDate: event.endDate } : {}),
         category: event.category,
         description: event.description,
         featured: event.featured,

@@ -3,10 +3,11 @@ import Link from "next/link";
 import SectionHeading from "@/components/ui/SectionHeading";
 import AnimateIn from "@/components/ui/AnimateIn";
 import Button from "@/components/ui/Button";
-import { getFeaturedCabins, formatPrice } from "@/lib/data";
+import { formatPrice } from "@/lib/data";
+import { fetchCabins } from "@/lib/sanity/fetch";
 
-export default function FeaturedCabins() {
-  const featured = getFeaturedCabins(3);
+export default async function FeaturedCabins() {
+  const featured = (await fetchCabins()).slice(0, 3);
 
   return (
     <section className="py-20 lg:py-28 bg-white">

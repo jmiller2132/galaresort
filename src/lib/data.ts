@@ -42,6 +42,7 @@ export interface GalaEvent {
   slug: string;
   title: string;
   date: string;
+  endDate?: string;
   dateLabel?: string;
   category: "live-music" | "seasonal" | "community" | "special";
   description: string;
@@ -320,6 +321,7 @@ export const events: GalaEvent[] = [
     slug: "live-music-memorial-day-weekend",
     title: "Memorial Day Weekend — Live Music All Weekend",
     date: "2026-05-23",
+    endDate: "2026-05-26",
     dateLabel: "Friday–Monday, May 23–26",
     category: "live-music",
     description: "Kick off summer with three days of live music on the patio. Cold drinks, good food, and the river right outside your door.",
@@ -379,6 +381,7 @@ export const events: GalaEvent[] = [
     slug: "june-kickoff-weekend",
     title: "Summer Kickoff Weekend",
     date: "2026-06-06",
+    endDate: "2026-06-08",
     category: "seasonal",
     description: "Celebrate the start of summer with live music Friday through Sunday, drink specials, and good vibes on the water.",
     featured: true,

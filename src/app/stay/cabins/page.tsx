@@ -3,7 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import PageHero from "@/components/ui/PageHero";
 import AnimateIn from "@/components/ui/AnimateIn";
-import { getCabins, formatPrice } from "@/lib/data";
+import { formatPrice } from "@/lib/data";
+import { fetchCabins } from "@/lib/sanity/fetch";
 import { Users, Dog } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -12,8 +13,8 @@ export const metadata: Metadata = {
     "Six cabins directly on the Wolf River — each with its own dock. Three-season and year-round options. Starting at $150/night.",
 };
 
-export default function CabinsPage() {
-  const cabins = getCabins();
+export default async function CabinsPage() {
+  const cabins = await fetchCabins();
 
   return (
     <>

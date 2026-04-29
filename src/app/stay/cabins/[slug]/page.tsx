@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getCabins, getCabinBySlug, formatPrice } from "@/lib/data";
+import { formatPrice } from "@/lib/data";
+import { fetchCabins, fetchCabinBySlug } from "@/lib/sanity/fetch";
 import CabinGallery from "@/components/rooms/CabinGallery";
 import InquiryDrawer from "@/components/forms/InquiryDrawer";
 import AnimateIn from "@/components/ui/AnimateIn";
@@ -13,12 +14,13 @@ interface Props {
 }
 
 export async function generateStaticParams() {
-  return getCabins().map((cabin) => ({ slug: cabin.slug }));
+  const cabins = await fetchCabins();
+  return cabins.map((cabin) => ({ slug: cabin.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const cabin = getCabinBySlug(slug);
+  const cabin = await fetchCabinBySlug(slug);
   if (!cabin) return {};
   const seasonLabel = cabin.seasonType === "year-round" ? "year-round" : "three-season";
   const titleSuffix = cabin.name.includes("Cabin") ? "" : " Cabin";
@@ -30,7 +32,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function CabinDetailPage({ params }: Props) {
   const { slug } = await params;
-  const cabin = getCabinBySlug(slug);
+  const cabin = await fetchCabinBySlug(slug);
   if (!cabin) notFound();
 
   return (

@@ -4,7 +4,7 @@ import PageHero from "@/components/ui/PageHero";
 import SectionHeading from "@/components/ui/SectionHeading";
 import AnimateIn from "@/components/ui/AnimateIn";
 import EventCalendar from "@/components/sections/EventCalendar";
-import { getEvents } from "@/lib/data";
+import { fetchEvents } from "@/lib/sanity/fetch";
 import { Music, Sun, UtensilsCrossed } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -13,8 +13,8 @@ export const metadata: Metadata = {
     "Riverfront bar with live music every weekend, cold drinks, and fresh food on the Wolf River at The Gala.",
 };
 
-export default function BarAndEventsPage() {
-  const events = getEvents();
+export default async function BarAndEventsPage() {
+  const events = await fetchEvents();
 
   return (
     <>
