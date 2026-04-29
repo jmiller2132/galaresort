@@ -35,7 +35,7 @@ export default function HeroSection() {
       {/* Desktop video (768px+) */}
       <video
         ref={desktopRef}
-        data-src="/videos/hero-landscape.mp4"
+        data-src="https://pub-ac68dbaeb5e64cc1adb16f568163a8ba.r2.dev/hero-landscape.mp4"
         autoPlay
         loop
         muted
@@ -47,7 +47,7 @@ export default function HeroSection() {
       {/* Mobile video (<768px) */}
       <video
         ref={mobileRef}
-        data-src="/videos/hero-portrait.mp4"
+        data-src="https://pub-ac68dbaeb5e64cc1adb16f568163a8ba.r2.dev/hero-portrait.mp4"
         autoPlay
         loop
         muted
