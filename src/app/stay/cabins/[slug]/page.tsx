@@ -69,7 +69,7 @@ export default async function CabinDetailPage({ params }: Props) {
                 </span>
                 {cabin.dogFriendly && (
                   <span className="flex items-center gap-1.5 text-sm text-river-gray">
-                    <Dog size={14} /> 2 dogs allowed per cabin
+                    <Dog size={14} /> Dogs welcome (additional fee)
                   </span>
                 )}
               </div>
@@ -104,7 +104,7 @@ export default async function CabinDetailPage({ params }: Props) {
               <AnimateIn delay={0.2}>
                 <div className="mt-10 bg-sand/30 rounded-lg p-5 border border-sand/50">
                   <p className="text-river-gray text-sm leading-relaxed">
-                    <strong className="text-charcoal">2 dogs allowed</strong> per cabin.
+                    <strong className="text-charcoal">Up to 2 dogs welcome</strong> per cabin for an additional fee. Fee amount to be confirmed — contact us for details.
                   </p>
                 </div>
               </AnimateIn>
@@ -132,8 +132,11 @@ export default async function CabinDetailPage({ params }: Props) {
                     {cabin.minNights}-night minimum (3 on holidays)
                   </div>
                 </div>
-                <p className="text-xs text-river-gray mb-4">
+                <p className="text-xs text-river-gray mb-1">
                   All rates + tax. Availability confirmed after inquiry.
+                </p>
+                <p className="text-xs text-river-gray mb-4">
+                  Holiday weeks and weekends are subject to a surcharge. Contact us for holiday pricing.
                 </p>
                 <InquiryDrawer type="cabin" cabinSlug={cabin.slug} cabinName={cabin.name} maxGuests={cabin.maxGuests} />
               </StickySidebar>

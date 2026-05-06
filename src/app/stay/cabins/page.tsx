@@ -80,7 +80,7 @@ export default async function CabinsPage() {
                       </span>
                       {cabin.dogFriendly && (
                         <span className="flex items-center gap-1">
-                          <Dog size={13} /> 2 dogs allowed
+                          <Dog size={13} /> Dogs welcome
                         </span>
                       )}
                     </div>

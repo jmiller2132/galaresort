@@ -100,16 +100,16 @@ export default async function BarAndEventsPage() {
                   </div>
                   <div>
                     <p className="font-[family-name:var(--font-display)] text-xl font-bold text-white">
-                      Friday · Saturday · Sunday
+                      Live Music Every Sunday
                     </p>
-                    <p className="text-white/50 text-sm">Starting this weekend</p>
+                    <p className="text-white/50 text-sm">Plus select Thursdays and Saturdays</p>
                   </div>
                 </div>
                 <p className="text-white/80 text-lg leading-relaxed">
-                  We&apos;re bringing live music to The Gala every weekend.
-                  Bands and performers are being booked as they&apos;re
-                  confirmed — follow us on social media to see who&apos;s
-                  playing each week.
+                  Live music every Sunday at The Gala, with additional performances
+                  on select Thursdays and Saturdays throughout the season.
+                  Bands are booked as they&apos;re confirmed — follow us on
+                  social media to see who&apos;s playing each week.
                 </p>
                 <p className="mt-4 text-white/60 leading-relaxed">
                   A full events calendar is coming soon. In the meantime, our{" "}

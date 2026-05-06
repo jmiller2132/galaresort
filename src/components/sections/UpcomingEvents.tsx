@@ -67,11 +67,12 @@ export default async function UpcomingEvents() {
                 <Music size={28} className="text-wood-light" />
               </div>
               <p className="font-[family-name:var(--font-display)] text-2xl font-bold text-white mb-3">
-                Friday · Saturday · Sunday
+                Live Music Every Sunday
               </p>
               <p className="text-white/70 text-lg leading-relaxed">
-                Live music every weekend starting now. Bands are announced as
-                they&apos;re confirmed — follow us on{" "}
+                Live music every Sunday, plus select Thursdays and Saturdays
+                throughout the season. Bands are announced as
+                they&apos;re confirmed — follow us on{" "}</p>
                 <a href="https://www.facebook.com/galaresort/" target="_blank" rel="noopener noreferrer" className="text-wood-light font-semibold hover:underline">
                   Facebook
                 </a>{" "}

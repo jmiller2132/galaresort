@@ -295,7 +295,7 @@ export default function ContactForm({ defaultCabin, defaultType, maxGuests, onSu
                       <option value="2-dogs">Yes — 2 dogs</option>
                     </select>
                     <p className="mt-1 text-xs text-river-gray">
-                      {accommodationType === "camping" ? "2 dogs allowed per site." : "2 dogs allowed per cabin."}
+                      {accommodationType === "camping" ? "Up to 2 dogs allowed per site." : "Up to 2 dogs welcome per cabin (additional fee)."}
                     </p>
                   </>
                 )}
