@@ -2,7 +2,7 @@ import Image from "next/image";
 import AnimateIn from "@/components/ui/AnimateIn";
 import SectionHeading from "@/components/ui/SectionHeading";
 import type { GalaEvent } from "@/lib/data";
-import { Calendar } from "lucide-react";
+import { Calendar, ExternalLink } from "lucide-react";
 
 const categoryLabels: Record<string, string> = {
   "live-music": "Live Music",
@@ -103,6 +103,17 @@ export default function EventCalendar({ events }: { events: GalaEvent[] }) {
                           <p className="text-sm text-river-gray leading-relaxed">
                             {event.description}
                           </p>
+                          {event.link && (
+                            <a
+                              href={event.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1.5 mt-3 text-xs font-semibold text-river-blue hover:text-river-blue-light transition-colors"
+                            >
+                              More info
+                              <ExternalLink size={11} />
+                            </a>
+                          )}
                         </div>
                       </div>
                     </AnimateIn>

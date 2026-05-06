@@ -65,6 +65,12 @@ export default defineType({
       initialValue: false,
     }),
     defineField({
+      name: 'link',
+      title: 'Link (optional)',
+      type: 'url',
+      description: 'A relevant link for this event — artist website, Spotify, Facebook event, etc. Shows as a "More info" button on the site.',
+    }),
+    defineField({
       name: 'image',
       title: 'Image (optional — 1200×675 px, 16:9, JPG, under 500 KB)',
       type: 'image',

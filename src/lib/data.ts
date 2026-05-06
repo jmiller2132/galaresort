@@ -47,6 +47,7 @@ export interface GalaEvent {
   category: "live-music" | "seasonal" | "community" | "special";
   description: string;
   featured: boolean;
+  link?: string;
   image?: ImageData;
 }
 

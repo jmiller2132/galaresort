@@ -45,6 +45,7 @@ export const eventsQuery = `*[_type == "event" && coalesce(endDate, date) >= $to
   category,
   description,
   featured,
+  link,
   image {
     asset->{ url },
     alt
@@ -60,6 +61,7 @@ export const featuredEventsQuery = `*[_type == "event" && featured == true && co
   category,
   description,
   featured,
+  link,
   image {
     asset->{ url },
     alt

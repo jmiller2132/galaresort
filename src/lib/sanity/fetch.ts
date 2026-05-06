@@ -55,6 +55,7 @@ type SanityEvent = {
   category: GalaEvent["category"];
   description: string;
   featured: boolean;
+  link?: string;
   image?: SanityImage;
 };
 
@@ -98,6 +99,7 @@ function mapEvent(doc: SanityEvent): GalaEvent {
     category: doc.category,
     description: doc.description,
     featured: doc.featured ?? false,
+    link: doc.link,
     image: doc.image?.asset?.url
       ? {
           src: doc.image.asset.url,
