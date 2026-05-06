@@ -72,7 +72,7 @@ export default async function UpcomingEvents() {
               <p className="text-white/70 text-lg leading-relaxed">
                 Live music every Sunday, plus select Thursdays and Saturdays
                 throughout the season. Bands are announced as
-                they&apos;re confirmed — follow us on{" "}</p>
+                they&apos;re confirmed — follow us on{" "}
                 <a href="https://www.facebook.com/galaresort/" target="_blank" rel="noopener noreferrer" className="text-wood-light font-semibold hover:underline">
                   Facebook
                 </a>{" "}
