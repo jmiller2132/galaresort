@@ -11,6 +11,13 @@ const categoryLabels: Record<string, string> = {
   special: "Special Event",
 };
 
+const categoryStyles: Record<string, string> = {
+  "live-music": "text-river-blue bg-river-blue/10",
+  seasonal:     "text-forest bg-forest/10",
+  community:    "text-wood bg-wood/10",
+  special:      "text-amber-700 bg-amber-100",
+};
+
 function groupByMonth(events: GalaEvent[]) {
   const groups: Record<string, GalaEvent[]> = {};
   for (const event of events) {
@@ -85,7 +92,7 @@ export default function EventCalendar({ events }: { events: GalaEvent[] }) {
                             <h4 className="font-[family-name:var(--font-display)] text-lg font-bold text-charcoal">
                               {event.title}
                             </h4>
-                            <span className="inline-block text-[10px] font-semibold uppercase tracking-wider text-river-blue bg-river-blue/10 px-2 py-0.5 rounded-full">
+                            <span className={`inline-block text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full ${categoryStyles[event.category] ?? "text-river-blue bg-river-blue/10"}`}>
                               {categoryLabels[event.category] || event.category}
                             </span>
                             {event.featured && (
