@@ -1,15 +1,24 @@
 import { NextResponse } from "next/server";
+import { Resend } from "resend";
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 const MIN_SUBMIT_TIME_MS = 3000;
+
+const NOTIFY_EMAIL = "galaresortllc@gmail.com";
+const FROM_ADDRESS = "Gala Resort <onboarding@resend.dev>";
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { name, email, phone, accommodationType, cabinName, checkIn, checkOut, guests, pets, message, website, confirmEmail, _t } = body;
+    const {
+      name, email, phone, accommodationType, cabinName,
+      checkIn, checkOut, guests, pets, message,
+      website, confirmEmail, _t,
+    } = body;
 
     // Honeypot: bots fill hidden fields that humans never see
     if (website || confirmEmail) {
-      // Return fake success so bots think it worked
       return NextResponse.json({ success: true });
     }
 
@@ -33,22 +42,46 @@ export async function POST(request: Request) {
       return NextResponse.json({ errors }, { status: 400 });
     }
 
-    // Phase 2: Replace with SendGrid/Resend email integration
-    console.log("Inquiry received:", {
-      name: name.trim(),
-      email: email.trim(),
-      phone,
-      accommodationType,
-      cabinName,
-      checkIn,
-      checkOut,
-      guests,
-      pets,
-      message,
+    const typeLabel: Record<string, string> = {
+      cabin: "Cabin",
+      camping: "Camping",
+      seasonal: "Seasonal Site",
+      general: "General",
+    };
+
+    const lines = [
+      `<p><strong>Name:</strong> ${name.trim()}</p>`,
+      `<p><strong>Email:</strong> <a href="mailto:${email.trim()}">${email.trim()}</a></p>`,
+      phone ? `<p><strong>Phone:</strong> ${phone}</p>` : "",
+      `<p><strong>Inquiry type:</strong> ${typeLabel[accommodationType] ?? accommodationType}</p>`,
+      cabinName ? `<p><strong>Cabin:</strong> ${cabinName}</p>` : "",
+      checkIn ? `<p><strong>Check-in:</strong> ${checkIn}</p>` : "",
+      checkOut ? `<p><strong>Check-out:</strong> ${checkOut}</p>` : "",
+      guests ? `<p><strong>Guests:</strong> ${guests}</p>` : "",
+      pets ? `<p><strong>Pets:</strong> ${pets}</p>` : "",
+      message ? `<hr/><p><strong>Message:</strong><br/>${message.replace(/\n/g, "<br/>")}</p>` : "",
+    ].filter(Boolean).join("\n");
+
+    const html = `
+      <div style="font-family: sans-serif; max-width: 600px;">
+        <h2 style="color: #1a3a5c;">New Inquiry — Gala Resort</h2>
+        ${lines}
+        <hr/>
+        <p style="color: #888; font-size: 12px;">Sent from the contact form at galaresort.com</p>
+      </div>
+    `;
+
+    await resend.emails.send({
+      from: FROM_ADDRESS,
+      to: NOTIFY_EMAIL,
+      replyTo: email.trim(),
+      subject: `New inquiry from ${name.trim()} — ${typeLabel[accommodationType] ?? accommodationType}`,
+      html,
     });
 
     return NextResponse.json({ success: true });
-  } catch {
+  } catch (err) {
+    console.error("Contact form error:", err);
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 }
