@@ -27,8 +27,9 @@ export default defineType({
         list: [
           { title: 'Waterfront', value: 'waterfront' },
           { title: 'Cabins', value: 'cabins' },
-          { title: 'Bar', value: 'bar' },
+          { title: 'Bar & Events', value: 'bar' },
           { title: 'Grounds', value: 'grounds' },
+          { title: 'Life at The Gala', value: 'life' },
         ],
         layout: 'radio',
       },

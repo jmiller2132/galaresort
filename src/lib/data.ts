@@ -56,7 +56,7 @@ export interface GalleryImage {
   alt: string;
   width: number;
   height: number;
-  category: "waterfront" | "cabins" | "bar" | "grounds";
+  category: "waterfront" | "cabins" | "bar" | "grounds" | "life";
 }
 
 export interface Amenity {

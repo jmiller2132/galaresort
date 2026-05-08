@@ -14,6 +14,7 @@ const categories = [
   { value: "cabins", label: "Cabins" },
   { value: "bar", label: "Bar & Events" },
   { value: "grounds", label: "Grounds" },
+  { value: "life", label: "Life at The Gala" },
 ];
 
 export default function GalleryContent({ images }: { images: GalleryImage[] }) {
