@@ -2,11 +2,11 @@ import Image from "next/image";
 import SectionHeading from "@/components/ui/SectionHeading";
 import AnimateIn from "@/components/ui/AnimateIn";
 import Button from "@/components/ui/Button";
-import { fetchFeaturedEvents } from "@/lib/sanity/fetch";
+import { fetchEvents } from "@/lib/sanity/fetch";
 import { Calendar, Music } from "lucide-react";
 
 export default async function UpcomingEvents() {
-  const featured = (await fetchFeaturedEvents()).slice(0, 2);
+  const featured = (await fetchEvents()).slice(0, 2);
   const hasEvents = featured.length > 0;
 
   return (
