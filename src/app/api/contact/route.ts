@@ -1,8 +1,6 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 const MIN_SUBMIT_TIME_MS = 3000;
 
 const NOTIFY_EMAIL = "galaresortllc@gmail.com";
@@ -70,6 +68,8 @@ export async function POST(request: Request) {
         <p style="color: #888; font-size: 12px;">Sent from the contact form at galaresort.com</p>
       </div>
     `;
+
+    const resend = new Resend(process.env.RESEND_API_KEY);
 
     await resend.emails.send({
       from: FROM_ADDRESS,
