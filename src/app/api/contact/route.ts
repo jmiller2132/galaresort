@@ -3,7 +3,7 @@ import { Resend } from "resend";
 
 const MIN_SUBMIT_TIME_MS = 3000;
 
-const NOTIFY_EMAIL = "millerjeff2132@gmail.com";
+const NOTIFY_EMAIL = "galaresortllc@gmail.com";
 const FROM_ADDRESS = "Gala Resort <onboarding@resend.dev>";
 
 export async function POST(request: Request) {
