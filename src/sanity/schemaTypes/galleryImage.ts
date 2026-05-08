@@ -7,7 +7,7 @@ export default defineType({
   fields: [
     defineField({
       name: 'image',
-      title: 'Image',
+      title: 'Image (1200px wide minimum, JPG, under 1 MB)',
       type: 'image',
       options: { hotspot: true },
       validation: (Rule) => Rule.required(),
@@ -16,6 +16,7 @@ export default defineType({
       name: 'alt',
       title: 'Alt Text',
       type: 'string',
+      description: 'Describe the photo, e.g. "Aerial view of the Wolf River at sunset"',
       validation: (Rule) => Rule.required(),
     }),
     defineField({

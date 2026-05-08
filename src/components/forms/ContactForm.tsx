@@ -195,15 +195,18 @@ export default function ContactForm({ defaultCabin, defaultType, maxGuests, onSu
 
         <div>
           <label htmlFor="phone" className="block text-sm font-medium text-charcoal mb-1.5">
-            Phone
+            Phone *
           </label>
           <input
             id="phone"
             type="tel"
-            placeholder="(555) 000-0000"
-            className={validInput}
-            {...register("phone")}
+            placeholder="(920) 000-0000"
+            className={errors.phone ? errorInput : validInput}
+            {...register("phone", { required: "Phone number is required" })}
           />
+          {errors.phone && (
+            <p className="mt-1 text-sm text-red-600">{errors.phone.message}</p>
+          )}
         </div>
 
         <div>

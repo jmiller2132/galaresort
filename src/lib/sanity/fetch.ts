@@ -14,13 +14,15 @@ import { client } from "@/sanity/lib/client";
 import {
   cabins as staticCabins,
   events as staticEvents,
+  galleryImages as staticGalleryImages,
 } from "@/lib/data";
-import type { Cabin, GalaEvent } from "@/lib/data";
+import type { Cabin, GalaEvent, GalleryImage } from "@/lib/data";
 import {
   cabinsQuery,
   cabinBySlugQuery,
   eventsQuery,
   featuredEventsQuery,
+  galleryQuery,
 } from "./queries";
 
 // ─── Internal Sanity response shapes ────────────────────────────────────────
@@ -171,4 +173,33 @@ export async function fetchFeaturedEvents(): Promise<GalaEvent[]> {
 
 function coalesce(a: string | undefined, b: string): string {
   return a ?? b;
+}
+
+type SanityGalleryImage = {
+  _id: string;
+  image?: { asset?: { url: string } };
+  alt: string;
+  category: GalleryImage["category"];
+};
+
+export async function fetchGalleryImages(): Promise<GalleryImage[]> {
+  try {
+    const results: SanityGalleryImage[] = await client.fetch(
+      galleryQuery,
+      {},
+      { next: { revalidate: 60 } }
+    );
+    if (!results?.length) return staticGalleryImages;
+    return results
+      .filter((doc) => doc.image?.asset?.url)
+      .map((doc) => ({
+        src: doc.image!.asset!.url,
+        alt: doc.alt,
+        width: 1200,
+        height: 800,
+        category: doc.category,
+      }));
+  } catch {
+    return staticGalleryImages;
+  }
 }

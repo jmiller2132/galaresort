@@ -6,7 +6,7 @@ import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import PageHero from "@/components/ui/PageHero";
 import AnimateIn from "@/components/ui/AnimateIn";
-import { galleryImages } from "@/lib/data";
+import type { GalleryImage } from "@/lib/data";
 
 const categories = [
   { value: "all", label: "All" },
@@ -16,15 +16,15 @@ const categories = [
   { value: "grounds", label: "Grounds" },
 ];
 
-export default function GalleryContent() {
+export default function GalleryContent({ images }: { images: GalleryImage[] }) {
   const [open, setOpen] = useState(false);
   const [index, setIndex] = useState(0);
   const [filter, setFilter] = useState("all");
 
   const filtered =
     filter === "all"
-      ? galleryImages
-      : galleryImages.filter((img) => img.category === filter);
+      ? images
+      : images.filter((img) => img.category === filter);
 
   return (
     <>
@@ -58,7 +58,7 @@ export default function GalleryContent() {
                 <div
                   className="relative overflow-hidden rounded-lg cursor-pointer break-inside-avoid"
                   onClick={() => {
-                    setIndex(galleryImages.indexOf(img));
+                    setIndex(images.indexOf(img));
                     setOpen(true);
                   }}
                 >
@@ -105,7 +105,7 @@ export default function GalleryContent() {
         open={open}
         close={() => setOpen(false)}
         index={index}
-        slides={galleryImages.map((img) => ({ src: img.src }))}
+        slides={images.map((img) => ({ src: img.src }))}
       />
     </>
   );
