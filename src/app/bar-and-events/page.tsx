@@ -4,7 +4,7 @@ import PageHero from "@/components/ui/PageHero";
 import SectionHeading from "@/components/ui/SectionHeading";
 import AnimateIn from "@/components/ui/AnimateIn";
 import EventCalendar from "@/components/sections/EventCalendar";
-import { fetchEvents } from "@/lib/sanity/fetch";
+import { fetchEvents, fetchBarInfo } from "@/lib/sanity/fetch";
 import { Music, Sun, UtensilsCrossed } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 };
 
 export default async function BarAndEventsPage() {
-  const events = await fetchEvents();
+  const [events, barInfo] = await Promise.all([fetchEvents(), fetchBarInfo()]);
 
   return (
     <>
@@ -45,8 +45,10 @@ export default async function BarAndEventsPage() {
                 nights you talk about all winter.
               </p>
               <p className="mt-4 text-river-gray leading-relaxed">
-                Fresh pizza and bar favorites are on the menu. Open Tuesday
-                through Sunday, 11 AM to close. Closed Mondays. Call{" "}
+                {barInfo.foodNote ?? "Fresh pizza and bar favorites are on the menu."}{" "}
+                {barInfo.hours && <>Open {barInfo.hours}. </>}
+                {barInfo.closedDays && <>{barInfo.closedDays}. </>}
+                Call{" "}
                 <a href="tel:+19204462423" className="text-river-blue font-medium hover:underline">
                   (920) 446-2423
                 </a>{" "}
@@ -63,7 +65,7 @@ export default async function BarAndEventsPage() {
                 </div>
                 <div className="flex items-center gap-2">
                   <UtensilsCrossed size={16} className="text-river-blue" />
-                  Full bar with food
+                  {barInfo.foodNote ?? "Full bar with food"}
                 </div>
               </div>
             </AnimateIn>

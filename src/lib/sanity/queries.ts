@@ -68,6 +68,13 @@ export const featuredEventsQuery = `*[_type == "event" && featured == true && co
   }
 }`;
 
+export const barInfoQuery = `*[_type == "barInfo"][0] {
+  _id,
+  hours,
+  closedDays,
+  foodNote
+}`;
+
 export const announcementQuery = `*[_type == "announcement" && active == true][0] {
   _id,
   text,

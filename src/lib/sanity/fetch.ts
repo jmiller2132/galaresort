@@ -24,6 +24,7 @@ import {
   featuredEventsQuery,
   galleryQuery,
   announcementQuery,
+  barInfoQuery,
   type SanityAnnouncement,
 } from "./queries";
 
@@ -183,6 +184,25 @@ type SanityGalleryImage = {
   alt: string;
   category: GalleryImage["category"];
 };
+
+export type BarInfo = {
+  hours?: string;
+  closedDays?: string;
+  foodNote?: string;
+};
+
+export async function fetchBarInfo(): Promise<BarInfo> {
+  try {
+    const result: BarInfo | null = await client.fetch(
+      barInfoQuery,
+      {},
+      { next: { revalidate: 300 } }
+    );
+    return result ?? {};
+  } catch {
+    return {};
+  }
+}
 
 export async function fetchAnnouncement(): Promise<SanityAnnouncement | null> {
   try {

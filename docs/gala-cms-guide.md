@@ -67,6 +67,20 @@ Only one announcement shows on the site at a time. If you have multiple announce
 
 ---
 
+## Bar Info
+
+Use this to update your bar hours and food note shown on the Bar & Events page.
+
+1. Click **Bar Info** in the left sidebar
+2. Click the existing Bar Info document
+3. Update the fields:
+   - **Hours** — e.g. "Tuesday through Sunday, 11 AM to close"
+   - **Closed Days** — e.g. "Closed Mondays"
+   - **Food Note** — e.g. "Fresh pizza and bar favorites"
+4. Click **Publish**
+
+---
+
 ## A Few Things to Know
 
 - **Changes go live within about 60 seconds** after you hit Publish
