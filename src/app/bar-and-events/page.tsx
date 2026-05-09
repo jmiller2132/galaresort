@@ -55,7 +55,7 @@ export default async function BarAndEventsPage() {
                 </div>
                 <div className="flex items-center gap-2">
                   <UtensilsCrossed size={16} className="text-river-blue" />
-                  {barInfo.foodNote ?? "Full bar with food"}
+                  Full bar with food
                 </div>
               </div>
               {Object.entries({
