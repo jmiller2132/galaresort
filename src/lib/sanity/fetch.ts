@@ -189,7 +189,7 @@ export async function fetchAnnouncement(): Promise<SanityAnnouncement | null> {
     const result: SanityAnnouncement | null = await client.fetch(
       announcementQuery,
       {},
-      { next: { revalidate: 300 } }
+      { next: { revalidate: 60 } }
     );
     return result ?? null;
   } catch {

@@ -63,7 +63,7 @@ Use this to show a temporary banner at the top of every page — useful for open
 4. Toggle **Active** on to show it, or off to hide it
 5. Click **Publish**
 
-Only one announcement shows at a time.
+Only one announcement shows on the site at a time. If you have multiple announcements marked Active, the site will pick one unpredictably — so make sure only one is Active at any given time. Toggle the others off before turning a new one on.
 
 ---
 
