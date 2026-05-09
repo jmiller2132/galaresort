@@ -57,6 +57,12 @@ export default function StayPage() {
               site for the summer, or a campsite for the night — this is
               waterfront living, and it all starts right here.
             </p>
+            <p className="mt-4 text-river-gray">
+              Questions about availability? Call the RV Park office at{" "}
+              <a href="tel:+19204463222" className="text-river-blue font-semibold hover:underline">
+                (920) 446-3222
+              </a>.
+            </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {stayOptions.map((option, i) => (

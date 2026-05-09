@@ -37,6 +37,12 @@ export default async function CabinsPage() {
                 the fish in these waters. The sixth — the Northern Four
                 Season Cabin — is available year-round.
               </p>
+              <p className="mt-4 text-river-gray">
+                To book or check availability, call the RV Park office at{" "}
+                <a href="tel:+19204463222" className="text-river-blue font-semibold hover:underline">
+                  (920) 446-3222
+                </a>.
+              </p>
             </AnimateIn>
           </div>
 

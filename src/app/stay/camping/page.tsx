@@ -66,8 +66,11 @@ export default function CampingPage() {
               </div>
 
               <p className="mt-8 text-sm text-river-gray">
-                2-night minimum on weekends, 3 nights on holidays. Have
-                questions? <a href="/contact?type=camping" className="text-river-blue font-medium hover:underline">Reach out</a> — we&apos;re happy to help.
+                2-night minimum on weekends, 3 nights on holidays. Call the RV Park office at{" "}
+                <a href="tel:+19204463222" className="text-river-blue font-medium hover:underline">
+                  (920) 446-3222
+                </a>{" "}
+                or <a href="/contact?type=camping" className="text-river-blue font-medium hover:underline">send us a message</a> — we&apos;re happy to help.
               </p>
             </AnimateIn>
 

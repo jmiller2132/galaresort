@@ -37,6 +37,12 @@ export default function SeasonalPage() {
                 music on the weekends, and be part of a community that
                 comes back year after year.
               </p>
+              <p className="mt-4 text-river-gray">
+                Interested in claiming a spot? Call the RV Park office at{" "}
+                <a href="tel:+19204463222" className="text-river-blue font-semibold hover:underline">
+                  (920) 446-3222
+                </a>.
+              </p>
             </div>
           </AnimateIn>
 
