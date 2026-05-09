@@ -68,6 +68,14 @@ export const featuredEventsQuery = `*[_type == "event" && featured == true && co
   }
 }`;
 
+export const menusQuery = `*[_type == "menu" && active == true] | order(sortOrder asc) {
+  _id,
+  title,
+  image {
+    asset->{ url }
+  }
+}`;
+
 export const barInfoQuery = `*[_type == "barInfo"][0] {
   _id,
   monday,

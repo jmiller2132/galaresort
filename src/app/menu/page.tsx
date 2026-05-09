@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import PageHero from "@/components/ui/PageHero";
 import AnimateIn from "@/components/ui/AnimateIn";
+import { fetchMenus } from "@/lib/sanity/fetch";
 
 export const metadata: Metadata = {
   title: "Grill Menu",
@@ -9,7 +10,16 @@ export const metadata: Metadata = {
     "Fresh pizza, smash burgers, wings, and bar favorites at Gala Resort on the Wolf River. Open Tuesday through Sunday.",
 };
 
-export default function MenuPage() {
+export default async function MenuPage() {
+  const menus = await fetchMenus();
+
+  const images = menus.length > 0
+    ? menus.filter((m) => m.image?.asset?.url).map((m) => ({
+        src: m.image!.asset!.url,
+        alt: m.title,
+      }))
+    : [{ src: "/images/menu/menu-2.png", alt: "Gala Resort Grill Menu" }];
+
   return (
     <>
       <PageHero
@@ -19,29 +29,35 @@ export default function MenuPage() {
       />
 
       <section className="py-16 bg-cream">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="mx-auto max-w-5xl px-6 lg:px-8">
           <AnimateIn>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="relative w-full rounded-lg overflow-hidden shadow-md">
+            {images.length === 1 ? (
+              <div className="relative w-full rounded-lg overflow-hidden shadow-md max-w-2xl mx-auto">
                 <Image
-                  src="/images/menu/menu-1.png"
-                  alt="Gala Resort Grill Menu"
+                  src={images[0].src}
+                  alt={images[0].alt}
                   width={1080}
                   height={1350}
                   className="w-full h-auto"
                   priority
                 />
               </div>
-              <div className="relative w-full rounded-lg overflow-hidden shadow-md">
-                <Image
-                  src="/images/menu/menu-2.png"
-                  alt="Gala Resort Grill Menu — continued"
-                  width={1080}
-                  height={1350}
-                  className="w-full h-auto"
-                />
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {images.map((img, i) => (
+                  <div key={i} className="relative w-full rounded-lg overflow-hidden shadow-md">
+                    <Image
+                      src={img.src}
+                      alt={img.alt}
+                      width={1080}
+                      height={1350}
+                      className="w-full h-auto"
+                      priority={i === 0}
+                    />
+                  </div>
+                ))}
               </div>
-            </div>
+            )}
           </AnimateIn>
 
           <AnimateIn delay={0.2}>

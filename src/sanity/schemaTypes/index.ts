@@ -5,7 +5,8 @@ import announcement from './announcement'
 import barInfo from './barInfo'
 import galleryImage from './galleryImage'
 import cabin from './cabin'
+import menu from './menu'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [event, announcement, barInfo, galleryImage, cabin],
+  types: [event, announcement, barInfo, galleryImage, cabin, menu],
 }

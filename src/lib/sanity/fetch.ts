@@ -25,6 +25,7 @@ import {
   galleryQuery,
   announcementQuery,
   barInfoQuery,
+  menusQuery,
   type SanityAnnouncement,
 } from "./queries";
 
@@ -194,6 +195,25 @@ export type BarInfo = {
   saturday?: string;
   sunday?: string;
 };
+
+export type SanityMenu = {
+  _id: string;
+  title: string;
+  image?: { asset?: { url: string } };
+};
+
+export async function fetchMenus(): Promise<SanityMenu[]> {
+  try {
+    const results: SanityMenu[] = await client.fetch(
+      menusQuery,
+      {},
+      { next: { revalidate: 300 } }
+    );
+    return results ?? [];
+  } catch {
+    return [];
+  }
+}
 
 export async function fetchBarInfo(): Promise<BarInfo> {
   try {
