@@ -145,6 +145,12 @@ export default async function CabinDetailPage({ params }: Props) {
                       Holiday weeks and weekends are subject to a surcharge. Contact us for holiday pricing.
                     </p>
                     <InquiryDrawer type="cabin" cabinSlug={cabin.slug} cabinName={cabin.name} maxGuests={cabin.maxGuests} />
+                    <p className="mt-4 text-xs text-center text-river-gray">
+                      Prefer to call? RV Park office:{" "}
+                      <a href="tel:+19204463222" className="text-river-blue font-medium hover:underline">
+                        (920) 446-3222
+                      </a>
+                    </p>
                   </>
                 )}
               </StickySidebar>
