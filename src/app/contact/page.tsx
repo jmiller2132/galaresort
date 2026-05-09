@@ -15,7 +15,7 @@ const contactDetails = [
   {
     icon: MapPin,
     label: "Location",
-    value: "Gala Resort & RV Park\nFremont, WI",
+    value: "9692 County Rd H\nFremont, WI 54940",
   },
   {
     icon: Phone,
@@ -107,7 +107,7 @@ export default function ContactPage() {
               <AnimateIn delay={0.3}>
                 <div className="mt-6 bg-white rounded-lg overflow-hidden shadow-sm border border-sand/50">
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d45896.14972967567!2d-88.87!3d44.26!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8803e1c3a1a91f1d%3A0x4d0e5d6a2b1c3e0f!2sFremont%2C%20WI!5e0!3m2!1sen!2sus!4v1"
+                    src="https://maps.google.com/maps?q=9692+County+Rd+H,+Fremont,+WI+54940&output=embed"
                     width="100%"
                     height="250"
                     style={{ border: 0 }}

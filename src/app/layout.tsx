@@ -59,8 +59,10 @@ export default async function RootLayout({
     email: "galaresortllc@gmail.com",
     address: {
       "@type": "PostalAddress",
+      streetAddress: "9692 County Rd H",
       addressLocality: "Fremont",
       addressRegion: "WI",
+      postalCode: "54940",
       addressCountry: "US",
     },
     amenityFeature: [
