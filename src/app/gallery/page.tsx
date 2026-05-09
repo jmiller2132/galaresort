@@ -10,5 +10,6 @@ export const metadata: Metadata = {
 
 export default async function GalleryPage() {
   const images = await fetchGalleryImages();
-  return <GalleryContent images={images} />;
+  const shuffled = [...images].sort(() => Math.random() - 0.5);
+  return <GalleryContent images={shuffled} />;
 }
