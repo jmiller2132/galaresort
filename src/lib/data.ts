@@ -73,7 +73,7 @@ export const resortAmenities: Amenity[] = [
   { icon: "Beer", label: "Tiki Bar" },
   { icon: "Sun", label: "Two-Tier Patio" },
   { icon: "Ship", label: "Docks & Wharfs" },
-  { icon: "Anchor", label: "Boat Launch" },
+  { icon: "Anchor", label: "Private Boat Launch" },
   { icon: "Music", label: "Live Music" },
   { icon: "Users2", label: "Seasonal Community" },
   { icon: "Umbrella", label: "Small Beach" },

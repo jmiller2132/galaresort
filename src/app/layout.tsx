@@ -66,7 +66,7 @@ export default async function RootLayout({
       addressCountry: "US",
     },
     amenityFeature: [
-      { "@type": "LocationFeatureSpecification", name: "Boat Launch" },
+      { "@type": "LocationFeatureSpecification", name: "Private Boat Launch" },
       { "@type": "LocationFeatureSpecification", name: "Private Docks" },
       { "@type": "LocationFeatureSpecification", name: "Bar & Restaurant" },
       { "@type": "LocationFeatureSpecification", name: "Live Music" },
