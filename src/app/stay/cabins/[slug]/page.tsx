@@ -69,7 +69,7 @@ export default async function CabinDetailPage({ params }: Props) {
                 </span>
                 {cabin.dogFriendly && (
                   <span className="flex items-center gap-1.5 text-sm text-river-gray">
-                    <Dog size={14} /> Dogs welcome (additional fee)
+                    <Dog size={14} /> Dogs welcome ($25/pet, 25 lbs or less)
                   </span>
                 )}
               </div>
@@ -104,7 +104,7 @@ export default async function CabinDetailPage({ params }: Props) {
               <AnimateIn delay={0.2}>
                 <div className="mt-10 bg-sand/30 rounded-lg p-5 border border-sand/50">
                   <p className="text-river-gray text-sm leading-relaxed">
-                    <strong className="text-charcoal">Up to 2 dogs welcome</strong> per cabin for an additional fee. Fee amount to be confirmed — contact us for details.
+                    <strong className="text-charcoal">Pets welcome</strong> — up to 2 dogs per cabin at $25 per pet. Dogs must be 25 lbs or less at full maturity.
                   </p>
                 </div>
               </AnimateIn>

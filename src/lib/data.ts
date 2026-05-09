@@ -107,7 +107,7 @@ export const cabins: Cabin[] = [
     minNights: 2,
     dogFriendly: true,
     description:
-      "The Catfish cabin sits right on the banks of the Wolf River, with patio doors that open to the water and a private log porch built for slow mornings and long evenings. It's a comfortable, rustic setup with a loft sleeping area, and it comes with its own pier — so you're steps from the river whether you're fishing, launching a kayak, or just watching it roll by.\n\nInside, everything you need is already here: bed linens, cooking utensils, a microwave, TV, and central air and heat to keep things comfortable all season. Just bring your towels and settle in.",
+      "The Catfish cabin sits right on the banks of the Wolf River, with patio doors that open to the water and a private log porch built for slow mornings and long evenings. It's a comfortable, rustic setup with a loft sleeping area, and it comes with its own pier — so you're steps from the river whether you're fishing, launching a kayak, or just watching it roll by.\n\nInside, everything you need is already here: bed linens, cooking utensils, a microwave, TV, and central air and heat to keep things comfortable all season. Towels are not provided — please bring your own.",
     shortDescription:
       "A cozy loft cabin right on the Wolf River with a private log porch, patio doors on the water, and its own pier.",
     amenities: ["Waterfront", "Private Pier", "Log Porch", "Patio Doors", "Loft Sleeping Area", "Furnished", "Bed Linens Provided", "Cooking Utensils", "Microwave", "TV", "Central Air", "Central Heat", "River Views"],
@@ -123,12 +123,12 @@ export const cabins: Cabin[] = [
     name: "Muskie",
     seasonType: "3-season",
     maxGuests: 10,
-    rateNightly: 150,
-    rateWeekly: 995,
+    rateNightly: 200,
+    rateWeekly: 1000,
     minNights: 2,
     dogFriendly: true,
     description:
-      "The Muskie is one of the bigger cabins at The Gala, with a private master bedroom, a bunk bedroom, a loft, and an open living and dining area that gives your whole group room to spread out. It's a park model setup that feels like a real home base on the river — not cramped, not fussy, just comfortable.\n\nEverything's furnished and ready to go: bed linens, cooking utensils, microwave, TV, and central air and heat. Bring your towels, grab a spot on the water, and enjoy slow mornings and long evenings with the Wolf River right outside your door.",
+      "The Muskie is one of the bigger cabins at The Gala, with a private master bedroom, a bunk bedroom, a loft, and an open living and dining area that gives your whole group room to spread out. It's a park model setup that feels like a real home base on the river — not cramped, not fussy, just comfortable.\n\nEverything's furnished and ready to go: bed linens, cooking utensils, microwave, TV, and central air and heat. Bring your own towels, grab a spot on the water, and enjoy slow mornings and long evenings with the Wolf River right outside your door.",
     shortDescription:
       "A spacious park model cabin with two bedrooms, a loft, and room for up to ten — right on the Wolf River with everything you need to settle in.",
     amenities: ["Waterfront", "Private Master Bedroom", "Bunk Bedroom", "Loft Sleeping Area", "Living Room", "Dining Area", "Furnished", "Bed Linens Provided", "Cooking Utensils", "Microwave", "TV", "Central Air", "Central Heat"],
@@ -151,7 +151,7 @@ export const cabins: Cabin[] = [
     minNights: 2,
     dogFriendly: true,
     description:
-      "The Walleye is a two-bedroom park model with a full kitchen and full bath, so it feels less like a cabin rental and more like your own place on the river. Patio doors open things up and let the outside in, and there's a living room and dining area with plenty of space to cook, eat, and hang out without being on top of each other.\n\nIt comes fully furnished with bed linens, cooking utensils, microwave, TV, and central air and heat. Just bring your towels and you're set. Whether you're here for a long weekend or a full week on the Wolf River, the Walleye makes it easy to settle in and stay a while.",
+      "The Walleye is a two-bedroom park model with a full kitchen and full bath, so it feels less like a cabin rental and more like your own place on the river. Patio doors open things up and let the outside in, and there's a living room and dining area with plenty of space to cook, eat, and hang out without being on top of each other.\n\nIt comes fully furnished with bed linens, cooking utensils, microwave, TV, and central air and heat. Towels are not provided — please bring your own. Whether you're here for a long weekend or a full week on the Wolf River, the Walleye makes it easy to settle in and stay a while.",
     shortDescription:
       "A two-bedroom park model with a full kitchen, full bath, and patio doors — comfortably set up for up to six on the Wolf River.",
     amenities: ["Waterfront", "Two Bedrooms", "Full Kitchen", "Full Bath", "Living Room", "Dining Area", "Patio Doors", "Furnished", "Bed Linens Provided", "Cooking Utensils", "Microwave", "TV", "Central Air", "Central Heat"],
@@ -174,7 +174,7 @@ export const cabins: Cabin[] = [
     minNights: 2,
     dogFriendly: true,
     description:
-      "The Perch cabin is tucked right on the banks of the Wolf River, with patio doors overlooking the water and a private log porch that's made for doing not much at all. There's a cozy loft upstairs, and the cabin comes with its own pier — so the river is basically your front yard.\n\nIt's fully furnished with bed linens, cooking utensils, a microwave, TV, and central air and heat. Bring your towels and you're good. The Perch is one of those spots where you can keep it simple — morning coffee on the porch, an afternoon on the pier, and nothing on the schedule but the river.",
+      "The Perch cabin is tucked right on the banks of the Wolf River, with patio doors overlooking the water and a private log porch that's made for doing not much at all. There's a cozy loft upstairs, and the cabin comes with its own pier — so the river is basically your front yard.\n\nIt's fully furnished with bed linens, cooking utensils, a microwave, TV, and central air and heat. Towels are not provided — please bring your own. The Perch is one of those spots where you can keep it simple — morning coffee on the porch, an afternoon on the pier, and nothing on the schedule but the river.",
     shortDescription:
       "A rustic loft cabin on the banks of the Wolf River with a private log porch, patio doors on the water, and its own pier.",
     amenities: ["Waterfront", "Private Pier", "Log Porch", "Patio Doors", "Loft Sleeping Area", "Furnished", "Bed Linens Provided", "Cooking Utensils", "Microwave", "TV", "Central Air", "Central Heat", "River Views"],
@@ -197,7 +197,7 @@ export const cabins: Cabin[] = [
     minNights: 2,
     dogFriendly: true,
     description:
-      "The White Bass is a cottage-style cabin set near the shore of the Wolf River, with a warm knotty pine interior that gives it a character all its own. With three rooms and space for up to six, there's enough room to spread out without losing that cozy, lived-in feel — and your own pier puts you right at the water's edge.\n\nEverything's furnished and ready: bed linens, cooking utensils, a microwave, TV, and central air and heat. Just bring your towels. The White Bass has a little more of that classic cottage charm — the kind of place where you kick off your shoes, open the door, and let the river set the pace.",
+      "The White Bass is a cottage-style cabin set near the shore of the Wolf River, with a warm knotty pine interior that gives it a character all its own. With three rooms and space for up to six, there's enough room to spread out without losing that cozy, lived-in feel — and your own pier puts you right at the water's edge.\n\nEverything's furnished and ready: bed linens, cooking utensils, a microwave, TV, and central air and heat. Towels are not provided — please bring your own. The White Bass has a little more of that classic cottage charm — the kind of place where you kick off your shoes, open the door, and let the river set the pace.",
     shortDescription:
       "A knotty pine cottage near the Wolf River shore with three rooms, its own pier, and space for up to six.",
     amenities: ["Waterfront", "Private Pier", "Knotty Pine Interior", "Three Rooms", "Furnished", "Bed Linens Provided", "Cooking Utensils", "Microwave", "TV", "Central Air", "Central Heat"],
@@ -215,15 +215,15 @@ export const cabins: Cabin[] = [
   },
   {
     slug: "northern-pike",
-    name: "Northern Pike – Four Season Cabin",
+    name: "Northern – Four Season Cabin",
     seasonType: "year-round",
-    maxGuests: 4,
-    rateNightly: 150,
-    rateWeekly: 900,
+    maxGuests: 3,
+    rateNightly: 200,
+    rateWeekly: 1000,
     minNights: 2,
     dogFriendly: true,
     description:
-      "Our only four-season cabin, the Northern Pike is built for year-round comfort on the Wolf River. Insulated and heated, it's perfect for those who want to experience the river in every season — from summer days on the dock to quiet winter mornings with snow on the water. Sleeps four, with all the comforts of home.",
+      "Our only four-season cabin, the Northern is built for year-round comfort on the Wolf River. Insulated and heated, it's perfect for those who want to experience the river in every season — from summer days on the dock to quiet winter mornings with snow on the water. Sleeps three, with all the comforts of home.",
     shortDescription:
       "Our only four-season cabin — insulated, heated, and built for year-round life on the Wolf River.",
     amenities: [
@@ -251,7 +251,7 @@ export const seasonalSites: SeasonalSite[] = [
   {
     slug: "river",
     name: "River Site",
-    pricePerSeason: 4500,
+    pricePerSeason: 5000,
     description:
       "Premium riverfront seasonal sites with direct Wolf River access. Every site is on the water with your own dock space — your home on the river for the entire season.",
     features: [
