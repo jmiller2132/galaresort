@@ -6,17 +6,46 @@ export default defineType({
   type: 'document',
   fields: [
     defineField({
-      name: 'hours',
-      title: 'Hours',
+      name: 'monday',
+      title: 'Monday',
       type: 'string',
-      description: 'e.g. "11 AM to close"',
-      validation: (Rule) => Rule.required(),
+      description: 'Hours, e.g. "11 AM to close". Leave blank if closed.',
     }),
     defineField({
-      name: 'closedDays',
-      title: 'Closed Days',
+      name: 'tuesday',
+      title: 'Tuesday',
       type: 'string',
-      description: 'e.g. "Closed Mondays"',
+      description: 'Hours, e.g. "11 AM to close". Leave blank if closed.',
+    }),
+    defineField({
+      name: 'wednesday',
+      title: 'Wednesday',
+      type: 'string',
+      description: 'Hours, e.g. "11 AM to close". Leave blank if closed.',
+    }),
+    defineField({
+      name: 'thursday',
+      title: 'Thursday',
+      type: 'string',
+      description: 'Hours, e.g. "11 AM to close". Leave blank if closed.',
+    }),
+    defineField({
+      name: 'friday',
+      title: 'Friday',
+      type: 'string',
+      description: 'Hours, e.g. "11 AM to close". Leave blank if closed.',
+    }),
+    defineField({
+      name: 'saturday',
+      title: 'Saturday',
+      type: 'string',
+      description: 'Hours, e.g. "11 AM to close". Leave blank if closed.',
+    }),
+    defineField({
+      name: 'sunday',
+      title: 'Sunday',
+      type: 'string',
+      description: 'Hours, e.g. "11 AM to close". Leave blank if closed.',
     }),
     defineField({
       name: 'foodNote',
@@ -27,8 +56,8 @@ export default defineType({
   ],
   preview: {
     select: {
-      title: 'hours',
-      subtitle: 'closedDays',
+      title: 'foodNote',
+      subtitle: 'tuesday',
     },
   },
 })

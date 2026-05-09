@@ -70,8 +70,13 @@ export const featuredEventsQuery = `*[_type == "event" && featured == true && co
 
 export const barInfoQuery = `*[_type == "barInfo"][0] {
   _id,
-  hours,
-  closedDays,
+  monday,
+  tuesday,
+  wednesday,
+  thursday,
+  friday,
+  saturday,
+  sunday,
   foodNote
 }`;
 

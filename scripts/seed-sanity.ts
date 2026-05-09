@@ -66,8 +66,13 @@ async function seedBarInfo() {
     {
       _id: 'barInfo-default',
       _type: 'barInfo',
-      hours: 'Open Tuesday through Sunday, 11 AM to close',
-      closedDays: 'Closed Mondays',
+      monday: '',
+      tuesday: '11 AM to close',
+      wednesday: '11 AM to close',
+      thursday: '11 AM to close',
+      friday: '11 AM to close',
+      saturday: '11 AM to close',
+      sunday: '11 AM to close',
       foodNote: 'Fresh pizza and bar favorites',
     },
     'barInfo-default'

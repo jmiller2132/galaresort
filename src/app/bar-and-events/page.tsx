@@ -60,25 +60,45 @@ export default async function BarAndEventsPage() {
                   <UtensilsCrossed size={16} className="text-river-blue" />
                   {barInfo.foodNote ?? "Full bar with food"}
                 </div>
-                {barInfo.hours && (
-                  <div className="flex items-center gap-2">
-                    <span className="text-river-blue font-semibold text-sm">Hours:</span>
-                    {barInfo.hours}
-                  </div>
-                )}
-                {barInfo.closedDays && (
-                  <div className="flex items-center gap-2">
-                    <span className="text-river-blue font-semibold text-sm">Closed:</span>
-                    {barInfo.closedDays}
-                  </div>
-                )}
-                <div className="flex items-center gap-2">
-                  <span className="text-river-blue font-semibold text-sm">Call:</span>
-                  <a href="tel:+19204462423" className="text-river-blue font-medium hover:underline">
-                    (920) 446-2423
-                  </a>
-                </div>
               </div>
+              {Object.entries({
+                Monday: barInfo.monday,
+                Tuesday: barInfo.tuesday,
+                Wednesday: barInfo.wednesday,
+                Thursday: barInfo.thursday,
+                Friday: barInfo.friday,
+                Saturday: barInfo.saturday,
+                Sunday: barInfo.sunday,
+              }).some(([, v]) => v) && (
+                <div className="mt-6 border border-sand rounded-lg overflow-hidden">
+                  {Object.entries({
+                    Monday: barInfo.monday,
+                    Tuesday: barInfo.tuesday,
+                    Wednesday: barInfo.wednesday,
+                    Thursday: barInfo.thursday,
+                    Friday: barInfo.friday,
+                    Saturday: barInfo.saturday,
+                    Sunday: barInfo.sunday,
+                  }).map(([day, hours]) => (
+                    <div
+                      key={day}
+                      className="flex justify-between items-center px-4 py-2.5 text-sm border-b border-sand last:border-0 odd:bg-white even:bg-cream"
+                    >
+                      <span className="font-semibold text-charcoal">{day}</span>
+                      <span className={hours ? "text-river-gray" : "text-river-gray/50 italic"}>
+                        {hours ?? "Closed"}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              )}
+              <p className="mt-4 text-river-gray text-sm">
+                Call{" "}
+                <a href="tel:+19204462423" className="text-river-blue font-medium hover:underline">
+                  (920) 446-2423
+                </a>{" "}
+                for details.
+              </p>
             </AnimateIn>
             <AnimateIn delay={0.2}>
               <div className="relative aspect-[4/3] rounded-lg overflow-hidden">

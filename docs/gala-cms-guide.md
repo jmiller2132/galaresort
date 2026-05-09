@@ -114,13 +114,12 @@ Use this to add, update, or organize photos in the gallery.
 
 ## Bar Info
 
-Use this to update your bar hours and food note shown on the Bar & Events page.
+Use this to update your hours and food note shown on the Bar & Events page.
 
 1. Click **Bar Info** in the left sidebar
 2. Click the existing Bar Info document
 3. Update the fields:
-   - **Hours** — e.g. "Tuesday through Sunday, 11 AM to close"
-   - **Closed Days** — e.g. "Closed Mondays"
+   - **Monday through Sunday** — type the hours for each day, e.g. "11 AM to close". Leave the field blank if the bar is closed that day — it will automatically show as "Closed"
    - **Food Note** — e.g. "Fresh pizza and bar favorites"
 4. Click **Publish**
 
