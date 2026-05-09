@@ -6,7 +6,7 @@ export default async function AnnouncementBar() {
   if (!announcement?.text) return null;
 
   return (
-    <div className="w-full bg-river-blue text-white text-sm text-center py-2 px-4">
+    <div className="w-full bg-river-blue text-white text-sm text-center py-3 px-4">
       <span>{announcement.text}</span>
       {announcement.link && (
         <a
