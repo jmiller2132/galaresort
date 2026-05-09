@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Outfit, DM_Sans } from "next/font/google";
+import { Suspense } from "react";
 import LayoutChrome from "@/components/layout/LayoutChrome";
+import AnnouncementBar from "@/components/layout/AnnouncementBar";
 import "@/styles/globals.css";
 
 const outfit = Outfit({
@@ -80,6 +82,9 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen flex flex-col">
+        <Suspense fallback={null}>
+          <AnnouncementBar />
+        </Suspense>
         <LayoutChrome>{children}</LayoutChrome>
       </body>
     </html>

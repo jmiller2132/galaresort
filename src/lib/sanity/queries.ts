@@ -74,6 +74,12 @@ export const announcementQuery = `*[_type == "announcement" && active == true][0
   link
 }`;
 
+export type SanityAnnouncement = {
+  _id: string;
+  text: string;
+  link?: string;
+};
+
 export const galleryQuery = `*[_type == "galleryImage"] | order(_createdAt asc) {
   _id,
   image {

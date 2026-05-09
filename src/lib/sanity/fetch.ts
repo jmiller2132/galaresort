@@ -23,6 +23,8 @@ import {
   eventsQuery,
   featuredEventsQuery,
   galleryQuery,
+  announcementQuery,
+  type SanityAnnouncement,
 } from "./queries";
 
 // ─── Internal Sanity response shapes ────────────────────────────────────────
@@ -181,6 +183,19 @@ type SanityGalleryImage = {
   alt: string;
   category: GalleryImage["category"];
 };
+
+export async function fetchAnnouncement(): Promise<SanityAnnouncement | null> {
+  try {
+    const result: SanityAnnouncement | null = await client.fetch(
+      announcementQuery,
+      {},
+      { next: { revalidate: 300 } }
+    );
+    return result ?? null;
+  } catch {
+    return null;
+  }
+}
 
 export async function fetchGalleryImages(): Promise<GalleryImage[]> {
   try {
