@@ -44,9 +44,6 @@ export default async function BarAndEventsPage() {
                 drink turns into dancing, new friends, and one of those
                 nights you talk about all winter.
               </p>
-              <p className="mt-4 text-river-gray leading-relaxed">
-                {barInfo.foodNote ?? "Fresh pizza and bar favorites are on the menu."}
-              </p>
               <div className="mt-6 space-y-3 text-river-gray">
                 <div className="flex items-center gap-2">
                   <Music size={16} className="text-river-blue" />
