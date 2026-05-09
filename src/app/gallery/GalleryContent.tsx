@@ -53,26 +53,26 @@ export default function GalleryContent({ images }: { images: GalleryImage[] }) {
             ))}
           </div>
 
-          <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
+          <div className="columns-1 sm:columns-2 lg:columns-3 gap-4">
             {filtered.map((img, i) => (
-              <AnimateIn key={img.src + i} delay={(i % 3) * 0.08}>
-                <div
-                  className="relative overflow-hidden rounded-lg cursor-pointer break-inside-avoid"
-                  onClick={() => {
-                    setIndex(images.indexOf(img));
-                    setOpen(true);
-                  }}
-                >
-                  <Image
-                    src={img.src}
-                    alt={img.alt}
-                    width={img.width}
-                    height={i % 3 === 0 ? 800 : i % 3 === 1 ? 600 : 450}
-                    className="w-full object-cover hover:scale-105 transition-transform duration-700"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  />
-                </div>
-              </AnimateIn>
+              <div
+                key={img.src + i}
+                className="relative overflow-hidden rounded-lg cursor-pointer break-inside-avoid mb-4 group"
+                onClick={() => {
+                  setIndex(images.indexOf(img));
+                  setOpen(true);
+                }}
+              >
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  width={800}
+                  height={1000}
+                  className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  loading={i < 6 ? "eager" : "lazy"}
+                />
+              </div>
             ))}
           </div>
 
