@@ -86,7 +86,7 @@ export default async function BarAndEventsPage() {
                     >
                       <span className="font-semibold text-charcoal">{day}</span>
                       <span className={hours ? "text-river-gray" : "text-river-gray/50 italic"}>
-                        {hours ?? "Closed"}
+                        {hours || "Closed"}
                       </span>
                     </div>
                   ))}

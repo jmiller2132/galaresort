@@ -66,7 +66,6 @@ async function seedBarInfo() {
     {
       _id: 'barInfo-default',
       _type: 'barInfo',
-      monday: '',
       tuesday: '11 AM to close',
       wednesday: '11 AM to close',
       thursday: '11 AM to close',
