@@ -193,7 +193,6 @@ export type BarInfo = {
   friday?: string;
   saturday?: string;
   sunday?: string;
-  foodNote?: string;
 };
 
 export async function fetchBarInfo(): Promise<BarInfo> {

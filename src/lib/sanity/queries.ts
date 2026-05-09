@@ -76,8 +76,7 @@ export const barInfoQuery = `*[_type == "barInfo"][0] {
   thursday,
   friday,
   saturday,
-  sunday,
-  foodNote
+  sunday
 }`;
 
 export const announcementQuery = `*[_type == "announcement" && active == true][0] {

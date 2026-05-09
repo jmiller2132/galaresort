@@ -47,17 +47,11 @@ export default defineType({
       type: 'string',
       description: 'Hours, e.g. "11 AM to close". Leave blank if closed.',
     }),
-    defineField({
-      name: 'foodNote',
-      title: 'Food Note',
-      type: 'string',
-      description: 'e.g. "Fresh pizza and bar favorites"',
-    }),
   ],
   preview: {
     select: {
-      title: 'foodNote',
-      subtitle: 'tuesday',
+      title: 'tuesday',
+      subtitle: 'wednesday',
     },
   },
 })
