@@ -139,7 +139,7 @@ export default async function CabinDetailPage({ params }: Props) {
                       </div>
                     </div>
                     <p className="text-xs text-river-gray mb-1">
-                      All rates + tax. Availability confirmed after inquiry.
+                      All rates + taxes &amp; fees. Availability confirmed after inquiry.
                     </p>
                     <p className="text-xs text-river-gray mb-4">
                       Holiday weeks and weekends are subject to a surcharge. Contact us for holiday pricing.
