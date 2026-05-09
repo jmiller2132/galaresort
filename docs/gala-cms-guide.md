@@ -67,6 +67,51 @@ Only one announcement shows on the site at a time. If you have multiple announce
 
 ---
 
+## Cabins
+
+Use this to update cabin descriptions, rates, guest counts, and amenities.
+
+1. Click **Cabins** in the left sidebar
+2. Click the cabin you want to edit
+3. Update any fields as needed:
+   - **Name** — the cabin name shown on the site
+   - **Max Guests** — the maximum number of guests
+   - **Nightly Rate / Weekly Rate** — shown on the cabin detail page
+   - **Min Nights** — minimum booking length
+   - **Dog Friendly** — toggle on or off
+   - **Short Description** — the one-liner shown on the cabins listing page
+   - **Description** — the full description shown on the cabin detail page
+   - **Amenities** — list of amenities shown on the detail page
+   - **Images** — upload cabin photos (1200px wide minimum, JPG, under 1 MB each)
+4. Click **Publish**
+
+Note: cabin changes go live within about 60 seconds.
+
+---
+
+## Gallery Images
+
+Use this to add, update, or organize photos in the gallery.
+
+### Adding a New Photo
+1. Click **Gallery Images** in the left sidebar
+2. Click the **+** button or pencil icon in the top left
+3. Fill in the fields:
+   - **Image** — upload your photo (1200px wide minimum, JPG, under 1 MB)
+   - **Alt Text** — describe the photo, e.g. "Guests enjoying the patio at sunset" (required for accessibility)
+   - **Category** — choose from Waterfront, Cabins, Bar & Events, Grounds, or Life at The Gala
+   - **Caption** — optional short caption shown in the lightbox
+4. Click **Publish**
+
+### Categories
+- **Waterfront** — river, docks, aerial shots of the water
+- **Cabins** — exterior and interior cabin photos
+- **Bar & Events** — bar, patio, live music shots
+- **Grounds** — property, campground, roads, amenities
+- **Life at The Gala** — candid guest photos, people having fun, bar nights, events in action
+
+---
+
 ## Bar Info
 
 Use this to update your bar hours and food note shown on the Bar & Events page.

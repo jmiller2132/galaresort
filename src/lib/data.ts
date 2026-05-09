@@ -130,7 +130,7 @@ export const cabins: Cabin[] = [
     description:
       "The Muskie is one of the bigger cabins at The Gala, with a private master bedroom, a bunk bedroom, a loft, and an open living and dining area that gives your whole group room to spread out. It's a park model setup that feels like a real home base on the river — not cramped, not fussy, just comfortable.\n\nEverything's furnished and ready to go: bed linens, cooking utensils, microwave, TV, and central air and heat. Bring your towels, grab a spot on the water, and enjoy slow mornings and long evenings with the Wolf River right outside your door.",
     shortDescription:
-      "A spacious park model cabin with two bedrooms, a loft, and room for up to eight — right on the Wolf River with everything you need to settle in.",
+      "A spacious park model cabin with two bedrooms, a loft, and room for up to ten — right on the Wolf River with everything you need to settle in.",
     amenities: ["Waterfront", "Private Master Bedroom", "Bunk Bedroom", "Loft Sleeping Area", "Living Room", "Dining Area", "Furnished", "Bed Linens Provided", "Cooking Utensils", "Microwave", "TV", "Central Air", "Central Heat"],
     images: [
       { src: "/images/cabins/muskie/DSC00391.jpg", alt: "Muskie cabin exterior on the Wolf River", width: 1200, height: 800 },
@@ -223,7 +223,7 @@ export const cabins: Cabin[] = [
     minNights: 2,
     dogFriendly: true,
     description:
-      "Our only four-season cabin, the Northern Pike is built for year-round comfort on the Wolf River. Insulated and heated, it's perfect for those who want to experience the river in every season — from summer days on the dock to quiet winter mornings with snow on the water. Sleeps six, with all the comforts of home.",
+      "Our only four-season cabin, the Northern Pike is built for year-round comfort on the Wolf River. Insulated and heated, it's perfect for those who want to experience the river in every season — from summer days on the dock to quiet winter mornings with snow on the water. Sleeps four, with all the comforts of home.",
     shortDescription:
       "Our only four-season cabin — insulated, heated, and built for year-round life on the Wolf River.",
     amenities: [
