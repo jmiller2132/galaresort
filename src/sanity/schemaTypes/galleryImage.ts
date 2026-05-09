@@ -20,9 +20,10 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'category',
-      title: 'Category',
-      type: 'string',
+      name: 'categories',
+      title: 'Categories',
+      type: 'array',
+      of: [{ type: 'string' }],
       options: {
         list: [
           { title: 'Waterfront', value: 'waterfront' },
@@ -31,9 +32,9 @@ export default defineType({
           { title: 'Grounds', value: 'grounds' },
           { title: 'Life at The Gala', value: 'life' },
         ],
-        layout: 'radio',
       },
-      validation: (Rule) => Rule.required(),
+      description: 'Select all that apply — a photo can belong to multiple categories.',
+      validation: (Rule) => Rule.required().min(1),
     }),
   ],
   preview: {

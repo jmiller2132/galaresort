@@ -5,6 +5,7 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import AnimateIn from "@/components/ui/AnimateIn";
 import EventCalendar from "@/components/sections/EventCalendar";
 import { fetchEvents, fetchBarInfo } from "@/lib/sanity/fetch";
+import Link from "next/link";
 import { Music, Sun, UtensilsCrossed } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -89,6 +90,15 @@ export default async function BarAndEventsPage() {
                   ))}
                 </div>
               )}
+              <div className="mt-6">
+                <Link
+                  href="/menu"
+                  className="inline-flex items-center gap-2 rounded-md bg-river-blue px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-river-blue-light"
+                >
+                  <UtensilsCrossed size={15} />
+                  View Full Menu
+                </Link>
+              </div>
               <p className="mt-4 text-river-gray text-sm">
                 Call{" "}
                 <a href="tel:+19204462423" className="text-river-blue font-medium hover:underline">

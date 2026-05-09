@@ -5,7 +5,7 @@ import PageHero from "@/components/ui/PageHero";
 import AnimateIn from "@/components/ui/AnimateIn";
 import { formatPrice } from "@/lib/data";
 import { fetchCabins } from "@/lib/sanity/fetch";
-import { Users, Dog } from "lucide-react";
+import { Users } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Waterfront Cabins",
@@ -26,68 +26,82 @@ export default async function CabinsPage() {
 
       <section className="py-20 bg-cream">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mb-12 max-w-3xl">
+          <div className="mb-12">
             <AnimateIn>
-              <p className="text-river-gray text-lg leading-relaxed">
+              <p className="text-river-gray text-lg leading-relaxed max-w-4xl">
                 Wake up on the Wolf River. Step outside, and your dock is
                 right there — coffee in hand, water at your feet, nowhere
                 you need to be. Our six cabins sit directly on the river,
                 each with private dock access and full resort amenities a
                 short walk away. Five are three-season cabins named after
-                the fish in these waters. The sixth — Northern Pike – Four
+                the fish in these waters. The sixth — the Northern Four
                 Season Cabin — is available year-round.
               </p>
-              <div className="mt-4 flex flex-wrap gap-4 text-sm text-river-gray">
-                <span className="bg-white rounded-md px-3 py-1.5 border border-sand/50">
-                  <strong className="text-charcoal">{formatPrice(cabins[0].rateNightly)}</strong>/night
-                </span>
-                <span className="bg-white rounded-md px-3 py-1.5 border border-sand/50">
-                  <strong className="text-charcoal">{formatPrice(cabins[0].rateWeekly)}</strong>/week
-                </span>
-                <span className="bg-white rounded-md px-3 py-1.5 border border-sand/50">
-                  {cabins[0].minNights}-night minimum (3 on holidays)
-                </span>
-              </div>
             </AnimateIn>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {cabins.map((cabin, i) => (
-              <AnimateIn key={cabin.slug} delay={i * 0.1}>
-                <Link href={`/stay/cabins/${cabin.slug}`} className="group block card-lift">
-                  <div className="relative aspect-[4/3] overflow-hidden rounded-lg transition-shadow duration-300 group-hover:shadow-lg">
-                    <Image
-                      src={cabin.images[0].src}
-                      alt={cabin.images[0].alt}
-                      fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    />
-                    <div className="absolute top-3 left-3 bg-river-blue/90 text-white text-xs font-semibold uppercase tracking-wider px-3 py-1.5 rounded-md">
-                      {cabin.seasonType === "year-round" ? "Year-Round" : "3-Season"}
+            {cabins.map((cabin, i) => {
+              const unavailable = cabin.available === false;
+              return (
+                <AnimateIn key={cabin.slug} delay={i * 0.1}>
+                  {unavailable ? (
+                    <div className="group block opacity-70 cursor-not-allowed">
+                      <div className="relative aspect-[4/3] overflow-hidden rounded-lg">
+                        <Image
+                          src={cabin.images[0].src}
+                          alt={cabin.images[0].alt}
+                          fill
+                          className="object-cover grayscale"
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        />
+                        <div className="absolute inset-0 bg-charcoal/40 flex items-center justify-center">
+                          <span className="bg-white text-charcoal text-sm font-bold uppercase tracking-wider px-4 py-2 rounded-md">
+                            Under Restoration
+                          </span>
+                        </div>
+                      </div>
+                      <div className="mt-4">
+                        <h2 className="font-[family-name:var(--font-display)] text-xl font-bold text-charcoal">
+                          {cabin.name}
+                        </h2>
+                        <p className="mt-1 text-sm text-river-gray line-clamp-2">
+                          Not currently available for reservations.
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                  <div className="mt-4">
-                    <h2 className="font-[family-name:var(--font-display)] text-xl font-bold text-charcoal group-hover:text-river-blue transition-colors">
-                      {cabin.name}
-                    </h2>
-                    <p className="mt-1 text-sm text-river-gray line-clamp-2">
-                      {cabin.shortDescription}
-                    </p>
-                    <div className="mt-3 flex items-center gap-4 text-xs text-river-gray">
-                      <span className="flex items-center gap-1">
-                        <Users size={13} /> Up to {cabin.maxGuests}
-                      </span>
-                      {cabin.dogFriendly && (
-                        <span className="flex items-center gap-1">
-                          <Dog size={13} /> Dogs welcome
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                </Link>
-              </AnimateIn>
-            ))}
+                  ) : (
+                    <Link href={`/stay/cabins/${cabin.slug}`} className="group block card-lift">
+                      <div className="relative aspect-[4/3] overflow-hidden rounded-lg transition-shadow duration-300 group-hover:shadow-lg">
+                        <Image
+                          src={cabin.images[0].src}
+                          alt={cabin.images[0].alt}
+                          fill
+                          className="object-cover transition-transform duration-700 group-hover:scale-105"
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        />
+                      </div>
+                      <div className="mt-4">
+                        <h2 className="font-[family-name:var(--font-display)] text-xl font-bold text-charcoal group-hover:text-river-blue transition-colors">
+                          {cabin.name}
+                        </h2>
+                        <p className="mt-1 text-sm text-river-gray line-clamp-2">
+                          {cabin.shortDescription}
+                        </p>
+                        <div className="mt-3 flex items-center justify-between text-xs text-river-gray">
+                          <span className="flex items-center gap-1">
+                            <Users size={13} /> Up to {cabin.maxGuests}
+                          </span>
+                          <span>
+                            <strong className="text-charcoal">{formatPrice(cabin.rateNightly)}</strong>/night &nbsp;·&nbsp; <strong className="text-charcoal">{formatPrice(cabin.rateWeekly)}</strong>/week
+                          </span>
+                        </div>
+                      </div>
+                    </Link>
+                  )}
+                </AnimateIn>
+              );
+            })}
           </div>
         </div>
       </section>

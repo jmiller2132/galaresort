@@ -97,6 +97,6 @@ export const galleryQuery = `*[_type == "galleryImage"] | order(_createdAt asc) 
     asset->{ url },
     alt
   },
-  category,
+  categories,
   caption
 }`;

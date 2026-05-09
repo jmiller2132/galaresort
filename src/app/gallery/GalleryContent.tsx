@@ -25,7 +25,7 @@ export default function GalleryContent({ images }: { images: GalleryImage[] }) {
   const filtered =
     filter === "all"
       ? images
-      : images.filter((img) => img.category === filter);
+      : images.filter((img) => img.categories?.includes(filter as never));
 
   return (
     <>

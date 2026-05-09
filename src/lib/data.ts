@@ -23,6 +23,7 @@ export interface Cabin {
   rateWeekly: number;
   minNights: number;
   dogFriendly: boolean;
+  available?: boolean;
   description: string;
   shortDescription: string;
   amenities: string[];
@@ -51,12 +52,14 @@ export interface GalaEvent {
   image?: ImageData;
 }
 
+export type GalleryCategory = "waterfront" | "cabins" | "bar" | "grounds" | "life";
+
 export interface GalleryImage {
   src: string;
   alt: string;
   width: number;
   height: number;
-  category: "waterfront" | "cabins" | "bar" | "grounds" | "life";
+  categories: GalleryCategory[];
 }
 
 export interface Amenity {
@@ -147,7 +150,7 @@ export const cabins: Cabin[] = [
     seasonType: "3-season",
     maxGuests: 6,
     rateNightly: 150,
-    rateWeekly: 995,
+    rateWeekly: 900,
     minNights: 2,
     dogFriendly: true,
     description:
@@ -192,10 +195,11 @@ export const cabins: Cabin[] = [
     name: "White Bass",
     seasonType: "3-season",
     maxGuests: 6,
-    rateNightly: 150,
-    rateWeekly: 995,
+    rateNightly: 200,
+    rateWeekly: 1000,
     minNights: 2,
     dogFriendly: true,
+    available: false,
     description:
       "The White Bass is a cottage-style cabin set near the shore of the Wolf River, with a warm knotty pine interior that gives it a character all its own. With three rooms and space for up to six, there's enough room to spread out without losing that cozy, lived-in feel — and your own pier puts you right at the water's edge.\n\nEverything's furnished and ready: bed linens, cooking utensils, a microwave, TV, and central air and heat. Towels are not provided — please bring your own. The White Bass has a little more of that classic cottage charm — the kind of place where you kick off your shoes, open the door, and let the river set the pace.",
     shortDescription:
@@ -235,12 +239,12 @@ export const cabins: Cabin[] = [
       "Grill Area",
     ],
     images: [
-      { src: "/images/cabins/4season/DSC00360.jpg", alt: "Northern Pike four-season cabin exterior", width: 1200, height: 800 },
-      { src: "/images/cabins/4season/DSC00352.jpg", alt: "Northern Pike cabin from the river", width: 1200, height: 800 },
-      { src: "/images/cabins/4season/IMG_2773.jpg", alt: "Northern Pike cabin waterfront", width: 1200, height: 800 },
-      { src: "/images/cabins/4season/IMG_2774.jpg", alt: "Northern Pike cabin and dock", width: 1200, height: 800 },
-      { src: "/images/cabins/4season/IMG_2775.jpg", alt: "Northern Pike cabin river view", width: 1200, height: 800 },
-      { src: "/images/cabins/4season/IMG_2776.jpg", alt: "Northern Pike cabin from the shoreline", width: 1200, height: 800 },
+      { src: "/images/cabins/4season/DSC00360.jpg", alt: "Northern four-season cabin exterior", width: 1200, height: 800 },
+      { src: "/images/cabins/4season/DSC00352.jpg", alt: "Northern cabin from the river", width: 1200, height: 800 },
+      { src: "/images/cabins/4season/IMG_2773.jpg", alt: "Northern cabin waterfront", width: 1200, height: 800 },
+      { src: "/images/cabins/4season/IMG_2774.jpg", alt: "Northern cabin and dock", width: 1200, height: 800 },
+      { src: "/images/cabins/4season/IMG_2775.jpg", alt: "Northern cabin river view", width: 1200, height: 800 },
+      { src: "/images/cabins/4season/IMG_2776.jpg", alt: "Northern cabin from the shoreline", width: 1200, height: 800 },
     ],
   },
 ];
@@ -479,30 +483,30 @@ export const events: GalaEvent[] = [
 // ─── Gallery ────────────────────────────────────────────────────────────────
 
 export const galleryImages: GalleryImage[] = [
-  { src: "/images/exterior/DJI_20260304111831_0063_D-2.jpg", alt: "Aerial view of Gala Resort on the Wolf River", width: 1200, height: 800, category: "waterfront" },
-  { src: "/images/exterior/DJI_20260304112426_0073_D.jpg", alt: "Drone view of the Wolf River waterfront", width: 1200, height: 800, category: "waterfront" },
-  { src: "/images/exterior/DJI_20260304113558_0090_D.jpg", alt: "Gala Resort property from above", width: 1200, height: 800, category: "waterfront" },
-  { src: "/images/exterior/DJI_20260304113737_0093_D.jpg", alt: "Wolf River and resort docks aerial view", width: 1200, height: 800, category: "waterfront" },
-  { src: "/images/cabins/catfish/IMG_2767.jpg", alt: "Catfish cabin on the Wolf River", width: 1200, height: 800, category: "cabins" },
-  { src: "/images/cabins/muskie/DSC00391.jpg", alt: "Muskie cabin exterior", width: 1200, height: 800, category: "cabins" },
-  { src: "/images/cabins/walleye/DSC00430.jpg", alt: "Walleye cabin on the waterfront", width: 1200, height: 800, category: "cabins" },
-  { src: "/images/cabins/4season/DSC00360.jpg", alt: "Northern Pike four-season cabin", width: 1200, height: 800, category: "cabins" },
-  { src: "/images/bar/Virtual Staging Bar Area-20.png", alt: "Gala Resort bar area", width: 1200, height: 800, category: "bar" },
-  { src: "/images/bar/Virtual Staging Dining Room.PNG", alt: "Bar dining room at The Gala", width: 1200, height: 800, category: "bar" },
-  { src: "/images/bar/Untitled design-13.png", alt: "Riverfront bar at Gala Resort", width: 1200, height: 800, category: "bar" },
-  { src: "/images/exterior/DJI_20260304112824_0085_D.jpg", alt: "Gala Resort from the Wolf River", width: 1200, height: 800, category: "waterfront" },
-  { src: "/images/exterior/DJI_20260304112633_0078_D.jpg", alt: "Aerial view of the Gala Resort grounds and cabin rows", width: 1200, height: 800, category: "grounds" },
-  { src: "/images/exterior/DJI_20260304112737_0081_D.jpg", alt: "Gala Resort property layout from above", width: 1200, height: 800, category: "grounds" },
-  { src: "/images/exterior/DJI_20260304113707_0091_D.jpg", alt: "Overview of the resort grounds and seasonal sites", width: 1200, height: 800, category: "grounds" },
-  { src: "/images/exterior/DJI_20260304113800_0095_D.jpg", alt: "Gala Resort roads and property from the air", width: 1200, height: 800, category: "grounds" },
-  { src: "/images/exterior/bar-aerial-patio-river.jpeg", alt: "Aerial view of Gala Resort bar and patio on the Wolf River", width: 1200, height: 800, category: "bar" },
-  { src: "/images/exterior/bar-aerial-patio-closeup.jpeg", alt: "Closeup aerial of the Gala Resort bar patio", width: 1200, height: 800, category: "bar" },
-  { src: "/images/exterior/bar-aerial-riverside.jpeg", alt: "Gala Resort bar from the riverside", width: 1200, height: 800, category: "waterfront" },
-  { src: "/images/exterior/docks-aerial-boat.jpeg", alt: "Gala Resort docks with boat on the Wolf River", width: 1200, height: 800, category: "waterfront" },
-  { src: "/images/exterior/wolf-river-aerial-wide.jpeg", alt: "Wide aerial view of the Wolf River and Gala Resort", width: 1200, height: 800, category: "waterfront" },
-  { src: "/images/exterior/wolf-river-aerial-property.jpeg", alt: "Aerial view of Gala Resort property on the Wolf River", width: 1200, height: 800, category: "waterfront" },
-  { src: "/images/exterior/docks-aerial-bar-river.jpeg", alt: "Gala Resort docks and bar on the Wolf River", width: 1200, height: 800, category: "waterfront" },
-  { src: "/images/exterior/property-aerial-overhead.jpeg", alt: "Overhead aerial of the Gala Resort grounds", width: 1200, height: 800, category: "grounds" },
+  { src: "/images/exterior/DJI_20260304111831_0063_D-2.jpg", alt: "Aerial view of Gala Resort on the Wolf River", width: 1200, height: 800, categories: ["waterfront"] },
+  { src: "/images/exterior/DJI_20260304112426_0073_D.jpg", alt: "Drone view of the Wolf River waterfront", width: 1200, height: 800, categories: ["waterfront"] },
+  { src: "/images/exterior/DJI_20260304113558_0090_D.jpg", alt: "Gala Resort property from above", width: 1200, height: 800, categories: ["waterfront", "grounds"] },
+  { src: "/images/exterior/DJI_20260304113737_0093_D.jpg", alt: "Wolf River and resort docks aerial view", width: 1200, height: 800, categories: ["waterfront"] },
+  { src: "/images/cabins/catfish/IMG_2767.jpg", alt: "Catfish cabin on the Wolf River", width: 1200, height: 800, categories: ["cabins"] },
+  { src: "/images/cabins/muskie/DSC00391.jpg", alt: "Muskie cabin exterior", width: 1200, height: 800, categories: ["cabins"] },
+  { src: "/images/cabins/walleye/DSC00430.jpg", alt: "Walleye cabin on the waterfront", width: 1200, height: 800, categories: ["cabins"] },
+  { src: "/images/cabins/4season/DSC00360.jpg", alt: "Northern four-season cabin", width: 1200, height: 800, categories: ["cabins"] },
+  { src: "/images/bar/Virtual Staging Bar Area-20.png", alt: "Gala Resort bar area", width: 1200, height: 800, categories: ["bar"] },
+  { src: "/images/bar/Virtual Staging Dining Room.PNG", alt: "Bar dining room at The Gala", width: 1200, height: 800, categories: ["bar"] },
+  { src: "/images/bar/Untitled design-13.png", alt: "Riverfront bar at Gala Resort", width: 1200, height: 800, categories: ["bar"] },
+  { src: "/images/exterior/DJI_20260304112824_0085_D.jpg", alt: "Gala Resort from the Wolf River", width: 1200, height: 800, categories: ["waterfront"] },
+  { src: "/images/exterior/DJI_20260304112633_0078_D.jpg", alt: "Aerial view of the Gala Resort grounds and cabin rows", width: 1200, height: 800, categories: ["grounds", "cabins"] },
+  { src: "/images/exterior/DJI_20260304112737_0081_D.jpg", alt: "Gala Resort property layout from above", width: 1200, height: 800, categories: ["grounds"] },
+  { src: "/images/exterior/DJI_20260304113707_0091_D.jpg", alt: "Overview of the resort grounds and seasonal sites", width: 1200, height: 800, categories: ["grounds"] },
+  { src: "/images/exterior/DJI_20260304113800_0095_D.jpg", alt: "Gala Resort roads and property from the air", width: 1200, height: 800, categories: ["grounds"] },
+  { src: "/images/exterior/bar-aerial-patio-river.jpeg", alt: "Aerial view of Gala Resort bar and patio on the Wolf River", width: 1200, height: 800, categories: ["bar", "waterfront"] },
+  { src: "/images/exterior/bar-aerial-patio-closeup.jpeg", alt: "Closeup aerial of the Gala Resort bar patio", width: 1200, height: 800, categories: ["bar"] },
+  { src: "/images/exterior/bar-aerial-riverside.jpeg", alt: "Gala Resort bar from the riverside", width: 1200, height: 800, categories: ["waterfront", "bar"] },
+  { src: "/images/exterior/docks-aerial-boat.jpeg", alt: "Gala Resort docks with boat on the Wolf River", width: 1200, height: 800, categories: ["waterfront"] },
+  { src: "/images/exterior/wolf-river-aerial-wide.jpeg", alt: "Wide aerial view of the Wolf River and Gala Resort", width: 1200, height: 800, categories: ["waterfront"] },
+  { src: "/images/exterior/wolf-river-aerial-property.jpeg", alt: "Aerial view of Gala Resort property on the Wolf River", width: 1200, height: 800, categories: ["waterfront", "grounds"] },
+  { src: "/images/exterior/docks-aerial-bar-river.jpeg", alt: "Gala Resort docks and bar on the Wolf River", width: 1200, height: 800, categories: ["waterfront", "bar"] },
+  { src: "/images/exterior/property-aerial-overhead.jpeg", alt: "Overhead aerial of the Gala Resort grounds", width: 1200, height: 800, categories: ["grounds"] },
 ];
 
 // ─── Amenities ──────────────────────────────────────────────────────────────
