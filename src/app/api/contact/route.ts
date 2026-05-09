@@ -4,7 +4,7 @@ import { Resend } from "resend";
 const MIN_SUBMIT_TIME_MS = 3000;
 
 const NOTIFY_EMAIL = "galaresortllc@gmail.com";
-const FROM_ADDRESS = "Gala Resort <onboarding@resend.dev>"; // TODO: change to noreply@galaresort.com after Resend domain verification
+const FROM_ADDRESS = "Gala Resort <noreply@galaresort.com>";
 
 export async function POST(request: Request) {
   try {
