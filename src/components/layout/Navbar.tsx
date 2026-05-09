@@ -4,8 +4,9 @@ import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ExternalLink } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import type { SanityAnnouncement } from "@/lib/sanity/queries";
 
 const navLinks = [
   { href: "/stay", label: "Stay With Us" },
@@ -21,7 +22,7 @@ function usePageHasHero(pathname: string) {
   return true;
 }
 
-export default function Navbar() {
+export default function Navbar({ announcement }: { announcement?: SanityAnnouncement | null }) {
   const pathname = usePathname();
   const pageHasHero = usePageHasHero(pathname);
   const [scrolled, setScrolled] = useState(!pageHasHero);
@@ -52,6 +53,22 @@ export default function Navbar() {
             : "bg-transparent"
         }`}
       >
+        {announcement?.text && (
+          <div className="w-full bg-river-blue text-white text-xs sm:text-sm text-center py-2.5 px-4 leading-snug">
+            <span>{announcement.text}</span>
+            {announcement.link && (
+              <a
+                href={announcement.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 ml-2 font-semibold underline underline-offset-2 hover:opacity-80 transition-opacity"
+              >
+                Learn more
+                <ExternalLink size={11} />
+              </a>
+            )}
+          </div>
+        )}
         <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-2 lg:px-8">
           <Link href="/" className="relative z-50 flex-shrink-0">
             <Image

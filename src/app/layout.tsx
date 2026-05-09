@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Outfit, DM_Sans } from "next/font/google";
-import { Suspense } from "react";
 import LayoutChrome from "@/components/layout/LayoutChrome";
-import AnnouncementBar from "@/components/layout/AnnouncementBar";
+import { fetchAnnouncement } from "@/lib/sanity/fetch";
 import "@/styles/globals.css";
 
 const outfit = Outfit({
@@ -43,11 +42,12 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const announcement = await fetchAnnouncement();
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Campground",
@@ -82,10 +82,7 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen flex flex-col">
-        <Suspense fallback={null}>
-          <AnnouncementBar />
-        </Suspense>
-        <LayoutChrome>{children}</LayoutChrome>
+        <LayoutChrome announcement={announcement}>{children}</LayoutChrome>
       </body>
     </html>
   );
