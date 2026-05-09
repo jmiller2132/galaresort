@@ -45,14 +45,7 @@ export default async function BarAndEventsPage() {
                 nights you talk about all winter.
               </p>
               <p className="mt-4 text-river-gray leading-relaxed">
-                {barInfo.foodNote ?? "Fresh pizza and bar favorites are on the menu."}{" "}
-                {barInfo.hours && <>Open {barInfo.hours}. </>}
-                {barInfo.closedDays && <>{barInfo.closedDays}. </>}
-                Call{" "}
-                <a href="tel:+19204462423" className="text-river-blue font-medium hover:underline">
-                  (920) 446-2423
-                </a>{" "}
-                for details.
+                {barInfo.foodNote ?? "Fresh pizza and bar favorites are on the menu."}
               </p>
               <div className="mt-6 space-y-3 text-river-gray">
                 <div className="flex items-center gap-2">
@@ -66,6 +59,24 @@ export default async function BarAndEventsPage() {
                 <div className="flex items-center gap-2">
                   <UtensilsCrossed size={16} className="text-river-blue" />
                   {barInfo.foodNote ?? "Full bar with food"}
+                </div>
+                {barInfo.hours && (
+                  <div className="flex items-center gap-2">
+                    <span className="text-river-blue font-semibold text-sm">Hours:</span>
+                    {barInfo.hours}
+                  </div>
+                )}
+                {barInfo.closedDays && (
+                  <div className="flex items-center gap-2">
+                    <span className="text-river-blue font-semibold text-sm">Closed:</span>
+                    {barInfo.closedDays}
+                  </div>
+                )}
+                <div className="flex items-center gap-2">
+                  <span className="text-river-blue font-semibold text-sm">Call:</span>
+                  <a href="tel:+19204462423" className="text-river-blue font-medium hover:underline">
+                    (920) 446-2423
+                  </a>
                 </div>
               </div>
             </AnimateIn>
