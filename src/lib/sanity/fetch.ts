@@ -46,6 +46,7 @@ type SanityCabin = {
   rateWeekly: number;
   minNights: number;
   dogFriendly: boolean;
+  available?: boolean;
   shortDescription: string;
   description: string;
   amenities: string[];
@@ -91,6 +92,7 @@ function mapCabin(doc: SanityCabin): Cabin {
     shortDescription: doc.shortDescription ?? "",
     description: doc.description ?? "",
     amenities: doc.amenities ?? [],
+    available: doc.available,
     // Prefer Sanity-hosted images; fall back to local public folder images
     images: sanityImages.length > 0 ? sanityImages : (localCabin?.images ?? []),
   };
