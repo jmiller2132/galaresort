@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import PageHero from "@/components/ui/PageHero";
 import AnimateIn from "@/components/ui/AnimateIn";
 import { fetchMenus } from "@/lib/sanity/fetch";
+import MenuContent from "./MenuContent";
 
 export const metadata: Metadata = {
   title: "Grill Menu",
@@ -30,35 +30,7 @@ export default async function MenuPage() {
 
       <section className="py-16 bg-cream">
         <div className="mx-auto max-w-5xl px-6 lg:px-8">
-          <AnimateIn>
-            {images.length === 1 ? (
-              <div className="relative w-full rounded-lg overflow-hidden shadow-md max-w-2xl mx-auto">
-                <Image
-                  src={images[0].src}
-                  alt={images[0].alt}
-                  width={1080}
-                  height={1350}
-                  className="w-full h-auto"
-                  priority
-                />
-              </div>
-            ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {images.map((img, i) => (
-                  <div key={i} className="relative w-full rounded-lg overflow-hidden shadow-md">
-                    <Image
-                      src={img.src}
-                      alt={img.alt}
-                      width={1080}
-                      height={1350}
-                      className="w-full h-auto"
-                      priority={i === 0}
-                    />
-                  </div>
-                ))}
-              </div>
-            )}
-          </AnimateIn>
+          <MenuContent images={images} />
 
           <AnimateIn delay={0.2}>
             <p className="mt-8 text-center text-river-gray text-sm">
