@@ -57,6 +57,13 @@ export default defineType({
       initialValue: false,
     }),
     defineField({
+      name: 'available',
+      title: 'Available for Reservations',
+      type: 'boolean',
+      description: 'Uncheck to mark this cabin as unavailable (e.g. under restoration). It will appear greyed out on the site with no booking option.',
+      initialValue: true,
+    }),
+    defineField({
       name: 'shortDescription',
       title: 'Short Description',
       type: 'text',
