@@ -13,18 +13,12 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'pdfFile',
-      title: 'Menu PDF (preferred)',
-      type: 'file',
-      options: { accept: 'application/pdf' },
-      description: 'Upload a PDF of your menu. If a PDF is provided it will be shown on the site instead of the image below.',
-    }),
-    defineField({
       name: 'image',
-      title: 'Menu Image (JPG fallback)',
+      title: 'Menu Image (JPG, under 2 MB)',
       type: 'image',
       options: { hotspot: false },
-      description: 'Upload a JPG if you do not have a PDF. If a PDF is uploaded above, this image will be ignored.',
+      description: 'Upload a JPG photo of your menu. Replace this image any time prices or items change.',
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'active',
