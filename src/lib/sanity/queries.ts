@@ -73,6 +73,9 @@ export const featuredEventsQuery = `*[_type == "event" && featured == true && co
 export const menusQuery = `*[_type == "menu" && active == true] | order(sortOrder asc) {
   _id,
   title,
+  pdfFile {
+    asset->{ url }
+  },
   image {
     asset->{ url }
   }

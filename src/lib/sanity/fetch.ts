@@ -201,6 +201,7 @@ export type BarInfo = {
 export type SanityMenu = {
   _id: string;
   title: string;
+  pdfFile?: { asset?: { url: string } };
   image?: { asset?: { url: string } };
 };
 

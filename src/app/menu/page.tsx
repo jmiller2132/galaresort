@@ -13,12 +13,13 @@ export const metadata: Metadata = {
 export default async function MenuPage() {
   const menus = await fetchMenus();
 
-  const images = menus.length > 0
-    ? menus.filter((m) => m.image?.asset?.url).map((m) => ({
-        src: m.image!.asset!.url,
-        alt: m.title,
-      }))
-    : [{ src: "/images/menu/menu-2.png", alt: "Gala Resort Grill Menu" }];
+  const menuItems = menus.length > 0
+    ? menus.map((m) => ({
+        title: m.title,
+        pdfUrl: m.pdfFile?.asset?.url ?? null,
+        imageUrl: m.image?.asset?.url ?? null,
+      })).filter((m) => m.pdfUrl || m.imageUrl)
+    : [{ title: "Gala Resort Grill Menu", pdfUrl: null, imageUrl: "/images/menu/menu-2.png" }];
 
   return (
     <>
@@ -30,7 +31,7 @@ export default async function MenuPage() {
 
       <section className="py-16 bg-cream">
         <div className="mx-auto max-w-5xl px-6 lg:px-8">
-          <MenuContent images={images} />
+          <MenuContent items={menuItems} />
 
           <AnimateIn delay={0.2}>
             <p className="mt-8 text-center text-river-gray text-sm">
