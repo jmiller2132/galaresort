@@ -15,8 +15,10 @@ import {
   cabins as staticCabins,
   events as staticEvents,
   galleryImages as staticGalleryImages,
+  seasonalSites as staticSeasonalSites,
+  campingConfig as staticCampingConfig,
 } from "@/lib/data";
-import type { Cabin, GalaEvent, GalleryImage } from "@/lib/data";
+import type { Cabin, GalaEvent, GalleryImage, SeasonalSite, CampingConfig } from "@/lib/data";
 import {
   cabinsQuery,
   cabinBySlugQuery,
@@ -26,6 +28,8 @@ import {
   announcementQuery,
   barInfoQuery,
   menusQuery,
+  seasonalSitesQuery,
+  campsiteQuery,
   type SanityAnnouncement,
 } from "./queries";
 
@@ -262,5 +266,82 @@ export async function fetchGalleryImages(): Promise<GalleryImage[]> {
           }));
   } catch {
     return staticGalleryImages;
+  }
+}
+
+// ─── Seasonal Sites ───────────────────────────────────────────────────────────
+
+type SanitySeasonalSite = {
+  _id: string;
+  type: string;
+  name?: string;
+  pricePerSeason?: number;
+  description?: string;
+  features?: string[];
+  images?: SanityImage[];
+};
+
+export async function fetchSeasonalSites(): Promise<SeasonalSite[]> {
+  try {
+    const results: SanitySeasonalSite[] = await client.fetch(
+      seasonalSitesQuery,
+      {},
+      { next: { revalidate: 300 } }
+    );
+    if (!results?.length) return staticSeasonalSites;
+    return results.map((doc) => {
+      const fallback = staticSeasonalSites.find((s) => s.slug === doc.type);
+      const sanityImages = (doc.images ?? [])
+        .filter((img) => img.asset?.url)
+        .map((img) => ({ src: img.asset!.url, alt: img.alt ?? doc.name ?? '', width: 1200, height: 800 }));
+      return {
+        slug: doc.type,
+        name: doc.name ?? fallback?.name ?? doc.type,
+        pricePerSeason: doc.pricePerSeason ?? fallback?.pricePerSeason ?? 0,
+        description: doc.description ?? fallback?.description ?? '',
+        features: doc.features ?? fallback?.features ?? [],
+        image: sanityImages[0] ?? fallback?.image ?? { src: '', alt: '', width: 1200, height: 800 },
+      };
+    });
+  } catch {
+    return staticSeasonalSites;
+  }
+}
+
+// ─── Camping ──────────────────────────────────────────────────────────────────
+
+type SanityCampsite = {
+  _id: string;
+  description?: string;
+  hookups?: string;
+  maxLength?: string;
+  rateNightly?: number;
+  rateWeekly?: number;
+  features?: string[];
+  images?: SanityImage[];
+};
+
+export async function fetchCampingConfig(): Promise<CampingConfig> {
+  try {
+    const result: SanityCampsite | null = await client.fetch(
+      campsiteQuery,
+      {},
+      { next: { revalidate: 300 } }
+    );
+    if (!result) return staticCampingConfig;
+    const sanityImages = (result.images ?? [])
+      .filter((img) => img.asset?.url)
+      .map((img) => ({ src: img.asset!.url, alt: img.alt ?? 'Camping', width: 1200, height: 800 }));
+    return {
+      rateNightly: result.rateNightly ?? staticCampingConfig.rateNightly,
+      rateWeekly: result.rateWeekly ?? staticCampingConfig.rateWeekly,
+      maxLength: result.maxLength ?? staticCampingConfig.maxLength,
+      hookups: result.hookups ?? staticCampingConfig.hookups,
+      description: result.description ?? staticCampingConfig.description,
+      features: result.features ?? staticCampingConfig.features,
+      image: sanityImages[0] ?? staticCampingConfig.image,
+    };
+  } catch {
+    return staticCampingConfig;
   }
 }

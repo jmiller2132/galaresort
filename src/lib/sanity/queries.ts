@@ -110,3 +110,30 @@ export const galleryQuery = `*[_type == "galleryImage"] | order(_createdAt asc) 
   categories,
   caption
 }`;
+
+export const seasonalSitesQuery = `*[_type == "seasonalSite"] | order(type asc) {
+  _id,
+  type,
+  name,
+  pricePerSeason,
+  description,
+  features,
+  images[] {
+    asset->{ url },
+    alt
+  }
+}`;
+
+export const campsiteQuery = `*[_type == "campsite"][0] {
+  _id,
+  description,
+  hookups,
+  maxLength,
+  rateNightly,
+  rateWeekly,
+  features,
+  images[] {
+    asset->{ url },
+    alt
+  }
+}`;

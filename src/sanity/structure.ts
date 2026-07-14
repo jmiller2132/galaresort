@@ -38,6 +38,8 @@ export const structure: StructureResolver = (S) =>
             ])
         ),
       S.documentTypeListItem('cabin').title('Cabins'),
+      S.documentTypeListItem('seasonalSite').title('Seasonal Sites'),
+      S.documentTypeListItem('campsite').title('Camping'),
       S.documentTypeListItem('menu').title('Menus'),
       S.documentTypeListItem('announcement').title('Announcements'),
       S.documentTypeListItem('barInfo').title('Bar Info'),

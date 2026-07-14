@@ -3,7 +3,8 @@ import Image from "next/image";
 import PageHero from "@/components/ui/PageHero";
 import AnimateIn from "@/components/ui/AnimateIn";
 import Button from "@/components/ui/Button";
-import { getSeasonalSites, formatPrice } from "@/lib/data";
+import { formatPrice } from "@/lib/data";
+import { fetchSeasonalSites } from "@/lib/sanity/fetch";
 import { Check, Info } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -12,8 +13,8 @@ export const metadata: Metadata = {
     "Every seasonal site is on the water. River and channel frontage from $4,000/season. April 15 – October 15 on the Wolf River.",
 };
 
-export default function SeasonalPage() {
-  const sites = getSeasonalSites();
+export default async function SeasonalPage() {
+  const sites = await fetchSeasonalSites();
 
   return (
     <>

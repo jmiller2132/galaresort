@@ -17,7 +17,7 @@ import { resolve } from 'path'
 loadEnvConfig(resolve(__dirname, '..'))
 
 import { createClient } from '@sanity/client'
-import { cabins, events } from '../src/lib/data'
+import { cabins, events, seasonalSites, campingConfig } from '../src/lib/data'
 
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET
@@ -135,12 +135,49 @@ async function seedAnnouncement() {
   )
 }
 
+async function seedSeasonalSites() {
+  console.log(`\nSeasonal Sites (${seasonalSites.length})`)
+  for (const site of seasonalSites) {
+    await upsert(
+      {
+        _id: `seasonalSite-${site.slug}`,
+        _type: 'seasonalSite',
+        type: site.slug,
+        name: site.name,
+        pricePerSeason: site.pricePerSeason,
+        description: site.description,
+        features: site.features,
+      },
+      `${site.name} (${site.slug})`
+    )
+  }
+}
+
+async function seedCampsite() {
+  console.log('\nCamping')
+  await upsert(
+    {
+      _id: 'campsite-default',
+      _type: 'campsite',
+      description: campingConfig.description,
+      hookups: campingConfig.hookups,
+      maxLength: campingConfig.maxLength,
+      rateNightly: campingConfig.rateNightly,
+      rateWeekly: campingConfig.rateWeekly,
+      features: campingConfig.features,
+    },
+    'campsite-default'
+  )
+}
+
 async function main() {
   console.log(`Seeding Sanity project "${projectId}" / dataset "${dataset}"`)
   await seedBarInfo()
   await seedCabins()
   await seedEvents()
   await seedAnnouncement()
+  await seedSeasonalSites()
+  await seedCampsite()
   console.log('\nDone.')
 }
 

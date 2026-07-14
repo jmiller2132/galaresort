@@ -3,7 +3,8 @@ import Image from "next/image";
 import PageHero from "@/components/ui/PageHero";
 import AnimateIn from "@/components/ui/AnimateIn";
 import InquiryDrawer from "@/components/forms/InquiryDrawer";
-import { getCampingConfig, formatPrice } from "@/lib/data";
+import { formatPrice } from "@/lib/data";
+import { fetchCampingConfig } from "@/lib/sanity/fetch";
 import { Check } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -12,8 +13,8 @@ export const metadata: Metadata = {
     "RV and tent camping on the Wolf River. Water and electric hookups, fire rings, and resort amenities. From $55/night.",
 };
 
-export default function CampingPage() {
-  const config = getCampingConfig();
+export default async function CampingPage() {
+  const config = await fetchCampingConfig();
 
   return (
     <>
