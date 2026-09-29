@@ -6,7 +6,9 @@ import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import PageHero from "@/components/ui/PageHero";
 import AnimateIn from "@/components/ui/AnimateIn";
+import SocialText from "@/components/ui/SocialText";
 import type { GalleryImage } from "@/lib/data";
+import type { HeroContent } from "@/lib/content";
 
 const categories = [
   { value: "all", label: "All" },
@@ -17,7 +19,15 @@ const categories = [
   { value: "life", label: "Life at The Gala" },
 ];
 
-export default function GalleryContent({ images }: { images: GalleryImage[] }) {
+interface GalleryContentProps {
+  images: GalleryImage[];
+  hero: HeroContent;
+  footnote: string;
+  facebookUrl: string;
+  instagramUrl: string;
+}
+
+export default function GalleryContent({ images, hero, footnote, facebookUrl, instagramUrl }: GalleryContentProps) {
   const [open, setOpen] = useState(false);
   const [index, setIndex] = useState(0);
   const [filter, setFilter] = useState("all");
@@ -29,11 +39,7 @@ export default function GalleryContent({ images }: { images: GalleryImage[] }) {
 
   return (
     <>
-      <PageHero
-        title="Gallery"
-        subtitle="See what life at The Gala looks like"
-        image="/images/wolf-river-canoe.png"
-      />
+      <PageHero title={hero.title} subtitle={hero.subtitle} image={hero.image.src} />
 
       <section className="py-20 bg-cream">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -78,25 +84,12 @@ export default function GalleryContent({ images }: { images: GalleryImage[] }) {
 
           <div className="mt-16 text-center">
             <p className="text-river-gray">
-              Professional photography coming soon. Follow us on{" "}
-              <a
-                href="https://www.facebook.com/galaresort/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-river-blue font-semibold hover:underline"
-              >
-                Facebook
-              </a>{" "}
-              and{" "}
-              <a
-                href="https://www.instagram.com/galaresort_fremont"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-river-blue font-semibold hover:underline"
-              >
-                Instagram
-              </a>{" "}
-              for the latest photos.
+              <SocialText
+                text={footnote}
+                facebookUrl={facebookUrl}
+                instagramUrl={instagramUrl}
+                linkClassName="text-river-blue font-semibold hover:underline"
+              />
             </p>
           </div>
         </div>

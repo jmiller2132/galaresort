@@ -105,9 +105,9 @@ export const cabins: Cabin[] = [
     name: "Catfish",
     seasonType: "3-season",
     maxGuests: 6,
-    rateNightly: 150,
-    rateWeekly: 900,
-    minNights: 2,
+    rateNightly: 250,
+    rateWeekly: 1200,
+    minNights: 3,
     dogFriendly: true,
     description:
       "The Catfish cabin sits right on the banks of the Wolf River, with patio doors that open to the water and a private log porch built for slow mornings and long evenings. It's a comfortable, rustic setup with a loft sleeping area, and it comes with its own pier — so you're steps from the river whether you're fishing, launching a kayak, or just watching it roll by.\n\nInside, everything you need is already here: cooking utensils, a microwave, TV, and central air and heat to keep things comfortable all season. Bed linens and towels are not provided — please bring your own.",
@@ -126,9 +126,9 @@ export const cabins: Cabin[] = [
     name: "Muskie",
     seasonType: "3-season",
     maxGuests: 10,
-    rateNightly: 200,
-    rateWeekly: 1000,
-    minNights: 2,
+    rateNightly: 250,
+    rateWeekly: 1200,
+    minNights: 3,
     dogFriendly: true,
     description:
       "The Muskie is one of the bigger cabins at The Gala, with a private master bedroom, a bunk bedroom, a loft, and an open living and dining area that gives your whole group room to spread out. It's a park model setup that feels like a real home base on the river — not cramped, not fussy, just comfortable.\n\nEverything's furnished and ready to go: cooking utensils, microwave, TV, and central air and heat. Bed linens and towels are not provided — please bring your own. Grab a spot on the water and enjoy slow mornings and long evenings with the Wolf River right outside your door.",
@@ -149,9 +149,9 @@ export const cabins: Cabin[] = [
     name: "Walleye",
     seasonType: "3-season",
     maxGuests: 6,
-    rateNightly: 150,
-    rateWeekly: 900,
-    minNights: 2,
+    rateNightly: 250,
+    rateWeekly: 1200,
+    minNights: 3,
     dogFriendly: true,
     description:
       "The Walleye is a two-bedroom park model with a full kitchen and full bath, so it feels less like a cabin rental and more like your own place on the river. Patio doors open things up and let the outside in, and there's a living room and dining area with plenty of space to cook, eat, and hang out without being on top of each other.\n\nIt comes fully furnished with cooking utensils, microwave, TV, and central air and heat. Bed linens and towels are not provided — please bring your own. Whether you're here for a long weekend or a full week on the Wolf River, the Walleye makes it easy to settle in and stay a while.",
@@ -172,9 +172,9 @@ export const cabins: Cabin[] = [
     name: "Perch",
     seasonType: "3-season",
     maxGuests: 6,
-    rateNightly: 150,
-    rateWeekly: 900,
-    minNights: 2,
+    rateNightly: 250,
+    rateWeekly: 1200,
+    minNights: 3,
     dogFriendly: true,
     description:
       "The Perch cabin is tucked right on the banks of the Wolf River, with patio doors overlooking the water and a private log porch that's made for doing not much at all. There's a cozy loft upstairs, and the cabin comes with its own pier — so the river is basically your front yard.\n\nIt's fully furnished with cooking utensils, a microwave, TV, and central air and heat. Bed linens and towels are not provided — please bring your own. The Perch is one of those spots where you can keep it simple — morning coffee on the porch, an afternoon on the pier, and nothing on the schedule but the river.",
@@ -195,9 +195,9 @@ export const cabins: Cabin[] = [
     name: "White Bass",
     seasonType: "3-season",
     maxGuests: 6,
-    rateNightly: 200,
-    rateWeekly: 1000,
-    minNights: 2,
+    rateNightly: 275,
+    rateWeekly: 1650,
+    minNights: 3,
     dogFriendly: true,
     available: false,
     description:
@@ -222,9 +222,9 @@ export const cabins: Cabin[] = [
     name: "Northern – Four Season Cabin",
     seasonType: "year-round",
     maxGuests: 3,
-    rateNightly: 200,
-    rateWeekly: 1000,
-    minNights: 2,
+    rateNightly: 250,
+    rateWeekly: 1200,
+    minNights: 3,
     dogFriendly: true,
     description:
       "Our only four-season cabin, the Northern is built for year-round comfort on the Wolf River. Insulated and heated, it's perfect for those who want to experience the river in every season — from summer days on the dock to quiet winter mornings with snow on the water. Sleeps three, with all the comforts of home.",
@@ -255,7 +255,7 @@ export const seasonalSites: SeasonalSite[] = [
   {
     slug: "river",
     name: "River Site",
-    pricePerSeason: 5000,
+    pricePerSeason: 6000,
     description:
       "Premium riverfront seasonal sites with direct Wolf River access. Every site is on the water with your own dock space — your home on the river for the entire season.",
     features: [
@@ -275,7 +275,7 @@ export const seasonalSites: SeasonalSite[] = [
   {
     slug: "channel",
     name: "Channel Site",
-    pricePerSeason: 4000,
+    pricePerSeason: 5000,
     description:
       "Channel-side seasonal sites with water access and a quieter setting. Still on the water, still part of the Gala community — with all the same resort amenities.",
     features: [
@@ -297,8 +297,8 @@ export const seasonalSites: SeasonalSite[] = [
 // ─── Camping ────────────────────────────────────────────────────────────────
 
 export const campingConfig: CampingConfig = {
-  rateNightly: 55,
-  rateWeekly: 330,
+  rateNightly: 95,
+  rateWeekly: 570,
   maxLength: "One camping unit per site",
   hookups: "Water & electric",
   description:

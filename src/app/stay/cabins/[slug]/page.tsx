@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { formatPrice } from "@/lib/data";
-import { fetchCabins, fetchCabinBySlug } from "@/lib/sanity/fetch";
+import { fetchCabins, fetchCabinBySlug, fetchCabinsPage, fetchSiteSettings } from "@/lib/sanity/fetch";
+import { telHref } from "@/lib/text";
 import CabinGallery from "@/components/rooms/CabinGallery";
 import InquiryDrawer from "@/components/forms/InquiryDrawer";
 import AnimateIn from "@/components/ui/AnimateIn";
@@ -32,10 +33,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function CabinDetailPage({ params }: Props) {
   const { slug } = await params;
-  const cabin = await fetchCabinBySlug(slug);
+  const [cabin, page, settings] = await Promise.all([fetchCabinBySlug(slug), fetchCabinsPage(), fetchSiteSettings()]);
   if (!cabin) notFound();
 
   const unavailable = cabin.available === false;
+  const [petLead, ...petRest] = page.detail.petPolicy.split(" — ");
 
   return (
     <div className="pt-20 bg-cream">
@@ -90,7 +92,13 @@ export default async function CabinDetailPage({ params }: Props) {
               <AnimateIn delay={0.2}>
                 <div className="mt-10 bg-sand/30 rounded-lg p-5 border border-sand/50">
                   <p className="text-river-gray text-sm leading-relaxed">
-                    <strong className="text-charcoal">Pets welcome</strong> — up to 2 dogs per cabin at $25 per pet. Dogs must be 25 lbs or less at full maturity.
+                    {petRest.length > 0 ? (
+                      <>
+                        <strong className="text-charcoal">{petLead}</strong> — {petRest.join(" — ")}
+                      </>
+                    ) : (
+                      petLead
+                    )}
                   </p>
                 </div>
               </AnimateIn>
@@ -106,10 +114,10 @@ export default async function CabinDetailPage({ params }: Props) {
                       <AlertTriangle size={32} className="text-amber-500" />
                     </div>
                     <h3 className="font-[family-name:var(--font-display)] text-lg font-bold text-charcoal mb-2">
-                      Under Restoration
+                      {page.unavailable.label}
                     </h3>
                     <p className="text-river-gray text-sm leading-relaxed mb-4">
-                      This cabin sustained water damage and is currently being renovated. It is not available for reservations at this time.
+                      {page.unavailable.detail}
                     </p>
                     <Link
                       href="/stay/cabins"
@@ -135,20 +143,20 @@ export default async function CabinDetailPage({ params }: Props) {
                       </div>
                       <div className="flex items-center gap-1.5 text-sm text-river-gray pt-2 border-t border-sand/50">
                         <Calendar size={14} />
-                        {cabin.minNights}-night minimum (3 on holidays)
+                        {cabin.minNights}-night minimum ({page.detail.holidayMinimum})
                       </div>
                     </div>
                     <p className="text-xs text-river-gray mb-1">
-                      All rates + taxes &amp; fees. Availability confirmed after inquiry.
+                      {page.detail.ratesNote}
                     </p>
                     <p className="text-xs text-river-gray mb-4">
-                      Holiday weeks and weekends are subject to a surcharge. Contact us for holiday pricing.
+                      {page.detail.holidayNote}
                     </p>
                     <InquiryDrawer type="cabin" cabinSlug={cabin.slug} cabinName={cabin.name} maxGuests={cabin.maxGuests} />
                     <p className="mt-4 text-xs text-center text-river-gray">
                       Prefer to call? RV Park office:{" "}
-                      <a href="tel:+19204463222" className="text-river-blue font-medium hover:underline">
-                        (920) 446-3222
+                      <a href={telHref(settings.rvPhone)} className="text-river-blue font-medium hover:underline">
+                        {settings.rvPhone}
                       </a>
                     </p>
                   </>

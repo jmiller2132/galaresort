@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/ui/PageHero";
 import AnimateIn from "@/components/ui/AnimateIn";
-import { fetchMenus } from "@/lib/sanity/fetch";
+import { fetchMenus, fetchMenuPage, fetchSiteSettings } from "@/lib/sanity/fetch";
+import { telHref } from "@/lib/text";
 import MenuContent from "./MenuContent";
 
-export const metadata: Metadata = {
-  title: "Grill Menu",
-  description:
-    "Fresh pizza, smash burgers, wings, and bar favorites at Gala Resort on the Wolf River. Open Tuesday through Sunday.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const page = await fetchMenuPage();
+  return { title: page.hero.title, description: page.seoDescription };
+}
 
 export default async function MenuPage() {
-  const menus = await fetchMenus();
+  const [menus, page, settings] = await Promise.all([fetchMenus(), fetchMenuPage(), fetchSiteSettings()]);
 
   const images = menus.length > 0
     ? menus.filter((m) => m.image?.asset?.url).map((m) => ({
@@ -22,11 +22,7 @@ export default async function MenuPage() {
 
   return (
     <>
-      <PageHero
-        title="Grill Menu"
-        subtitle="Made fresh to order — right on the Wolf River"
-        image="/images/exterior/bar-aerial-patio-river.jpeg"
-      />
+      <PageHero title={page.hero.title} subtitle={page.hero.subtitle} image={page.hero.image.src} />
 
       <section className="py-16 bg-cream">
         <div className="mx-auto max-w-5xl px-6 lg:px-8">
@@ -34,9 +30,9 @@ export default async function MenuPage() {
 
           <AnimateIn delay={0.2}>
             <p className="mt-8 text-center text-river-gray text-sm">
-              Menu items and prices subject to change. Call{" "}
-              <a href="tel:+19204462423" className="text-river-blue font-medium hover:underline">
-                (920) 446-2423
+              {page.footnote} Call{" "}
+              <a href={telHref(settings.barPhone)} className="text-river-blue font-medium hover:underline">
+                {settings.barPhone}
               </a>{" "}
               for details.
             </p>

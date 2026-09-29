@@ -19,6 +19,9 @@ import {
   campingConfig as staticCampingConfig,
 } from "@/lib/data";
 import type { Cabin, GalaEvent, GalleryImage, SeasonalSite, CampingConfig } from "@/lib/data";
+import * as content from "@/lib/content";
+import { cache } from "react";
+import { urlFor } from "@/sanity/lib/image";
 import {
   cabinsQuery,
   cabinBySlugQuery,
@@ -89,9 +92,9 @@ function mapCabin(doc: SanityCabin): Cabin {
     name: doc.name,
     seasonType: doc.seasonType ?? "3-season",
     maxGuests: doc.maxGuests ?? 4,
-    rateNightly: doc.rateNightly ?? 150,
-    rateWeekly: doc.rateWeekly ?? 900,
-    minNights: doc.minNights ?? 2,
+    rateNightly: doc.rateNightly ?? 250,
+    rateWeekly: doc.rateWeekly ?? 1200,
+    minNights: doc.minNights ?? 3,
     dogFriendly: doc.dogFriendly ?? false,
     shortDescription: doc.shortDescription ?? "",
     description: doc.description ?? "",
@@ -345,3 +348,72 @@ export async function fetchCampingConfig(): Promise<CampingConfig> {
     return staticCampingConfig;
   }
 }
+
+// ─── Site Settings & Page Copy ───────────────────────────────────────────────
+
+type SanityImageRef = { asset?: { _ref?: string }; alt?: string };
+
+function isImageContent(value: unknown): value is content.ImageContent {
+  return typeof value === "object" && value !== null && "src" in value && "alt" in value;
+}
+
+/**
+ * Overlays a Sanity document onto its fallback, field by field. Blank strings,
+ * empty lists, and missing images keep the fallback value. Items inside a list
+ * the editor has filled in are taken as-is (blank fields stay blank) so one
+ * item never inherits another item's text.
+ */
+function mergeContent<T>(fallback: T, value: unknown, useFallback = true): T {
+  if (typeof fallback === "string") {
+    if (typeof value === "string" && value.trim()) return value as T;
+    return (useFallback ? fallback : "") as T;
+  }
+
+  if (isImageContent(fallback)) {
+    const image = value as SanityImageRef | undefined;
+    if (image?.asset?._ref) return { src: urlFor(image).url(), alt: image.alt ?? "" } as T;
+    return (useFallback ? fallback : { src: "", alt: "" }) as T;
+  }
+
+  if (Array.isArray(fallback)) {
+    if (!Array.isArray(value) || value.length === 0) return (useFallback ? fallback : []) as T;
+    const template = fallback[0];
+    if (typeof template === "string") {
+      return value.filter((item) => typeof item === "string" && item.trim()) as T;
+    }
+    return value.map((item) => mergeContent(template, item, false)) as T;
+  }
+
+  if (typeof fallback === "object" && fallback !== null) {
+    const source = (typeof value === "object" && value !== null ? value : {}) as Record<string, unknown>;
+    return Object.fromEntries(
+      Object.entries(fallback).map(([key, fb]) => [key, mergeContent(fb, source[key], useFallback)])
+    ) as T;
+  }
+
+  return (value ?? fallback) as T;
+}
+
+function singletonFetcher<T>(id: string, fallback: T) {
+  return cache(async (): Promise<T> => {
+    try {
+      const doc = await client.fetch(`*[_id == $id][0]`, { id }, { next: { revalidate: 60 } });
+      return doc ? mergeContent(fallback, doc) : fallback;
+    } catch {
+      return fallback;
+    }
+  });
+}
+
+export const fetchSiteSettings = singletonFetcher("siteSettings", content.siteSettings);
+export const fetchHomePage = singletonFetcher("homePage", content.homePage);
+export const fetchAboutPage = singletonFetcher("aboutPage", content.aboutPage);
+export const fetchBarEventsPage = singletonFetcher("barEventsPage", content.barEventsPage);
+export const fetchContactPage = singletonFetcher("contactPage", content.contactPage);
+export const fetchStayPage = singletonFetcher("stayPage", content.stayPage);
+export const fetchCabinsPage = singletonFetcher("cabinsPage", content.cabinsPage);
+export const fetchSeasonalPage = singletonFetcher("seasonalPage", content.seasonalPage);
+export const fetchCampingPage = singletonFetcher("campingPage", content.campingPage);
+export const fetchMenuPage = singletonFetcher("menuPage", content.menuPage);
+export const fetchGalleryPage = singletonFetcher("galleryPage", content.galleryPage);
+

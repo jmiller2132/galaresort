@@ -4,44 +4,35 @@ import PageHero from "@/components/ui/PageHero";
 import AnimateIn from "@/components/ui/AnimateIn";
 import Button from "@/components/ui/Button";
 import { formatPrice } from "@/lib/data";
-import { fetchSeasonalSites } from "@/lib/sanity/fetch";
+import { fetchSeasonalSites, fetchSeasonalPage, fetchSiteSettings } from "@/lib/sanity/fetch";
+import { paragraphs, telHref } from "@/lib/text";
 import { Check, Info } from "lucide-react";
 
-export const metadata: Metadata = {
-  title: "Seasonal Sites",
-  description:
-    "Every seasonal site is on the water. River and channel frontage from $4,000/season. April 15 – October 15 on the Wolf River.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const page = await fetchSeasonalPage();
+  return { title: page.hero.title, description: page.seoDescription };
+}
 
 export default async function SeasonalPage() {
-  const sites = await fetchSeasonalSites();
+  const [sites, page, settings] = await Promise.all([fetchSeasonalSites(), fetchSeasonalPage(), fetchSiteSettings()]);
 
   return (
     <>
-      <PageHero
-        title="Seasonal Sites"
-        subtitle="Every site on the water — your riverfront home for the season"
-        image="/images/exterior/DJI_20260304112620_0077_D.jpg"
-      />
+      <PageHero title={page.hero.title} subtitle={page.hero.subtitle} image={page.hero.image.src} />
 
       <section className="py-20 bg-cream">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <AnimateIn>
             <div className="max-w-3xl mb-16">
-              <p className="text-river-gray text-lg leading-relaxed">
-                This is your spot on the river all summer. Dock your boat,
-                set up your site, and make it home from April 15 through
-                October 15. Every seasonal site at The Gala is on the
-                water — river or channel frontage, your own dock space,
-                and the kind of boating lifestyle you don&apos;t get
-                anywhere else on the Wolf. Walk to the bar, catch live
-                music on the weekends, and be part of a community that
-                comes back year after year.
-              </p>
+              {paragraphs(page.intro).map((paragraph, i) => (
+                <p key={i} className={`text-river-gray text-lg leading-relaxed${i > 0 ? " mt-4" : ""}`}>
+                  {paragraph}
+                </p>
+              ))}
               <p className="mt-4 text-river-gray">
-                Interested in claiming a spot? Call the RV Park office at{" "}
-                <a href="tel:+19204463222" className="text-river-blue font-semibold hover:underline">
-                  (920) 446-3222
+                {page.callNote}{" "}
+                <a href={telHref(settings.rvPhone)} className="text-river-blue font-semibold hover:underline">
+                  {settings.rvPhone}
                 </a>.
               </p>
             </div>
@@ -98,9 +89,9 @@ export default async function SeasonalPage() {
                     Good to Know
                   </h3>
                   <ul className="space-y-1.5 text-sm text-river-gray leading-relaxed">
-                    <li>Season runs April 15 – October 15.</li>
-                    <li>Seasonal lessees get year-round electric access and can visit off-season.</li>
-                    <li>Seasonal sites cannot be used as a primary residence.</li>
+                    {page.goodToKnow.map((item, i) => (
+                      <li key={i}>{item}</li>
+                    ))}
                   </ul>
                 </div>
               </div>

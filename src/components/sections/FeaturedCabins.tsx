@@ -5,18 +5,15 @@ import AnimateIn from "@/components/ui/AnimateIn";
 import Button from "@/components/ui/Button";
 import { formatPrice } from "@/lib/data";
 import { fetchCabins } from "@/lib/sanity/fetch";
+import type { HomePageContent } from "@/lib/content";
 
-export default async function FeaturedCabins() {
+export default async function FeaturedCabins({ content }: { content: HomePageContent["featuredCabins"] }) {
   const featured = (await fetchCabins()).slice(0, 3);
 
   return (
     <section className="py-20 lg:py-28 bg-white">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <SectionHeading
-          label="Stay With Us"
-          title="Waterfront Cabins"
-          description="Every cabin sits right on the water. Step out your door, walk down to the river, and leave everything else behind."
-        />
+        <SectionHeading label={content.label} title={content.title} description={content.description} />
 
         <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
           {featured.map((cabin, i) => (
@@ -49,7 +46,7 @@ export default async function FeaturedCabins() {
 
         <AnimateIn className="mt-12 text-center">
           <Button href="/stay/cabins" variant="outline">
-            See All Six Cabins
+            {content.buttonLabel}
           </Button>
         </AnimateIn>
       </div>

@@ -4,43 +4,35 @@ import Link from "next/link";
 import PageHero from "@/components/ui/PageHero";
 import AnimateIn from "@/components/ui/AnimateIn";
 import { formatPrice } from "@/lib/data";
-import { fetchCabins } from "@/lib/sanity/fetch";
+import { fetchCabins, fetchCabinsPage, fetchSiteSettings } from "@/lib/sanity/fetch";
+import { paragraphs, telHref } from "@/lib/text";
 import { Users } from "lucide-react";
 
-export const metadata: Metadata = {
-  title: "Waterfront Cabins",
-  description:
-    "Six cabins directly on the Wolf River — each with its own dock. Three-season and year-round options. Starting at $150/night.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const page = await fetchCabinsPage();
+  return { title: page.hero.title, description: page.seoDescription };
+}
 
 export default async function CabinsPage() {
-  const cabins = await fetchCabins();
+  const [cabins, page, settings] = await Promise.all([fetchCabins(), fetchCabinsPage(), fetchSiteSettings()]);
 
   return (
     <>
-      <PageHero
-        title="Waterfront Cabins"
-        subtitle="Step out your door to the water — every cabin is on the river"
-        image="/images/exterior/DJI_20260304112142_0068_D-2.jpg"
-      />
+      <PageHero title={page.hero.title} subtitle={page.hero.subtitle} image={page.hero.image.src} />
 
       <section className="py-20 bg-cream">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mb-12">
             <AnimateIn>
-              <p className="text-river-gray text-lg leading-relaxed max-w-4xl">
-                Wake up on the Wolf River. Step outside, and your dock is
-                right there — coffee in hand, water at your feet, nowhere
-                you need to be. Our six cabins sit directly on the river,
-                each with private dock access and full resort amenities a
-                short walk away. Five are three-season cabins named after
-                the fish in these waters. The sixth — the Northern Four
-                Season Cabin — is available year-round.
-              </p>
+              {paragraphs(page.intro).map((paragraph, i) => (
+                <p key={i} className={`text-river-gray text-lg leading-relaxed max-w-4xl${i > 0 ? " mt-4" : ""}`}>
+                  {paragraph}
+                </p>
+              ))}
               <p className="mt-4 text-river-gray">
-                To book or check availability, call the RV Park office at{" "}
-                <a href="tel:+19204463222" className="text-river-blue font-semibold hover:underline">
-                  (920) 446-3222
+                {page.callNote}{" "}
+                <a href={telHref(settings.rvPhone)} className="text-river-blue font-semibold hover:underline">
+                  {settings.rvPhone}
                 </a>.
               </p>
             </AnimateIn>
@@ -63,7 +55,7 @@ export default async function CabinsPage() {
                         />
                         <div className="absolute inset-0 bg-charcoal/40 flex items-center justify-center">
                           <span className="bg-white text-charcoal text-sm font-bold uppercase tracking-wider px-4 py-2 rounded-md">
-                            Under Restoration
+                            {page.unavailable.label}
                           </span>
                         </div>
                       </div>
@@ -72,7 +64,7 @@ export default async function CabinsPage() {
                           {cabin.name}
                         </h2>
                         <p className="mt-1 text-sm text-river-gray line-clamp-2">
-                          Not currently available for reservations.
+                          {page.unavailable.short}
                         </p>
                       </div>
                     </div>

@@ -1,15 +1,22 @@
 import type { Metadata } from "next";
 import GalleryContent from "./GalleryContent";
-import { fetchGalleryImages } from "@/lib/sanity/fetch";
+import { fetchGalleryImages, fetchGalleryPage, fetchSiteSettings } from "@/lib/sanity/fetch";
 
-export const metadata: Metadata = {
-  title: "Gallery",
-  description:
-    "See what life at The Gala looks like — waterfront views, cozy cabins, live music, and good times on the Wolf River.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const page = await fetchGalleryPage();
+  return { title: page.hero.title, description: page.seoDescription };
+}
 
 export default async function GalleryPage() {
-  const images = await fetchGalleryImages();
+  const [images, page, settings] = await Promise.all([fetchGalleryImages(), fetchGalleryPage(), fetchSiteSettings()]);
   const shuffled = [...images].sort(() => Math.random() - 0.5);
-  return <GalleryContent images={shuffled} />;
+  return (
+    <GalleryContent
+      images={shuffled}
+      hero={page.hero}
+      footnote={page.footnote}
+      facebookUrl={settings.facebookUrl}
+      instagramUrl={settings.instagramUrl}
+    />
+  );
 }

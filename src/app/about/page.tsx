@@ -3,81 +3,42 @@ import Image from "next/image";
 import PageHero from "@/components/ui/PageHero";
 import AnimateIn from "@/components/ui/AnimateIn";
 import Button from "@/components/ui/Button";
+import { fetchAboutPage } from "@/lib/sanity/fetch";
+import { paragraphs } from "@/lib/text";
 import { Hammer, Trees, Heart, Eye } from "lucide-react";
 
-export const metadata: Metadata = {
-  title: "Our Story",
-  description:
-    "New ownership, same river, better than ever. We're investing in every part of this property to build the best riverfront community on the Wolf River.",
-};
+const valueIcons = [Hammer, Trees, Heart, Eye];
 
-const improvements = [
-  "Brand new docks and wharfs replacing all cabin-assigned docks",
-  "350 feet of new seawall this spring, another 350 feet in the fall",
-  "Full remodel of the bar & main house — inside and out",
-  "New tiki bar and two-tier outdoor patio on the water",
-  "Road improvements throughout the property",
-  "Every cabin cleaned, repaired, and updated before going into rotation",
-];
+export async function generateMetadata(): Promise<Metadata> {
+  const page = await fetchAboutPage();
+  return { title: page.hero.title, description: page.seoDescription };
+}
 
-const values = [
-  {
-    icon: Hammer,
-    title: "Invested & Improving",
-    description: "We're putting real money and effort into every corner of this property — docks, seawalls, cabins, roads, and the bar. You'll see the difference.",
-  },
-  {
-    icon: Trees,
-    title: "Riverfront Lifestyle",
-    description: "The Wolf River is the heart of The Gala. Everything we do is designed around life on the water — fishing, boating, relaxing, and connecting.",
-  },
-  {
-    icon: Heart,
-    title: "Family-Owned & Hands-On",
-    description: "This isn't a corporate operation. We're here, on-site, making sure every guest feels welcome and every detail is taken care of.",
-  },
-  {
-    icon: Eye,
-    title: "Long-Term Vision",
-    description: "We're building a high-quality riverfront community that guests, cabin renters, and seasonal residents are proud to be part of.",
-  },
-];
+export default async function AboutPage() {
+  const { hero, story, improvements, values } = await fetchAboutPage();
 
-export default function AboutPage() {
   return (
     <>
-      <PageHero
-        title="Our Story"
-        subtitle="New ownership. Same river. Better than ever."
-        image="/images/exterior/bar-aerial-riverside.jpeg"
-      />
+      <PageHero title={hero.title} subtitle={hero.subtitle} image={hero.image.src} />
 
       <section className="py-20 lg:py-28 bg-cream">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <AnimateIn>
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-river-blue mb-3">
-                A New Chapter
+                {story.eyebrow}
               </p>
               <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl font-bold text-charcoal">
-                We Believe in This Place
+                {story.heading}
               </h2>
-              <p className="mt-6 text-river-gray text-lg leading-relaxed">
-                Gala Resort has been part of the Wolf River for years. Under
-                new ownership, we&apos;re putting serious investment into
-                every corner of this property — new docks and wharfs, fully
-                remodeled cabins, a brand-new tiki bar and two-tier patio,
-                and infrastructure improvements you can see and feel. This
-                isn&apos;t a facelift. It&apos;s a ground-up rebuild of what
-                The Gala can be.
-              </p>
-              <p className="mt-4 text-river-gray leading-relaxed">
-                What you see today is phase one, and there&apos;s a lot more
-                coming. We&apos;re building a waterfront destination that
-                guests, cabin renters, seasonal residents, and the broader
-                Wolf River community will be proud to be part of for years
-                to come.
-              </p>
+              {paragraphs(story.body).map((paragraph, i) => (
+                <p
+                  key={i}
+                  className={i === 0 ? "mt-6 text-river-gray text-lg leading-relaxed" : "mt-4 text-river-gray leading-relaxed"}
+                >
+                  {paragraph}
+                </p>
+              ))}
               <div className="mt-8">
                 <Button href="/contact" variant="primary">
                   Get in Touch
@@ -88,8 +49,8 @@ export default function AboutPage() {
             <AnimateIn delay={0.2}>
               <div className="relative aspect-[4/5] rounded-lg overflow-hidden">
                 <Image
-                  src="/images/exterior/docks-aerial-boat.jpeg"
-                  alt="Gala Resort docks with boat on the Wolf River"
+                  src={story.image.src}
+                  alt={story.image.alt || story.heading}
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
@@ -106,19 +67,18 @@ export default function AboutPage() {
           <AnimateIn>
             <div className="max-w-3xl">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-river-blue mb-3">
-                Active Improvements
+                {improvements.eyebrow}
               </p>
               <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl font-bold text-charcoal">
-                What We&apos;re Working On
+                {improvements.heading}
               </h2>
               <p className="mt-4 text-river-gray text-lg leading-relaxed">
-                We&apos;ve already begun making significant improvements
-                across the property — and there&apos;s much more to come.
+                {improvements.intro}
               </p>
             </div>
           </AnimateIn>
           <div className="mt-10 space-y-4">
-            {improvements.map((item, i) => (
+            {improvements.items.map((item, i) => (
               <AnimateIn key={i} delay={i * 0.08}>
                 <div className="flex items-start gap-4 bg-cream rounded-lg p-5 border border-sand/60">
                   <div className="w-8 h-8 rounded-full bg-forest/10 flex items-center justify-center flex-shrink-0 mt-0.5">
@@ -129,10 +89,9 @@ export default function AboutPage() {
               </AnimateIn>
             ))}
           </div>
-          <AnimateIn delay={improvements.length * 0.08 + 0.1}>
+          <AnimateIn delay={improvements.items.length * 0.08 + 0.1}>
             <p className="mt-8 text-river-gray text-sm italic">
-              We&apos;re investing in every corner of the property, one upgrade
-              at a time.
+              {improvements.footnote}
             </p>
           </AnimateIn>
         </div>
@@ -142,25 +101,28 @@ export default function AboutPage() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <AnimateIn>
             <h2 className="text-center font-[family-name:var(--font-display)] text-3xl md:text-4xl font-bold text-charcoal mb-12">
-              What Drives Us
+              {values.heading}
             </h2>
           </AnimateIn>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {values.map((v, i) => (
-              <AnimateIn key={v.title} delay={i * 0.1}>
-                <div className="text-center">
-                  <div className="mx-auto w-14 h-14 rounded-full bg-river-blue/10 flex items-center justify-center mb-4">
-                    <v.icon size={24} className="text-river-blue" />
+            {values.items.map((v, i) => {
+              const Icon = valueIcons[i % valueIcons.length];
+              return (
+                <AnimateIn key={`${v.title}-${i}`} delay={i * 0.1}>
+                  <div className="text-center">
+                    <div className="mx-auto w-14 h-14 rounded-full bg-river-blue/10 flex items-center justify-center mb-4">
+                      <Icon size={24} className="text-river-blue" />
+                    </div>
+                    <h3 className="font-[family-name:var(--font-display)] text-lg font-bold text-charcoal">
+                      {v.title}
+                    </h3>
+                    <p className="mt-2 text-sm text-river-gray leading-relaxed">
+                      {v.description}
+                    </p>
                   </div>
-                  <h3 className="font-[family-name:var(--font-display)] text-lg font-bold text-charcoal">
-                    {v.title}
-                  </h3>
-                  <p className="mt-2 text-sm text-river-gray leading-relaxed">
-                    {v.description}
-                  </p>
-                </div>
-              </AnimateIn>
-            ))}
+                </AnimateIn>
+              );
+            })}
           </div>
         </div>
       </section>

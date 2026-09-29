@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Outfit, DM_Sans } from "next/font/google";
 import LayoutChrome from "@/components/layout/LayoutChrome";
-import { fetchAnnouncement } from "@/lib/sanity/fetch";
+import { telHref } from "@/lib/text";
+import { fetchAnnouncement, fetchSiteSettings } from "@/lib/sanity/fetch";
 import "@/styles/globals.css";
 
 const outfit = Outfit({
@@ -47,7 +48,7 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const announcement = await fetchAnnouncement();
+  const [announcement, settings] = await Promise.all([fetchAnnouncement(), fetchSiteSettings()]);
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Campground",
@@ -55,16 +56,17 @@ export default async function RootLayout({
     description:
       "Riverfront cabins, seasonal campsites, camping, and a bar & lounge with live music on the Wolf River in Fremont, Wisconsin.",
     url: "https://galaresort.com",
-    telephone: "+19204463222",
-    email: "galaresortllc@gmail.com",
+    telephone: telHref(settings.rvPhone).replace("tel:", ""),
+    email: settings.email,
     address: {
       "@type": "PostalAddress",
-      streetAddress: "9692 County Rd H",
-      addressLocality: "Fremont",
-      addressRegion: "WI",
-      postalCode: "54940",
+      streetAddress: settings.streetAddress,
+      addressLocality: settings.city,
+      addressRegion: settings.state,
+      postalCode: settings.zip,
       addressCountry: "US",
     },
+    sameAs: [settings.facebookUrl, settings.instagramUrl],
     amenityFeature: [
       { "@type": "LocationFeatureSpecification", name: "Private Boat Launch" },
       { "@type": "LocationFeatureSpecification", name: "Private Docks" },
@@ -84,7 +86,7 @@ export default async function RootLayout({
         />
       </head>
       <body className="min-h-screen flex flex-col">
-        <LayoutChrome announcement={announcement}>{children}</LayoutChrome>
+        <LayoutChrome announcement={announcement} settings={settings}>{children}</LayoutChrome>
       </body>
     </html>
   );

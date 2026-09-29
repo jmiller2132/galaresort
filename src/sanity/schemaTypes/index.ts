@@ -8,7 +8,11 @@ import cabin from './cabin'
 import menu from './menu'
 import seasonalSite from './seasonalSite'
 import campsite from './campsite'
+import siteSettings from './siteSettings'
+import { pageTypes } from './pages'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [event, announcement, barInfo, galleryImage, cabin, menu, seasonalSite, campsite],
+  types: [event, announcement, barInfo, galleryImage, cabin, menu, seasonalSite, campsite, siteSettings, ...pageTypes],
 }
+
+export const singletonTypes = new Set(['siteSettings', ...pageTypes.map((t) => t.name)])

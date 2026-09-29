@@ -3,53 +3,31 @@ import { Suspense } from "react";
 import PageHero from "@/components/ui/PageHero";
 import AnimateIn from "@/components/ui/AnimateIn";
 import ContactForm from "@/components/forms/ContactForm";
+import { fetchContactPage, fetchSiteSettings } from "@/lib/sanity/fetch";
+import { telHref } from "@/lib/text";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
 
-export const metadata: Metadata = {
-  title: "Contact Us",
-  description:
-    "Inquire about cabin rentals, seasonal sites, camping, or events at The Gala. We'll get back to you to confirm availability.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const page = await fetchContactPage();
+  return { title: "Contact Us", description: page.seoDescription };
+}
 
-const contactDetails = [
-  {
-    icon: MapPin,
-    label: "Location",
-    value: "9692 County Rd H\nFremont, WI 54940",
-  },
-  {
-    icon: Phone,
-    label: "RV Park",
-    value: "(920) 446-3222",
-    href: "tel:+19204463222",
-  },
-  {
-    icon: Phone,
-    label: "Bar",
-    value: "(920) 446-2423",
-    href: "tel:+19204462423",
-  },
-  {
-    icon: Mail,
-    label: "Email",
-    value: "galaresortllc@gmail.com",
-    href: "mailto:galaresortllc@gmail.com",
-  },
-  {
-    icon: Clock,
-    label: "Season",
-    value: "Open seasonally — check for dates",
-  },
-];
+export default async function ContactPage() {
+  const [page, settings] = await Promise.all([fetchContactPage(), fetchSiteSettings()]);
+  const address = `${settings.streetAddress}\n${settings.city}, ${settings.state} ${settings.zip}`;
+  const mapQuery = encodeURIComponent(`${settings.streetAddress}, ${settings.city}, ${settings.state} ${settings.zip}`);
 
-export default function ContactPage() {
+  const contactDetails = [
+    { icon: MapPin, label: "Location", value: address },
+    { icon: Phone, label: "RV Park", value: settings.rvPhone, href: telHref(settings.rvPhone) },
+    { icon: Phone, label: "Bar", value: settings.barPhone, href: telHref(settings.barPhone) },
+    { icon: Mail, label: "Email", value: settings.email, href: `mailto:${settings.email}` },
+    { icon: Clock, label: "Season", value: settings.seasonNote },
+  ];
+
   return (
     <>
-      <PageHero
-        title="Get in Touch"
-        subtitle="Inquire about cabins, campsites, seasonal sites, or events"
-        image="/images/exterior/docks-aerial-bar-river.jpeg"
-      />
+      <PageHero title={page.hero.title} subtitle={page.hero.subtitle} image={page.hero.image.src} />
 
       <section className="py-20 bg-cream">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -57,12 +35,10 @@ export default function ContactPage() {
             <div className="lg:col-span-2">
               <AnimateIn>
                 <h2 className="font-[family-name:var(--font-display)] text-2xl md:text-3xl font-bold text-charcoal mb-2">
-                  Reservation Inquiry
+                  {page.formHeading}
                 </h2>
                 <p className="text-river-gray mb-8">
-                  Select what you&apos;re interested in and we&apos;ll get back
-                  to you to confirm availability. All reservations are handled
-                  via inquiry — no online booking at this time.
+                  {page.formIntro}
                 </p>
               </AnimateIn>
               <AnimateIn delay={0.15}>
@@ -88,7 +64,7 @@ export default function ContactPage() {
                           <p className="text-sm font-semibold text-charcoal">
                             {item.label}
                           </p>
-                          {"href" in item ? (
+                          {item.href ? (
                             <a href={item.href} className="text-sm text-river-gray hover:text-river-blue mt-0.5 block">
                               {item.value}
                             </a>
@@ -107,7 +83,7 @@ export default function ContactPage() {
               <AnimateIn delay={0.3}>
                 <div className="mt-6 bg-white rounded-lg overflow-hidden shadow-sm border border-sand/50">
                   <iframe
-                    src="https://maps.google.com/maps?q=9692+County+Rd+H,+Fremont,+WI+54940&output=embed"
+                    src={`https://maps.google.com/maps?q=${mapQuery}&output=embed`}
                     width="100%"
                     height="250"
                     style={{ border: 0 }}

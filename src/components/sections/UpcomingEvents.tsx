@@ -2,10 +2,18 @@ import Image from "next/image";
 import SectionHeading from "@/components/ui/SectionHeading";
 import AnimateIn from "@/components/ui/AnimateIn";
 import Button from "@/components/ui/Button";
+import SocialText from "@/components/ui/SocialText";
 import { fetchEvents } from "@/lib/sanity/fetch";
+import type { HomePageContent, SiteSettings } from "@/lib/content";
 import { Calendar, Music } from "lucide-react";
 
-export default async function UpcomingEvents() {
+export default async function UpcomingEvents({
+  content,
+  settings,
+}: {
+  content: HomePageContent["events"];
+  settings: SiteSettings;
+}) {
   const featured = (await fetchEvents()).slice(0, 2);
   const hasEvents = featured.length > 0;
 
@@ -13,13 +21,9 @@ export default async function UpcomingEvents() {
     <section className="py-20 lg:py-28 bg-river-blue-dark">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <SectionHeading
-          label={hasEvents ? "What's Happening" : "Every Weekend"}
-          title={hasEvents ? "Upcoming Events" : "Live Music on the River"}
-          description={
-            hasEvents
-              ? "Live music, seasonal celebrations, and good times on the river. There's always something going on at The Gala."
-              : "Cold drinks, great bands, and summer nights on the Wolf River. There's always a reason to come out to The Gala."
-          }
+          label={hasEvents ? content.label : content.emptyLabel}
+          title={hasEvents ? content.title : content.emptyTitle}
+          description={hasEvents ? content.description : content.emptyDescription}
           light
         />
 
@@ -67,20 +71,15 @@ export default async function UpcomingEvents() {
                 <Music size={28} className="text-wood-light" />
               </div>
               <p className="font-[family-name:var(--font-display)] text-2xl font-bold text-white mb-3">
-                Live Music Every Sunday
+                {content.liveMusicTitle}
               </p>
               <p className="text-white/70 text-lg leading-relaxed">
-                Live music every Sunday, plus select Thursdays and Saturdays
-                throughout the season. Bands are announced as
-                they&apos;re confirmed — follow us on{" "}
-                <a href="https://www.facebook.com/galaresort/" target="_blank" rel="noopener noreferrer" className="text-wood-light font-semibold hover:underline">
-                  Facebook
-                </a>{" "}
-                and{" "}
-                <a href="https://www.instagram.com/galaresort_fremont" target="_blank" rel="noopener noreferrer" className="text-wood-light font-semibold hover:underline">
-                  Instagram
-                </a>{" "}
-                to see who&apos;s playing each week.
+                <SocialText
+                  text={content.liveMusicText}
+                  facebookUrl={settings.facebookUrl}
+                  instagramUrl={settings.instagramUrl}
+                  linkClassName="text-wood-light font-semibold hover:underline"
+                />
               </p>
             </div>
           </AnimateIn>

@@ -1,13 +1,14 @@
 import Image from "next/image";
 import Button from "@/components/ui/Button";
 import AnimateIn from "@/components/ui/AnimateIn";
+import type { HomePageContent } from "@/lib/content";
 
-export default function CTABanner() {
+export default function CTABanner({ content }: { content: HomePageContent["cta"] }) {
   return (
     <section className="relative py-20 lg:py-28 overflow-hidden">
       <Image
-        src="/images/exterior/wolf-river-aerial-property.jpeg"
-        alt="Aerial view of Gala Resort on the Wolf River"
+        src={content.image.src}
+        alt={content.image.alt || content.heading}
         fill
         className="object-cover"
         sizes="100vw"
@@ -18,19 +19,17 @@ export default function CTABanner() {
       <div className="relative z-10 mx-auto max-w-3xl px-6 text-center">
         <AnimateIn>
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-wood-light mb-4">
-            Reserve Your Spot
+            {content.eyebrow}
           </p>
         </AnimateIn>
         <AnimateIn delay={0.1}>
           <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl lg:text-5xl text-white font-bold">
-            Ready for the River?
+            {content.heading}
           </h2>
         </AnimateIn>
         <AnimateIn delay={0.2}>
           <p className="mt-6 text-lg text-white/80 leading-relaxed">
-            Whether it&apos;s a weekend cabin getaway, a seasonal site for the
-            summer, or just a night by the campfire — your spot on the Wolf
-            River is waiting.
+            {content.body}
           </p>
         </AnimateIn>
         <AnimateIn delay={0.3}>

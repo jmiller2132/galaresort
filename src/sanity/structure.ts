@@ -1,11 +1,28 @@
-import type {StructureResolver} from 'sanity/structure'
+import type {StructureBuilder, StructureResolver} from 'sanity/structure'
+import {pageTypes} from './schemaTypes/pages'
 
 const today = new Date().toISOString().split('T')[0]
+
+const singleton = (S: StructureBuilder, type: string, title: string) =>
+  S.listItem()
+    .title(title)
+    .id(type)
+    .child(S.document().schemaType(type).documentId(type).title(title))
 
 export const structure: StructureResolver = (S) =>
   S.list()
     .title('Content')
     .items([
+      singleton(S, 'siteSettings', 'Site Settings'),
+      S.listItem()
+        .title('Pages')
+        .id('pages')
+        .child(
+          S.list()
+            .title('Pages')
+            .items(pageTypes.map((t) => singleton(S, t.name, t.title ?? t.name)))
+        ),
+      S.divider(),
       S.listItem()
         .title('Events')
         .schemaType('event')

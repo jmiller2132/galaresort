@@ -4,26 +4,30 @@ import PageHero from "@/components/ui/PageHero";
 import SectionHeading from "@/components/ui/SectionHeading";
 import AnimateIn from "@/components/ui/AnimateIn";
 import EventCalendar from "@/components/sections/EventCalendar";
-import { fetchEvents, fetchBarInfo } from "@/lib/sanity/fetch";
+import SocialText from "@/components/ui/SocialText";
+import { fetchEvents, fetchBarInfo, fetchBarEventsPage, fetchSiteSettings } from "@/lib/sanity/fetch";
+import { paragraphs, telHref } from "@/lib/text";
 import Link from "next/link";
 import { Music, Sun, UtensilsCrossed } from "lucide-react";
 
-export const metadata: Metadata = {
-  title: "Bar & Events",
-  description:
-    "Riverfront bar with live music every weekend, cold drinks, and fresh food on the Wolf River at The Gala.",
-};
+const highlightIcons = [Music, Sun, UtensilsCrossed];
+
+export async function generateMetadata(): Promise<Metadata> {
+  const page = await fetchBarEventsPage();
+  return { title: page.hero.title, description: page.seoDescription };
+}
 
 export default async function BarAndEventsPage() {
-  const [events, barInfo] = await Promise.all([fetchEvents(), fetchBarInfo()]);
+  const [events, barInfo, { hero, bar, liveMusic }, settings] = await Promise.all([
+    fetchEvents(),
+    fetchBarInfo(),
+    fetchBarEventsPage(),
+    fetchSiteSettings(),
+  ]);
 
   return (
     <>
-      <PageHero
-        title="Bar & Events"
-        subtitle="Cold drinks, live music, and summer nights on the river"
-        image="/images/exterior/bar-aerial-patio-river.jpeg"
-      />
+      <PageHero title={hero.title} subtitle={hero.subtitle} image={hero.image.src} />
 
       {/* Bar Section */}
       <section className="py-20 bg-cream">
@@ -31,33 +35,26 @@ export default async function BarAndEventsPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <AnimateIn>
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-river-blue mb-3">
-                The Social Hub
+                {bar.eyebrow}
               </p>
               <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl font-bold text-charcoal">
-                Right on the Water
+                {bar.heading}
               </h2>
-              <p className="mt-6 text-river-gray text-lg leading-relaxed">
-                The Gala bar sits right on the Wolf River — a tiki bar, a
-                two-tier outdoor patio, and a fully remodeled main house that
-                comes alive on summer nights. Boaters pull up to the dock,
-                the patio fills up, drinks are cold, and the music carries
-                across the water. It&apos;s the kind of place where a quick
-                drink turns into dancing, new friends, and one of those
-                nights you talk about all winter.
-              </p>
+              {paragraphs(bar.body).map((paragraph, i) => (
+                <p key={i} className={`${i === 0 ? "mt-6" : "mt-4"} text-river-gray text-lg leading-relaxed`}>
+                  {paragraph}
+                </p>
+              ))}
               <div className="mt-6 space-y-3 text-river-gray">
-                <div className="flex items-center gap-2">
-                  <Music size={16} className="text-river-blue" />
-                  Live music weekends
-                </div>
-                <div className="flex items-center gap-2">
-                  <Sun size={16} className="text-river-blue" />
-                  Tiki bar &amp; two-tier patio on the water
-                </div>
-                <div className="flex items-center gap-2">
-                  <UtensilsCrossed size={16} className="text-river-blue" />
-                  Full bar with food
-                </div>
+                {bar.highlights.map((highlight, i) => {
+                  const Icon = highlightIcons[i % highlightIcons.length];
+                  return (
+                    <div key={i} className="flex items-center gap-2">
+                      <Icon size={16} className="text-river-blue" />
+                      {highlight}
+                    </div>
+                  );
+                })}
               </div>
               {Object.entries({
                 Monday: barInfo.monday,
@@ -101,8 +98,8 @@ export default async function BarAndEventsPage() {
               </div>
               <p className="mt-4 text-river-gray text-sm">
                 Call{" "}
-                <a href="tel:+19204462423" className="text-river-blue font-medium hover:underline">
-                  (920) 446-2423
+                <a href={telHref(settings.barPhone)} className="text-river-blue font-medium hover:underline">
+                  {settings.barPhone}
                 </a>{" "}
                 for details.
               </p>
@@ -110,8 +107,8 @@ export default async function BarAndEventsPage() {
             <AnimateIn delay={0.2}>
               <div className="relative aspect-[4/3] rounded-lg overflow-hidden">
                 <Image
-                  src="/images/exterior/bar-aerial-patio-closeup.jpeg"
-                  alt="Closeup aerial view of the Gala Resort bar patio"
+                  src={bar.image.src}
+                  alt={bar.image.alt || bar.heading}
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 50vw"
@@ -126,11 +123,7 @@ export default async function BarAndEventsPage() {
       {/* Live Music & Events */}
       <section className="py-20 bg-river-blue-dark">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <SectionHeading
-            label="Every Weekend"
-            title="Live Music on the River"
-            light
-          />
+          <SectionHeading label={liveMusic.label} title={liveMusic.title} light />
           <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <AnimateIn>
               <div className="rounded-lg bg-white/5 border border-white/10 p-8 lg:p-10">
@@ -140,31 +133,25 @@ export default async function BarAndEventsPage() {
                   </div>
                   <div>
                     <p className="font-[family-name:var(--font-display)] text-xl font-bold text-white">
-                      Live Music Every Sunday
+                      {liveMusic.cardTitle}
                     </p>
-                    <p className="text-white/50 text-sm">Plus select Thursdays and Saturdays</p>
+                    <p className="text-white/50 text-sm">{liveMusic.cardSubtitle}</p>
                   </div>
                 </div>
                 <p className="text-white/80 text-lg leading-relaxed">
-                  Live music every Sunday at The Gala, with additional performances
-                  on select Thursdays and Saturdays throughout the season.
-                  Bands are booked as they&apos;re confirmed — follow us on
-                  social media to see who&apos;s playing each week.
+                  {liveMusic.body}
                 </p>
                 <p className="mt-4 text-white/60 leading-relaxed">
-                  A full events calendar is coming soon. In the meantime, our{" "}
-                  <a href="https://www.facebook.com/galaresort/" target="_blank" rel="noopener noreferrer" className="text-wood-light font-semibold hover:underline">
-                    Facebook
-                  </a>{" "}
-                  and{" "}
-                  <a href="https://www.instagram.com/galaresort_fremont" target="_blank" rel="noopener noreferrer" className="text-wood-light font-semibold hover:underline">
-                    Instagram
-                  </a>{" "}
-                  are the best place to stay in the loop.
+                  <SocialText
+                    text={liveMusic.socialNote}
+                    facebookUrl={settings.facebookUrl}
+                    instagramUrl={settings.instagramUrl}
+                    linkClassName="text-wood-light font-semibold hover:underline"
+                  />
                 </p>
                 <div className="mt-8 flex flex-wrap gap-3">
                   <a
-                    href="https://www.facebook.com/galaresort/"
+                    href={settings.facebookUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 rounded-md bg-white/10 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-white/20"
@@ -173,7 +160,7 @@ export default async function BarAndEventsPage() {
                     Follow on Facebook
                   </a>
                   <a
-                    href="https://www.instagram.com/galaresort_fremont"
+                    href={settings.instagramUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 rounded-md bg-white/10 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-white/20"
@@ -187,8 +174,8 @@ export default async function BarAndEventsPage() {
             <AnimateIn delay={0.2}>
               <div className="relative aspect-[4/3] rounded-lg overflow-hidden">
                 <Image
-                  src="/images/exterior/bar-aerial-riverside.jpeg"
-                  alt="Gala Resort bar from the riverside"
+                  src={liveMusic.image.src}
+                  alt={liveMusic.image.alt || liveMusic.title}
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 50vw"

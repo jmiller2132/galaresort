@@ -3,76 +3,50 @@ import Image from "next/image";
 import Link from "next/link";
 import PageHero from "@/components/ui/PageHero";
 import AnimateIn from "@/components/ui/AnimateIn";
+import { fetchSiteSettings, fetchStayPage } from "@/lib/sanity/fetch";
+import { paragraphs, telHref } from "@/lib/text";
 
-export const metadata: Metadata = {
-  title: "Stay With Us",
-  description:
-    "Waterfront cabins, seasonal sites, and RV camping on the Wolf River. Find your perfect spot at The Gala.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const page = await fetchStayPage();
+  return { title: page.hero.title, description: page.seoDescription };
+}
 
-const stayOptions = [
-  {
-    title: "Cabins",
-    href: "/stay/cabins",
-    price: "From $150/night",
-    description:
-      "Six waterfront cabins with private docks — wake up on the river, step outside, and you're already there.",
-    image: "/images/exterior/DJI_20260304112142_0068_D-2.jpg",
-  },
-  {
-    title: "Seasonal Sites",
-    href: "/stay/seasonal",
-    price: "From $4,000/season",
-    description:
-      "Your own spot on the river all season long — dock your boat, settle in, and make it yours from April to October.",
-    image: "/images/exterior/DJI_20260304112606_0075_D.jpg",
-  },
-  {
-    title: "Camping",
-    href: "/stay/camping",
-    price: "From $55/night",
-    description:
-      "Pull up to the river with your RV or camper. Full hookups, boat launch access, and the bar is a short walk away.",
-    image: "/images/exterior/DJI_20260304112805_0083_D.jpg",
-  },
-];
+export default async function StayPage() {
+  const [page, settings] = await Promise.all([fetchStayPage(), fetchSiteSettings()]);
+  const cards = [
+    { ...page.cabinsCard, href: "/stay/cabins" },
+    { ...page.seasonalCard, href: "/stay/seasonal" },
+    { ...page.campingCard, href: "/stay/camping" },
+  ];
 
-export default function StayPage() {
   return (
     <>
-      <PageHero
-        title="Stay With Us"
-        subtitle="Cabins, seasonal sites, and camping on the Wolf River"
-        image="/images/exterior/wolf-river-aerial-property.jpeg"
-      />
+      <PageHero title={page.hero.title} subtitle={page.hero.subtitle} image={page.hero.image.src} />
 
       <section className="py-20 lg:py-28 bg-cream">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mb-12 max-w-3xl">
-            <p className="text-river-gray text-lg leading-relaxed">
-              Every way you stay at The Gala puts you on the Wolf River.
-              Wake up to the water, walk out to your dock, launch your
-              boat, and end the day with cold drinks and live music at the
-              bar. Whether it&apos;s a cabin for the weekend, a seasonal
-              site for the summer, or a campsite for the night — this is
-              waterfront living, and it all starts right here.
-            </p>
+            {paragraphs(page.intro).map((paragraph, i) => (
+              <p key={i} className={`text-river-gray text-lg leading-relaxed${i > 0 ? " mt-4" : ""}`}>
+                {paragraph}
+              </p>
+            ))}
             <p className="mt-4 text-river-gray">
-              Questions about availability? Call the RV Park office at{" "}
-              <a href="tel:+19204463222" className="text-river-blue font-semibold hover:underline">
-                (920) 446-3222
+              {page.callNote}{" "}
+              <a href={telHref(settings.rvPhone)} className="text-river-blue font-semibold hover:underline">
+                {settings.rvPhone}
               </a>.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {stayOptions.map((option, i) => (
-              <AnimateIn key={option.title} delay={i * 0.15}>
+            {cards.map((option, i) => (
+              <AnimateIn key={option.href} delay={i * 0.15}>
                 <Link href={option.href} className="group block h-full card-lift">
                   <div className="bg-white rounded-lg overflow-hidden shadow-sm border border-sand/50 h-full flex flex-col transition-shadow duration-300 group-hover:shadow-lg">
                     <div className="relative aspect-[4/3] overflow-hidden">
                       <Image
-                        src={option.image}
-                        alt={option.title}
+                        src={option.image.src}
+                        alt={option.image.alt || option.title}
                         fill
                         className="object-cover transition-transform duration-700 group-hover:scale-105"
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"

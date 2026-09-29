@@ -4,8 +4,9 @@ import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Button from "@/components/ui/Button";
+import type { HomePageContent } from "@/lib/content";
 
-export default function HeroSection() {
+export default function HeroSection({ content }: { content: HomePageContent["hero"] }) {
   const desktopRef = useRef<HTMLVideoElement>(null);
   const mobileRef = useRef<HTMLVideoElement>(null);
 
@@ -23,8 +24,8 @@ export default function HeroSection() {
     <section className="relative h-screen min-h-[600px] max-h-[900px] flex items-center justify-center overflow-hidden">
       {/* Fallback image — visible until video loads or if video fails */}
       <Image
-        src="/images/exterior/wolf-river-aerial-wide.jpeg"
-        alt="Aerial view of the Wolf River and Gala Resort waterfront in Fremont, Wisconsin"
+        src={content.image.src}
+        alt={content.image.alt || content.headline}
         fill
         className="object-cover"
         priority
@@ -65,7 +66,7 @@ export default function HeroSection() {
           transition={{ duration: 0.8, delay: 0.3 }}
           className="text-sm md:text-base font-semibold uppercase tracking-[0.3em] text-wood-light mb-6"
         >
-          Wolf River &bull; Fremont, WI
+          {content.eyebrow}
         </motion.p>
 
         <motion.h1
@@ -74,7 +75,7 @@ export default function HeroSection() {
           transition={{ duration: 0.8, delay: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
           className="font-[family-name:var(--font-display)] text-5xl md:text-7xl lg:text-8xl text-white font-bold leading-tight"
         >
-          The River, Reimagined
+          {content.headline}
         </motion.h1>
 
         <motion.p
@@ -83,8 +84,7 @@ export default function HeroSection() {
           transition={{ duration: 0.8, delay: 0.8 }}
           className="mt-6 text-lg md:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed"
         >
-          Reimagined from the docks up — waterfront cabins, a tiki bar,
-          and live music on the patio, right on the Wolf River.
+          {content.subheadline}
         </motion.p>
 
         <motion.div

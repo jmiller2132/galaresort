@@ -4,35 +4,31 @@ import PageHero from "@/components/ui/PageHero";
 import AnimateIn from "@/components/ui/AnimateIn";
 import InquiryDrawer from "@/components/forms/InquiryDrawer";
 import { formatPrice } from "@/lib/data";
-import { fetchCampingConfig } from "@/lib/sanity/fetch";
+import { fetchCampingConfig, fetchCampingPage, fetchSiteSettings } from "@/lib/sanity/fetch";
+import { telHref } from "@/lib/text";
 import { Check } from "lucide-react";
 
-export const metadata: Metadata = {
-  title: "Camping",
-  description:
-    "RV and tent camping on the Wolf River. Water and electric hookups, fire rings, and resort amenities. From $55/night.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const page = await fetchCampingPage();
+  return { title: page.hero.title, description: page.seoDescription };
+}
 
 export default async function CampingPage() {
-  const config = await fetchCampingConfig();
+  const [config, page, settings] = await Promise.all([fetchCampingConfig(), fetchCampingPage(), fetchSiteSettings()]);
 
   return (
     <>
-      <PageHero
-        title="Camping"
-        subtitle="Pull up, plug in, and enjoy the river"
-        image="/images/exterior/DJI_20260304112737_0081_D.jpg"
-      />
+      <PageHero title={page.hero.title} subtitle={page.hero.subtitle} image={page.hero.image.src} />
 
       <section className="py-20 bg-cream">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <AnimateIn>
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-river-blue mb-3">
-                On the Water
+                {page.eyebrow}
               </p>
               <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl font-bold text-charcoal">
-                Camping on the Wolf River
+                {page.heading}
               </h2>
               <p className="mt-6 text-river-gray text-lg leading-relaxed">
                 {config.description}
@@ -67,9 +63,9 @@ export default async function CampingPage() {
               </div>
 
               <p className="mt-8 text-sm text-river-gray">
-                2-night minimum on weekends, 3 nights on holidays. Call the RV Park office at{" "}
-                <a href="tel:+19204463222" className="text-river-blue font-medium hover:underline">
-                  (920) 446-3222
+                {page.policyNote} Call the RV Park office at{" "}
+                <a href={telHref(settings.rvPhone)} className="text-river-blue font-medium hover:underline">
+                  {settings.rvPhone}
                 </a>{" "}
                 or <a href="/contact?type=camping" className="text-river-blue font-medium hover:underline">send us a message</a> — we&apos;re happy to help.
               </p>
